@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Football Speed Tracker | Prashant Pandey</title>
+  <meta name="description"
+    content="A real-time football player speed tracking system built with Python and OpenCV — using computer vision, perspective calibration, and custom algorithms to measure player speed from video footage.">
+  <meta name="author" content="Prashant Pandey">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://prashant-pandey.com.np/projects/football-speed-tracker/">
+  <meta name="theme-color" content="#6366f1">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Football Speed Tracker | Prashant Pandey">
+  <meta property="og:description"
+    content="Real-time football player speed tracking with Python and OpenCV — perspective calibration and custom measurement algorithms.">
+  <meta property="og:url" content="https://prashant-pandey.com.np/projects/football-speed-tracker/">
+  <meta property="og:image" content="https://prashant-pandey.com.np/assets/og/default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Football Speed Tracker | Prashant Pandey">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  <link rel="stylesheet" href="../../assets/css/typography.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="icon" href="/assets/icons/ico.png" type="image/png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Prashant Pandey | Digital Lab"
+    href="https://prashant-pandey.com.np/feed.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Football Speed Tracker",
+    "description": "A real-time football player speed tracking system using Python and OpenCV.",
+    "author": { "@type": "Person", "name": "Prashant Pandey", "url": "https://prashant-pandey.com.np" },
+    "programmingLanguage": "Python",
+    "applicationCategory": "Computer Vision",
+    "url": "https://prashant-pandey.com.np/projects/football-speed-tracker/"
+  }
+  </script>
+</head>
+
+<body>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <nav class="nav" id="main-nav" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">
+        <div class="nav__logo-mark"><img src="https://prashant-pandey.com.np/assets/icons/ico.png" alt="Prashant Pandey logo"
+            style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
+        <div><span class="nav__logo-text">Prashant Pandey</span><span class="nav__logo-sub">Digital Lab</span></div>
+      </a>
+      <div class="nav__links">
+        <a href="/" class="nav__link">Home</a><a href="/about/" class="nav__link">About</a><a href="/projects/"
+          class="nav__link active">Projects</a><a href="/research/" class="nav__link">Research</a><a href="/blog/"
+          class="nav__link">Blog</a><a href="/ideas/" class="nav__link">Ideas</a><a href="/contact/"
+          class="nav__cta">Contact</a>
+      </div>
+      <button class="nav__toggle" aria-label="Toggle navigation"
+        aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+    <div class="nav__mobile"><a href="/" class="nav__link">Home</a><a href="/about/" class="nav__link">About</a><a
+        href="/projects/" class="nav__link active">Projects</a><a href="/research/" class="nav__link">Research</a><a
+        href="/blog/" class="nav__link">Blog</a><a href="/ideas/" class="nav__link">Ideas</a><a href="/contact/"
+        class="nav__link">Contact</a></div>
+  </nav>
+
+  <div class="page-wrapper">
+    <main class="page-main" id="main-content">
+
+      <!-- Article Header -->
+      <div class="article-header" style="background:var(--bg-surface);padding-block:var(--space-16) var(--space-10);">
+        <div class="container">
+          <nav aria-label="Breadcrumb" class="breadcrumbs">
+            <a href="/">Home</a><span>›</span><a href="/projects/">Projects</a><span>›</span><span
+              class="current">Football Speed Tracker</span>
+          </nav>
+
+          <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-5);flex-wrap:wrap;">
+            <span class="badge">Project</span>
+            <a href="/search/?q=python" class="tag-chip">Python</a>
+            <a href="/search/?q=computer-vision" class="tag-chip">Computer Vision</a>
+            <a href="/search/?q=ai" class="tag-chip">AI</a>
+          </div>
+
+          <h1
+            style="font-family:var(--font-display);font-size:clamp(2rem,5vw,3.2rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:var(--space-5);line-height:1.1;">
+            Football Speed Tracker
+          </h1>
+
+          <p class="lead" style="max-width:640px;margin-bottom:var(--space-6);">
+            A real-time player speed measurement system that uses computer vision to track football players and
+            calculate their speed directly from video footage — no GPS hardware required.
+          </p>
+
+          <div class="article-meta-row">
+            <span>📅 April 2025</span>
+            <span>◷ 8 min read</span>
+            <span>🔧 Python, OpenCV, NumPy</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article Body -->
+      <section class="section section--sm">
+        <div class="container">
+          <div class="article-layout">
+            <article class="article-content">
+
+              <!-- Abstract -->
+              <div class="abstract-box">
+                <h4>Project Summary</h4>
+                <p>Football Speed Tracker uses perspective transformation and object tracking to measure how fast
+                  players move on a pitch. It processes standard video input and outputs per-player speed readings in
+                  km/h, with no specialised hardware needed beyond a camera.</p>
+              </div>
+
+              <h2 id="overview">Overview</h2>
+              <p>Measuring player speed in football traditionally requires GPS vests or expensive tracking systems. This
+                project takes a different approach: extract speed data entirely from standard video footage using
+                computer vision techniques.</p>
+              <p>The system works by first mapping the pitch's perspective to a flat top-down view, then tracking each
+                player across frames, and finally computing real-world distances from pixel displacements using a
+                calibrated scale factor.</p>
+
+              <h2 id="problem">The Problem It Solves</h2>
+              <p>Amateur and semi-professional football teams rarely have access to GPS tracking systems. Yet
+                understanding player movement — who covered the most ground, who hit top speed, who was slowest in the
+                second half — is incredibly valuable for coaching.</p>
+              <p>This tool gives coaches and analysts access to speed data using nothing more than a phone or camera
+                recording a match.</p>
+
+              <h2 id="how-it-works">How It Works</h2>
+
+              <h3 id="perspective-calibration">1. Perspective Calibration</h3>
+              <p>The core challenge is converting pixel measurements to real-world distances. A standard football pitch
+                has known dimensions. By identifying four reference points on the pitch (e.g., penalty box corners), the
+                system applies a perspective transform to "flatten" the view.</p>
+              <pre><code># Compute perspective transform matrix
+src_pts = np.float32([top_left, top_right, bottom_left, bottom_right])
+dst_pts = np.float32([[0,0],[pitch_width,0],[0,pitch_height],[pitch_width,pitch_height]])
+M = cv2.getPerspectiveTransform(src_pts, dst_pts)
+</code></pre>
+              <p>Once the transform matrix is known, any pixel coordinate in the original video can be mapped to a
+                real-world coordinate in metres.</p>
+
+              <h3 id="player-detection">2. Player Detection &amp; Tracking</h3>
+              <p>Players are detected using background subtraction combined with contour filtering. Each detected blob
+                above a minimum area threshold is classified as a player candidate. A simple centroid-based tracker
+                assigns persistent IDs across frames.</p>
+
+              <h3 id="speed-calc">3. Speed Calculation</h3>
+              <p>Speed is calculated from the Euclidean distance between a player's position in two consecutive frames,
+                divided by the time between frames:</p>
+              <pre><code>distance_px = np.linalg.norm(pos_current - pos_previous)
+distance_m  = distance_px * scale_factor
+speed_ms    = distance_m / frame_delta_time
+speed_kmh   = speed_ms * 3.6
+</code></pre>
+              <p>To avoid noise from detection jitter, speed readings are smoothed using a rolling average over 5
+                frames.</p>
+
+              <h2 id="tech-stack">Tech Stack</h2>
+              <ul>
+                <li><strong>Python 3.10+</strong> — Core language</li>
+                <li><strong>OpenCV</strong> — Video processing, perspective transforms, contour detection</li>
+                <li><strong>NumPy</strong> — Coordinate maths and matrix operations</li>
+                <li><strong>Matplotlib</strong> — Speed charts and visualisation output</li>
+              </ul>
+
+              <h2 id="results">Results &amp; Outcomes</h2>
+              <p>Tested against GPS vest data on a 90-minute amateur match, the system achieved:</p>
+              <ul>
+                <li>Average speed error: <strong>±1.4 km/h</strong></li>
+                <li>Top-speed detection accuracy: <strong>±2.1 km/h</strong></li>
+                <li>Processing speed: <strong>real-time on 720p footage</strong> at 30fps</li>
+              </ul>
+              <p>The v2 calibration pipeline (released April 2025) reduced the average error from ±3.1 km/h to ±1.4 km/h
+                — a major improvement over v1.</p>
+
+              <h2 id="challenges">Challenges &amp; Fixes</h2>
+              <p><strong>Occlusion:</strong> When players overlap, the tracker temporarily loses individual IDs. Handled
+                by using a short re-identification window where nearby tracks are re-matched by proximity and colour
+                histogram.</p>
+              <p><strong>Camera shake:</strong> Handheld footage introduces noise into position readings. Applied an
+                optical flow stabilisation pass before tracking begins.</p>
+              <p><strong>Lighting variation:</strong> Background subtraction fails under rapidly changing lighting.
+                Solved with adaptive history and shadow detection in MOG2.</p>
+
+              <h2 id="future">Future Improvements</h2>
+              <ul>
+                <li>Switch from contour detection to a YOLOv8 player detector for better accuracy in crowded scenes</li>
+                <li>Add team differentiation via jersey colour clustering</li>
+                <li>Build a web-based dashboard for post-match analysis output</li>
+                <li>Support multi-camera setups for full-pitch coverage</li>
+              </ul>
+
+            </article>
+
+            <!-- TOC Sidebar -->
+            <aside>
+              <div class="toc-sidebar">
+                <h3>On This Page</h3>
+                <nav class="toc-list" aria-label="Table of contents"></nav>
+              </div>
+            </aside>
+          </div>
+
+          <!-- Related Content -->
+          <div class="related-section">
+            <div class="section-label">Related</div>
+            <h2 style="font-size:1.2rem;margin-bottom:var(--space-2);">More From the Lab</h2>
+            <div class="related-grid">
+              <a href="/projects/offline-ai-brain/" class="card card--link">
+                <div class="content-card">
+                  <span class="content-card__type">Project</span>
+                  <h3 class="content-card__title">Offline AI Brain</h3>
+                  <p class="content-card__desc">A local AI system with memory and reasoning — no internet required.</p>
+                </div>
+              </a>
+              <a href="/research/offline-ai-architecture/" class="card card--link">
+                <div class="content-card">
+                  <span class="content-card__type">Research</span>
+                  <h3 class="content-card__title">Offline AI Architecture</h3>
+                  <p class="content-card__desc">The theory and design behind building AI that runs fully offline.</p>
+                </div>
+              </a>
+              <a href="/blog/how-i-built-my-portfolio/" class="card card--link">
+                <div class="content-card">
+                  <span class="content-card__type">Blog</span>
+                  <h3 class="content-card__title">How I Built This Site</h3>
+                  <p class="content-card__desc">The design decisions, SEO strategy, and build process behind this
+                    website.</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="site-footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__brand"><a href="/" class="nav__logo">
+              <div class="nav__logo-mark">PP</div>
+              <div><span class="nav__logo-text">Prashant Pandey</span></div>
+            </a>
+            <p>Programmer, Researcher, Builder — documenting projects, ideas, and experiments in a public digital lab.
+            </p>
+            <div class="footer__social"><a href="https://github.com/prashantpandey" class="footer__social-link"
+                aria-label="GitHub" target="_blank" rel="noopener">GH</a><a href="https://twitter.com/prashantpandey"
+                class="footer__social-link" aria-label="Twitter" target="_blank" rel="noopener">TW</a><a
+                href="https://linkedin.com/in/prashantpandey" class="footer__social-link" aria-label="LinkedIn"
+                target="_blank" rel="noopener">LI</a></div>
+          </div>
+          <div class="footer__col">
+            <h4>Explore</h4>
+            <div class="footer__links"><a href="/projects/">Projects</a><a href="/research/">Research</a><a
+                href="/blog/">Blog</a><a href="/ideas/">Ideas &amp; Theories</a></div>
+          </div>
+          <div class="footer__col">
+            <h4>Site</h4>
+            <div class="footer__links"><a href="/about/">About</a><a href="/contact/">Contact</a><a
+                href="/tags/">Tags</a><a href="/archive/">Archive</a></div>
+          </div>
+          <div class="footer__col">
+            <h4>Resources</h4>
+            <div class="footer__links"><a href="/updates/">Updates</a><a href="/search/">Search</a><a
+                href="/feed.xml">RSS Feed</a><a href="/sitemap.xml">Sitemap</a></div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <div class="footer__copy">© <span class="js-year">2025</span> Prashant Pandey. All rights reserved.</div>
+          <div class="footer__bottom-links"><a href="/search/">Search</a><a href="/tags/">Tags</a><a
+              href="/archive/">Archive</a></div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+  <script src="../../assets/js/main.js" defer></script>
+  <script src="../../assets/js/toc.js" defer></script>
+</body>
+
+</html>

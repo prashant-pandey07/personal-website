@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Prashant Pandey | Digital Lab</title>
+    <link>https://prashant-pandey.com.np/</link>
+    <description>Projects, research, ideas, and experiments in software engineering and AI.</description>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 May 2026 12:00:00 GMT</lastBuildDate>
+    <atom:link href="https://prashant-pandey.com.np/feed.xml" rel="self" type="application/rss+xml" />
+
+    <item>
+      <title>How I Built My Portfolio Website</title>
+      <link>https://prashant-pandey.com.np/blog/how-i-built-my-portfolio/</link>
+      <guid>https://prashant-pandey.com.np/blog/how-i-built-my-portfolio/</guid>
+      <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
+      <description>A complete walkthrough of building this personal website — covering SEO strategy from the ground up, design decisions, performance optimisation, and vanilla architecture patterns.</description>
+    </item>
+
+    <item>
+      <title>Future Agent System</title>
+      <link>https://prashant-pandey.com.np/ideas/future-agent-system/</link>
+      <guid>https://prashant-pandey.com.np/ideas/future-agent-system/</guid>
+      <pubDate>Mon, 20 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Exploring a speculative blackboard architecture where specialized AI agents dynamically spawn, claim tasks, and coordinate memory without central orchestrator trees.</description>
+    </item>
+
+    <item>
+      <title>Football Speed Tracker</title>
+      <link>https://prashant-pandey.com.np/projects/football-speed-tracker/</link>
+      <guid>https://prashant-pandey.com.np/projects/football-speed-tracker/</guid>
+      <pubDate>Wed, 15 Apr 2026 00:00:00 GMT</pubDate>
+      <description>A real-time player speed tracking system using Python and OpenCV, featuring perspective pitch calibration and contour-based tracking.</description>
+    </item>
+
+    <item>
+      <title>Offline AI Brain</title>
+      <link>https://prashant-pandey.com.np/projects/offline-ai-brain/</link>
+      <guid>https://prashant-pandey.com.np/projects/offline-ai-brain/</guid>
+      <pubDate>Fri, 10 Apr 2026 00:00:00 GMT</pubDate>
+      <description>A fully offline, local AI agent system utilizing quantized model backends, a SQLite vector similarity search, and a sandboxed task execution loop.</description>
+    </item>
+
+    <item>
+      <title>Offline AI Brain Architecture</title>
+      <link>https://prashant-pandey.com.np/research/offline-ai-architecture/</link>
+      <guid>https://prashant-pandey.com.np/research/offline-ai-architecture/</guid>
+      <pubDate>Sun, 15 Mar 2026 00:00:00 GMT</pubDate>
+      <description>A comprehensive study on cognitive modeling for localized, network-disconnected artificial intelligence agents, highlighting context context compression and verification loops.</description>
+    </item>
+  </channel>
+</rss>

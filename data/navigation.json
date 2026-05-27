@@ -1,0 +1,88 @@
+{
+  "main": [
+    {
+      "label": "Home",
+      "url": "/"
+    },
+    {
+      "label": "About",
+      "url": "/about/"
+    },
+    {
+      "label": "Projects",
+      "url": "/projects/"
+    },
+    {
+      "label": "Research",
+      "url": "/research/"
+    },
+    {
+      "label": "Blog",
+      "url": "/blog/"
+    },
+    {
+      "label": "Ideas",
+      "url": "/ideas/"
+    },
+    {
+      "label": "Contact",
+      "url": "/contact/"
+    }
+  ],
+  "footer": {
+    "explore": [
+      {
+        "label": "Projects",
+        "url": "/projects/"
+      },
+      {
+        "label": "Research",
+        "url": "/research/"
+      },
+      {
+        "label": "Blog",
+        "url": "/blog/"
+      },
+      {
+        "label": "Ideas & Theories",
+        "url": "/ideas/"
+      }
+    ],
+    "site": [
+      {
+        "label": "About",
+        "url": "/about/"
+      },
+      {
+        "label": "Contact",
+        "url": "/contact/"
+      },
+      {
+        "label": "Tags",
+        "url": "/tags/"
+      },
+      {
+        "label": "Archive",
+        "url": "/archive/"
+      }
+    ],
+    "resources": [
+      {
+        "label": "Updates",
+        "url": "/updates/"
+      },
+      {
+        "label": "Search",
+        "url": "/search/"
+      },
+      {
+        "label": "RSS Feed",
+        "url": "/feed.xml"
+      },
+      {
+        "label": "Sitemap",
+        "url": "/sitemap.xml"
+      }
+    ]
+  }
+}

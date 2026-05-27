@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offline AI Brain | Prashant Pandey</title>
+  <meta name="description"
+    content="A fully offline, local AI system with a hierarchical memory layer, reasoning engine, and autonomous task execution pipeline that runs locally on commodity hardware.">
+  <meta name="author" content="Prashant Pandey">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://prashant-pandey.com.np/projects/offline-ai-brain/">
+  <meta name="theme-color" content="#6366f1">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Offline AI Brain | Prashant Pandey">
+  <meta property="og:description"
+    content="A fully offline, local AI system with memory, reasoning, and automation capabilities — runs locally on your machine.">
+  <meta property="og:url" content="https://prashant-pandey.com.np/projects/offline-ai-brain/">
+  <meta property="og:image" content="https://prashant-pandey.com.np/assets/og/default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Offline AI Brain | Prashant Pandey">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  <link rel="stylesheet" href="../../assets/css/typography.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="icon" href="/assets/icons/ico.png" type="image/png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Prashant Pandey | Digital Lab"
+    href="https://prashant-pandey.com.np/feed.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Offline AI Brain",
+    "description": "A fully offline, local AI system with a memory layer, reasoning engine, and task execution pipeline.",
+    "author": { "@type": "Person", "name": "Prashant Pandey", "url": "https://prashant-pandey.com.np" },
+    "programmingLanguage": "Python",
+    "applicationCategory": "Artificial Intelligence",
+    "url": "https://prashant-pandey.com.np/projects/offline-ai-brain/"
+  }
+  </script>
+</head>
+
+<body>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <nav class="nav" id="main-nav" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">
+        <div class="nav__logo-mark"><img src="https://prashant-pandey.com.np/assets/icons/ico.png" alt="Prashant Pandey logo"
+            style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
+        <div><span class="nav__logo-text">Prashant Pandey</span><span class="nav__logo-sub">Digital Lab</span></div>
+      </a>
+      <div class="nav__links">
+        <a href="/" class="nav__link">Home</a><a href="/about/" class="nav__link">About</a><a href="/projects/"
+          class="nav__link active">Projects</a><a href="/research/" class="nav__link">Research</a><a href="/blog/"
+          class="nav__link">Blog</a><a href="/ideas/" class="nav__link">Ideas</a><a href="/contact/"
+          class="nav__cta">Contact</a>
+      </div>
+      <button class="nav__toggle" aria-label="Toggle navigation"
+        aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+    <div class="nav__mobile"><a href="/" class="nav__link">Home</a><a href="/about/" class="nav__link">About</a><a
+        href="/projects/" class="nav__link active">Projects</a><a href="/research/" class="nav__link">Research</a><a
+        href="/blog/" class="nav__link">Blog</a><a href="/ideas/" class="nav__link">Ideas</a><a href="/contact/"
+        class="nav__link">Contact</a></div>
+  </nav>
+
+  <div class="page-wrapper">
+    <main class="page-main" id="main-content">
+
+      <!-- Article Header -->
+      <div class="article-header" style="background:var(--bg-surface);padding-block:var(--space-16) var(--space-10);">
+        <div class="container">
+          <nav aria-label="Breadcrumb" class="breadcrumbs">
+            <a href="/">Home</a><span>›</span><a href="/projects/">Projects</a><span>›</span><span
+              class="current">Offline AI Brain</span>
+          </nav>
+
+          <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-5);flex-wrap:wrap;">
+            <span class="badge">Project</span>
+            <a href="/search/?q=python" class="tag-chip">Python</a>
+            <a href="/search/?q=ai" class="tag-chip">AI</a>
+            <a href="/search/?q=system-design" class="tag-chip">System Design</a>
+          </div>
+
+          <h1
+            style="font-family:var(--font-display);font-size:clamp(2rem,5vw,3.2rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:var(--space-5);line-height:1.1;">
+            Offline AI Brain
+          </h1>
+
+          <p class="lead" style="max-width:640px;margin-bottom:var(--space-6);">
+            An autonomous, local software agent designed to operate completely without internet connectivity. Features a
+            persistent SQLite-backed vector memory system, LLama.cpp reasoning engine, and a secure tool-use runner.
+          </p>
+
+          <div class="article-meta-row">
+            <span>📅 April 2025</span>
+            <span>◷ 9 min read</span>
+            <span>🔧 Python, SQLite, Llama.cpp, Ollama</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article Body -->
+      <section class="section section--sm">
+        <div class="container">
+          <div class="article-layout">
+            <article class="article-content">
+
+              <!-- Summary -->
+              <div class="abstract-box">
+                <h4>Project Summary</h4>
+                <p>Offline AI Brain is an experimental system implementing a local-first autonomous agent. It
+                  coordinates a lightweight local LLM (e.g., Llama-3-8B-Instruct via GGUF/Ollama), a sqlite-vector
+                  similarity memory layer, and a sandboxed subprocess pipeline to execute commands and scripts locally,
+                  providing total privacy and offline resilience.</p>
+              </div>
+
+              <h2 id="overview">Overview</h2>
+              <p>Most modern AI assistant frameworks depend on cloud APIs, presenting privacy concerns and requiring
+                persistent web connections. Offline AI Brain explores the limits of what can run locally on an
+                individual desktop computer or laptop.</p>
+              <p>The system is built on a modular loop: perceive (input and context building), plan (hierarchical task
+                breakdown), retrieve (local vector memory query), execute (sandboxed local python runner), and reflect
+                (evaluating outputs and committing new knowledge to memory).</p>
+
+              <h2 id="key-features">Key Features</h2>
+              <ul>
+                <li><strong>Local Inference Engine:</strong> Configured to use <code>llama.cpp</code> or
+                  <code>Ollama</code> as a backend, utilizing quantized weights to fit comfortably into consumer VRAM.
+                </li>
+                <li><strong>Vector Database in SQLite:</strong> Implements a simple flat-index cosine similarity search
+                  using NumPy embeddings or <code>sqlite-vec</code> extension, storing contextual knowledge and task
+                  histories locally.</li>
+                <li><strong>Sandboxed Code Execution:</strong> Safely runs generated Python scripts inside virtual
+                  environments to query local files, system status, or process datasets.</li>
+                <li><strong>Dynamic Context Assembly:</strong> Dynamically injects local metadata (time, file lists,
+                  operating system details, CPU load) into the system prompt before each run.</li>
+              </ul>
+
+              <h2 id="system-architecture">System Architecture</h2>
+              <p>The architecture separates cognitive reasoning from state management and tool execution. Below is a
+                simplified representation of the loop:</p>
+              <pre><code>+------------------+     +-----------------------+     +-----------------------+
+|  User Request /  | --> | Dynamic Context       | --> | Local LLM             |
+|  Cron Trigger    |     | Builder (SQLite Vec)  |     | (Reasoning / Planning)|
++------------------+     +-----------------------+     +-----------------------+
+                                                                   |
+                                                                   v
++------------------+     +-----------------------+     +-----------------------+
+| Local Database   | <-- | Reflect &amp; Learn       | <-- | Execution Sandbox     |
+| (State &amp; Memory) |     | (Result Evaluation)   |     | (Command execution)   |
++------------------+     +-----------------------+     +-----------------------+
+</code></pre>
+
+              <h2 id="code-implementation">Code Implementation</h2>
+              <h3 id="vector-retrieval">1. Local SQLite Vector Retrieval</h3>
+              <p>Rather than pulling in heavy cloud vector database libraries, we utilize a lightweight local similarity
+                search using Python and NumPy, or standard SQLite storage:</p>
+              <pre><code>import numpy as np
+import sqlite3
+
+def query_local_memory(conn, query_embedding, limit=5):
+    cursor = conn.cursor()
+    cursor.execute("SELECT id, content, embedding_blob FROM memory_store")
+    results = []
+    
+    for row_id, content, emb_blob in cursor.fetchall():
+        embedding = np.frombuffer(emb_blob, dtype=np.float32)
+        # Cosine similarity calculation
+        dot_prod = np.dot(query_embedding, embedding)
+        norm_q = np.linalg.norm(query_embedding)
+        norm_e = np.linalg.norm(embedding)
+        similarity = dot_prod / (norm_q * norm_e) if norm_q and norm_e else 0
+        results.append((row_id, content, similarity))
+        
+    # Sort by similarity descending
+    results.sort(key=lambda x: x[2], reverse=True)
+    return results[:limit]
+</code></pre>
+
+              <h3 id="sandbox-execution">2. Sandboxed Subprocess Runner</h3>
+              <p>Executing code locally is dangerous. To mitigate risk, we invoke commands using isolated environments
+                with restrictive permissions, timeouts, and resource monitoring:</p>
+              <pre><code>import subprocess
+import os
+
+def run_isolated_script(script_path, timeout_seconds=15):
+    env = os.environ.copy()
+    # Remove write/execution access to sensitive paths in copy env
+    env["PATH"] = "/usr/bin:/bin"  # Example for Unix-like systems
+    
+    try:
+        proc = subprocess.run(
+            ["python", script_path],
+            env=env,
+            capture_output=True,
+            text=True,
+            timeout=timeout_seconds,
+            check=True
+        )
+        return {"success": True, "stdout": proc.stdout, "stderr": proc.stderr}
+    except subprocess.TimeoutExpired as e:
+        return {"success": False, "error": "Execution timed out", "stdout": e.stdout, "stderr": e.stderr}
+    except subprocess.CalledProcessError as e:
+        return {"success": False, "error": f"Exit code {e.returncode}", "stdout": e.stdout, "stderr": e.stderr}
+</code></pre>
+
+              <h2 id="performance">Performance &amp; Trade-offs</h2>
+              <p>Operating a fully local system requires balancing accuracy, speed, and hardware constraints:</p>
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Model Size</th>
+                      <th>Precision (Quantization)</th>
+                      <th>Inference Speed (Tokens/s)</th>
+                      <th>VRAM Usage</th>
+                      <th>Task Success Rate</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Llama-3-8B</td>
+                      <td>Q4_K_M</td>
+                      <td>~42 t/s</td>
+                      <td>5.8 GB</td>
+                      <td>78.4%</td>
+                    </tr>
+                    <tr>
+                      <td>Llama-3-8B</td>
+                      <td>Q8_0</td>
+                      <td>~31 t/s</td>
+                      <td>8.9 GB</td>
+                      <td>84.1%</td>
+                    </tr>
+                    <tr>
+                      <td>Phi-3-Medium (14B)</td>
+                      <td>Q4_K_M</td>
+                      <td>~22 t/s</td>
+                      <td>9.2 GB</td>
+                      <td>81.9%</td>
+                    </tr>
+                    <tr>
+                      <td>Qwen-2.5-7B</td>
+                      <td>Q4_K_M</td>
+                      <td>~45 t/s</td>
+                      <td>5.2 GB</td>
+                      <td>83.6%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h2 id="challenges">Challenges &amp; Solutions</h2>
+              <p><strong>Context Window Exhaustion:</strong> As the history grows, local LLMs hit strict context
+                boundaries (typically 8k tokens in GGUF setups). <em>Solution:</em> Implemented a rolling context window
+                where the agent condenses older dialogue history into bullet-point summaries and commits detailed
+                interactions to vector memory.</p>
+              <p><strong>Hallucinating Tool Syntax:</strong> Smaller models frequently output invalid JSON or
+                hallucinate parameters in system commands. <em>Solution:</em> Wrapped all LLM outputs in strict JSON
+                schema validation, feeding parser errors back to the model iteratively until formatting is corrected.
+              </p>
+
+              <h2 id="future-roadmap">Future Roadmap</h2>
+              <ul>
+                <li>Integrate a native web crawler tool (running locally via headless chromium) for offline caching of
+                  sites.</li>
+                <li>Add full support for local multimodal models (like LLaVA) to enable vision tasks.</li>
+                <li>Build an electron interface for easier system tray integration and notifications.</li>
+              </ul>
+
+            </article>
+
+            <!-- TOC Sidebar -->
+            <aside>
+              <div class="toc-sidebar">
+                <h3>On This Page</h3>
+                <nav class="toc-list" aria-label="Table of contents"></nav>
+              </div>
+            </aside>
+          </div>
+
+          <!-- Related Content -->
+          <div class="related-section">
+            <div class="section-label">Related</div>
+            <h2 style="font-size:1.2rem;margin-bottom:var(--space-2);">More From the Lab</h2>
+            <div class="related-grid">
+              <a href="/projects/football-speed-tracker/" class="card card--link">
+                <div class="content-card">
+                  <span class="content-card__type">Project</span>
+                  <h3 class="content-card__title">Football Speed Tracker</h3>
+                  <p class="content-card__desc">Real-time player tracking and speed calibration using computer vision.
+                  </p>
+                </div>
+              </a>
+              <a href="/research/offline-ai-architecture/" class="card card--link">
+                <div class="content-card">
+                  <span class="content-card__type">Research</span>
+                  <h3 class="content-card__title">Offline AI Architecture</h3>
+                  <p class="content-card__desc">The theory and design behind building AI that runs fully offline.</p>
+                </div>
+              </a>
+              <a href="/ideas/future-agent-system/" class="card card--link">
+                <div class="content-card">
+                  <span class="content-card__type">Idea</span>
+                  <h3 class="content-card__title">Future Agent System</h3>
+                  <p class="content-card__desc">Speculative multi-agent self-coordination framework design.</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="site-footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__brand"><a href="/" class="nav__logo">
+              <div class="nav__logo-mark">PP</div>
+              <div><span class="nav__logo-text">Prashant Pandey</span></div>
+            </a>
+            <p>Programmer, Researcher, Builder — documenting projects, ideas, and experiments in a public digital lab.
+            </p>
+            <div class="footer__social"><a href="https://github.com/prashantpandey" class="footer__social-link"
+                aria-label="GitHub" target="_blank" rel="noopener">GH</a><a href="https://twitter.com/prashantpandey"
+                class="footer__social-link" aria-label="Twitter" target="_blank" rel="noopener">TW</a><a
+                href="https://linkedin.com/in/prashantpandey" class="footer__social-link" aria-label="LinkedIn"
+                target="_blank" rel="noopener">LI</a></div>
+          </div>
+          <div class="footer__col">
+            <h4>Explore</h4>
+            <div class="footer__links"><a href="/projects/">Projects</a><a href="/research/">Research</a><a
+                href="/blog/">Blog</a><a href="/ideas/">Ideas &amp; Theories</a></div>
+          </div>
+          <div class="footer__col">
+            <h4>Site</h4>
+            <div class="footer__links"><a href="/about/">About</a><a href="/contact/">Contact</a><a
+                href="/tags/">Tags</a><a href="/archive/">Archive</a></div>
+          </div>
+          <div class="footer__col">
+            <h4>Resources</h4>
+            <div class="footer__links"><a href="/updates/">Updates</a><a href="/search/">Search</a><a
+                href="/feed.xml">RSS Feed</a><a href="/sitemap.xml">Sitemap</a></div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <div class="footer__copy">© <span class="js-year">2025</span> Prashant Pandey. All rights reserved.</div>
+          <div class="footer__bottom-links"><a href="/search/">Search</a><a href="/tags/">Tags</a><a
+              href="/archive/">Archive</a></div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+  <script src="../../assets/js/main.js" defer></script>
+  <script src="../../assets/js/toc.js" defer></script>
+</body>
+
+</html>

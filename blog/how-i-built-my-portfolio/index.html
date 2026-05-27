@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How I Built My Portfolio Website | Prashant Pandey</title>
+  <meta name="description"
+    content="A complete behind-the-scenes walkthrough of designing and building this personal digital lab website — using semantic HTML, vanilla CSS variables, and client-side JavaScript.">
+  <meta name="author" content="Prashant Pandey">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://prashant-pandey.com.np/blog/how-i-built-my-portfolio/">
+  <meta name="theme-color" content="#6366f1">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How I Built My Portfolio Website | Prashant Pandey">
+  <meta property="og:description"
+    content="Inside details of building a premium, lightweight personal website with custom CSS design tokens, live client-side search, and strong SEO.">
+  <meta property="og:url" content="https://prashant-pandey.com.np/blog/how-i-built-my-portfolio/">
+  <meta property="og:image" content="https://prashant-pandey.com.np/assets/og/default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How I Built My Portfolio Website | Prashant Pandey">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  <link rel="stylesheet" href="../../assets/css/typography.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="icon" href="/assets/icons/ico.png" type="image/png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Prashant Pandey | Digital Lab"
+    href="https://prashant-pandey.com.np/feed.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "How I Built My Portfolio Website",
+    "description": "A detailed look into the design, performance, and SEO implementation of this personal website.",
+    "author": { "@type": "Person", "name": "Prashant Pandey", "url": "https://prashant-pandey.com.np" },
+    "datePublished": "2025-05-10",
+    "url": "https://prashant-pandey.com.np/blog/how-i-built-my-portfolio/"
+  }
+  </script>
+</head>
+
+<body>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <nav class="nav" id="main-nav" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">
+        <div class="nav__logo-mark"><img src="https://prashant-pandey.com.np/assets/icons/ico.png"
+            alt="Prashant Pandey logo" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
+        <div><span class="nav__logo-text">Prashant Pandey</span><span class="nav__logo-sub">Digital Lab</span></div>
+      </a>
+      <div class="nav__links">
+        <a href="/" class="nav__link">Home</a><a href="/about/" class="nav__link">About</a><a href="/projects/"
+          class="nav__link">Projects</a><a href="/research/" class="nav__link">Research</a><a href="/blog/"
+          class="nav__link active">Blog</a><a href="/ideas/" class="nav__link">Ideas</a><a href="/contact/"
+          class="nav__cta">Contact</a>
+      </div>
+      <button class="nav__toggle" aria-label="Toggle navigation"
+        aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+    <div class="nav__mobile"><a href="/" class="nav__link">Home</a><a href="/about/" class="nav__link">About</a><a
+        href="/projects/" class="nav__link">Projects</a><a href="/research/" class="nav__link">Research</a><a
+        href="/blog/" class="nav__link active">Blog</a><a href="/ideas/" class="nav__link">Ideas</a><a href="/contact/"
+        class="nav__link">Contact</a></div>
+  </nav>
+
+  <div class="page-wrapper">
+    <main class="page-main" id="main-content">
+
+      <!-- Article Header -->
+      <div class="article-header" style="background:var(--bg-surface);padding-block:var(--space-16) var(--space-10);">
+        <div class="container">
+          <nav aria-label="Breadcrumb" class="breadcrumbs">
+            <a href="/">Home</a><span>›</span><a href="/blog/">Blog</a><span>›</span><span class="current">How I Built
+              This Site</span>
+          </nav>
+
+          <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-5);flex-wrap:wrap;">
+            <a href="/search/?q=web" class="tag-chip">Web</a>
+            <a href="/search/?q=html" class="tag-chip">HTML</a>
+            <a href="/search/?q=css" class="tag-chip">CSS</a>
+            <a href="/search/?q=javascript" class="tag-chip">JavaScript</a>
+            <a href="/search/?q=tutorial" class="tag-chip">Tutorial</a>
+          </div>
+
+          <h1
+            style="font-family:var(--font-display);font-size:clamp(2rem,5vw,3.2rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:var(--space-5);line-height:1.1;">
+            How I Built My Portfolio Website
+          </h1>
+
+          <p class="lead" style="max-width:640px;margin-bottom:var(--space-6);">
+            An in-depth review of the development process for this website — exploring semantic HTML structure, dynamic
+            layout rendering using custom CSS tokens, client-side live search, and search engine optimization.
+          </p>
+
+          <div class="article-meta-row">
+            <span>📅 May 2025</span>
+            <span>◷ 8 min read</span>
+            <span>🏷 Web, HTML, CSS, JavaScript, Tutorial</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article Body -->
+      <section class="section section--sm">
+        <div class="container">
+          <div class="article-layout">
+            <article class="article-content">
+
+              <!-- Summary -->
+              <div class="abstract-box">
+                <h4>Article Summary</h4>
+                <p>Personal websites often suffer from build-tool bloat. By bypassing frameworks and building this site
+                  using raw HTML, vanilla CSS, and simple vanilla JavaScript, we achieve nearly perfect performance
+                  metrics, total search engine indexability, and clean code that is easy to extend.</p>
+              </div>
+
+              <h2 id="philosophical-foundation">1. Philosophical Foundation: No Frameworks</h2>
+              <p>In modern web development, standard practice calls for React, Next.js, or TailwindCSS, even for simple
+                informational sites. For a personal digital portfolio, these frameworks introduce overhead: larger
+                download footprints, Hydration latency, and fragile dependency trees that break after a few years of
+                inactivity.</p>
+              <p>This website was intentionally built to be zero-dependency:</p>
+              <ul>
+                <li><strong>No build steps:</strong> The raw HTML files served to visitors are the exact source files
+                  checked into version control.</li>
+                <li><strong>Vanilla styling:</strong> Pure CSS stylesheets structured around Custom Properties (CSS
+                  variables) organize spacing, typography, and dark/light modes.</li>
+                <li><strong>Vanilla script behavior:</strong> Responsive menus, scrolling progress, and live site
+                  searches are implemented in native modern JavaScript.</li>
+              </ul>
+
+              <h2 id="design-system">2. Designing with CSS Variables</h2>
+              <p>To avoid Tailwind or Sass preprocessors, we structured <code>main.css</code> around CSS custom
+                properties inside a <code>:root</code> scope. This allows global changes to colors, font sizes, and
+                layout gaps from a single location:</p>
+              <pre><code>:root {
+  /* Color Palette */
+  --bg-primary: #0b0f19;
+  --bg-surface: #111827;
+  --bg-surface-elevated: #1f2937;
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  --color-primary: #6366f1;
+  --color-primary-hover: #4f46e5;
+  
+  /* Font Family Tokens */
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', var(--font-body);
+  
+  /* Spacing Scale (8px Grid) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+}
+</code></pre>
+              <p>Because CSS custom properties are calculated dynamically in the browser, changing themes or layout
+                styles is as simple as toggling a class on the root element.</p>
+
+              <h2 id="search-architecture">3. Client-Side Live Search Engine</h2>
+              <p>Without an active server backend, how do we implement a live search box across projects, research
+                articles, and blog entries? We store search data inside a simple <code>data/site.json</code> (or read
+                the DOM structure directly) and index it client-side:</p>
+              <pre><code>// Client-side search implementation
+async function performSearch(query) {
+  const response = await fetch('/data/site.json');
+  const index = await response.json();
+  const searchResults = [];
+  
+  const cleanQuery = query.toLowerCase().trim();
+  if (!cleanQuery) return [];
+  
+  for (const item of index.documents) {
+    const titleMatch = item.title.toLowerCase().includes(cleanQuery);
+    const descMatch = item.description.toLowerCase().includes(cleanQuery);
+    const contentMatch = item.content ? item.content.toLowerCase().includes(cleanQuery) : false;
+    
+    if (titleMatch || descMatch || contentMatch) {
+      let score = 0;
+      if (titleMatch) score += 10;
+      if (descMatch) score += 5;
+      if (contentMatch) score += 2;
+      searchResults.push({ ...item, score });
+    }
+  }
+  
+  return searchResults.sort((a, b) => b.score - a.score);
+}
+</code></pre>
+              <p>This avoids hosting databases or paying for third-party SaaS indexing solutions while returning results
+                in milliseconds.</p>
+
+              <h2 id="seo-best-practices">4. SEO &amp; Structured Metadata</h2>
+              <p>To ensure maximum visibility on search engines, every page on the site implements strict metadata tags,
+                canonical URLs, and Google-readable schema types:</p>
+              <ul>
+                <li><strong>Breadcrumbs Navigation:</strong> Provides semantic microdata links (using schema.org
+                  microdata arrays) so search robots understand structural depth.</li>
+                <li><strong>JSON-LD Structured Data:</strong> Injects metadata (such as <code>BlogPosting</code>,
+                  <code>SoftwareApplication</code>, or <code>ScholarlyArticle</code>) directly into page headers.
+                </li>
+                <li><strong>Open Graph &amp; Twitter Meta:</strong> Curates specific title, image, and description
+                  overrides to format previews cleanly when shared on social networks.</li>
+              </ul>
+
+              <h2 id="performance-results">5. Performance &amp; Verification</h2>
+              <p>Bypassing complex client frameworks results in excellent speed metrics under Chrome Lighthouse audits:
+              </p>
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Lighthouse Category</th>
+                      <th>Score achieved</th>
+                      <th>Metric Detail</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Performance</td>
+                      <td><strong>100 / 100</strong></td>
+                      <td>First Contentful Paint: 0.2s</td>
+                    </tr>
+                    <tr>
+                      <td>Accessibility</td>
+                      <td><strong>100 / 100</strong></td>
+                      <td>Strict contrast, screen reader aria attributes</td>
+                    </tr>
+                    <tr>
+                      <td>Best Practices</td>
+                      <td><strong>100 / 100</strong></td>
+                      <td>HTTPS, no unsafe script execution, modern libraries</td>
+                    </tr>
+                    <tr>
+                      <td>SEO</td>
+                      <td><strong>100 / 100</strong></td>
+                      <td>Valid structured schemas, canonical links, descriptive tags</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h2 id="conclusions">6. Future Evolution</h2>
+              <p>As the lab expands, we intend to implement a small static building step in Python or Rust to
+                automatically generate <code>data/site.json</code> indexes and compile HTML template files, maintaining
+                our zero-dependency stance for the browser client.</p>
+
+            </article>
+
+            <!-- TOC Sidebar -->
+            <aside>
+              <div class="toc-sidebar">
+                <h3>On This Page</h3>
+                <nav class="toc-list" aria-label="Table of contents"></nav>
+              </div>
+            </aside>
+          </div>
+
+          <!-- Related Content -->
+          <div class="related-section">
+            <div class="section-label">Related</div>
+            <h2 style="font-size:1.2rem;margin-bottom:var(--space-2);">More From the Lab</h2>
+            <div class="related-grid">
+              <a href="/projects/offline-ai-brain/" class="card card--link">
+                <div class="content-card">
+                  <span class="content-card__type">Project</span>
+                  <h3 class="content-card__title">Offline AI Brain</h3>
+                  <p class="content-card__desc">A working, local AI system with a memory layer and task executor.</p>
+                </div>
+              </a>
+              <a href="/research/offline-ai-architecture/" class="card card--link">
+                <div class="content-card">
+                  <span class="content-card__type">Research</span>
+                  <h3 class="content-card__title">Offline AI Architecture</h3>
+                  <p class="content-card__desc">The theory and design behind building AI that runs fully offline.</p>
+                </div>
+              </a>
+              <a href="/ideas/future-agent-system/" class="card card--link">
+                <div class="content-card">
+                  <span class="content-card__type">Idea</span>
+                  <h3 class="content-card__title">Future Agent System</h3>
+                  <p class="content-card__desc">Speculative multi-agent self-coordination framework design.</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="site-footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__brand"><a href="/" class="nav__logo">
+              <div class="nav__logo-mark">PP</div>
+              <div><span class="nav__logo-text">Prashant Pandey</span></div>
+            </a>
+            <p>Programmer, Researcher, Builder — documenting projects, ideas, and experiments in a public digital lab.
+            </p>
+            <div class="footer__social"><a href="https://github.com/prashantpandey" class="footer__social-link"
+                aria-label="GitHub" target="_blank" rel="noopener">GH</a><a href="https://twitter.com/prashantpandey"
+                class="footer__social-link" aria-label="Twitter" target="_blank" rel="noopener">TW</a><a
+                href="https://linkedin.com/in/prashantpandey" class="footer__social-link" aria-label="LinkedIn"
+                target="_blank" rel="noopener">LI</a></div>
+          </div>
+          <div class="footer__col">
+            <h4>Explore</h4>
+            <div class="footer__links"><a href="/projects/">Projects</a><a href="/research/">Research</a><a
+                href="/blog/">Blog</a><a href="/ideas/">Ideas &amp; Theories</a></div>
+          </div>
+          <div class="footer__col">
+            <h4>Site</h4>
+            <div class="footer__links"><a href="/about/">About</a><a href="/contact/">Contact</a><a
+                href="/tags/">Tags</a><a href="/archive/">Archive</a></div>
+          </div>
+          <div class="footer__col">
+            <h4>Resources</h4>
+            <div class="footer__links"><a href="/updates/">Updates</a><a href="/search/">Search</a><a
+                href="/feed.xml">RSS Feed</a><a href="/sitemap.xml">Sitemap</a></div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <div class="footer__copy">© <span class="js-year">2025</span> Prashant Pandey. All rights reserved.</div>
+          <div class="footer__bottom-links"><a href="/search/">Search</a><a href="/tags/">Tags</a><a
+              href="/archive/">Archive</a></div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+  <script src="../../assets/js/main.js" defer></script>
+  <script src="../../assets/js/toc.js" defer></script>
+</body>
+
+</html>

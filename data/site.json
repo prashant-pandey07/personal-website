@@ -1,0 +1,17 @@
+{
+  "name": "Prashant Pandey",
+  "tagline": "Programmer · Researcher · Builder",
+  "description": "A personal digital lab where I document my projects, research, ideas, and experiments in software engineering and AI.",
+  "url": "https://prashant-pandey.com.np",
+  "author": "Prashant Pandey",
+  "email": "hello@prashant-pandey.com.np",
+  "location": "India",
+  "social": {
+    "github": "https://github.com/prashantpandey",
+    "twitter": "https://twitter.com/prashantpandey",
+    "linkedin": "https://linkedin.com/in/prashantpandey"
+  },
+  "og_image": "/assets/og/default.png",
+  "theme_color": "#6366f1",
+  "language": "en"
+}

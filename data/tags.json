@@ -1,0 +1,17 @@
+{
+  "tags": [
+    { "slug": "python", "name": "Python", "count": 8, "description": "Projects and articles using the Python programming language." },
+    { "slug": "ai", "name": "AI", "count": 12, "description": "Artificial intelligence research, projects, and experiments." },
+    { "slug": "computer-vision", "name": "Computer Vision", "count": 4, "description": "Image processing, object detection, and visual analysis work." },
+    { "slug": "automation", "name": "Automation", "count": 5, "description": "Tools and systems that automate tasks and workflows." },
+    { "slug": "research", "name": "Research", "count": 6, "description": "Deep technical research articles and essays." },
+    { "slug": "web", "name": "Web", "count": 3, "description": "Web development projects and frontend experiments." },
+    { "slug": "javascript", "name": "JavaScript", "count": 3, "description": "JavaScript-based projects and tools." },
+    { "slug": "flutter", "name": "Flutter", "count": 2, "description": "Cross-platform mobile app development with Flutter." },
+    { "slug": "networking", "name": "Networking", "count": 2, "description": "Network protocols, tools, and connectivity projects." },
+    { "slug": "system-design", "name": "System Design", "count": 4, "description": "Architecture, design patterns, and system-level thinking." },
+    { "slug": "theory", "name": "Theory", "count": 3, "description": "Theoretical concepts, speculation, and experimental ideas." },
+    { "slug": "tools", "name": "Tools", "count": 5, "description": "Developer tools, CLI utilities, and productivity software." },
+    { "slug": "education", "name": "Education", "count": 2, "description": "Learning resources, tutorials, and educational content." }
+  ]
+}

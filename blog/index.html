@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Prashant Pandey</title>
+  <meta name="description"
+    content="Technical blog posts, build logs, tutorials, and practical notes by Prashant Pandey — covering Python, AI, web development, and software engineering.">
+  <meta name="author" content="Prashant Pandey">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://prashant-pandey.com.np/blog/">
+  <meta name="theme-color" content="#6366f1">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Blog | Prashant Pandey">
+  <meta property="og:description" content="Technical blog posts, build logs, and tutorials by Prashant Pandey.">
+  <meta property="og:url" content="https://prashant-pandey.com.np/blog/">
+  <meta property="og:image" content="https://prashant-pandey.com.np/assets/og/default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Blog | Prashant Pandey">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/typography.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="icon" href="/assets/icons/ico.png" type="image/png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Prashant Pandey | Digital Lab"
+    href="https://prashant-pandey.com.np/feed.xml">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Blog","name":"Blog — Prashant Pandey","url":"https://prashant-pandey.com.np/blog/","description":"Technical blog by Prashant Pandey.","author":{"@type":"Person","name":"Prashant Pandey"}}
+  </script>
+</head>
+
+<body>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <nav class="nav" id="main-nav" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">
+        <div class="nav__logo-mark"><img src="https://prashant-pandey.com.np/assets/icons/ico.png" alt="Prashant Pandey logo"
+            style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
+        <div><span class="nav__logo-text">Prashant Pandey</span><span class="nav__logo-sub">Digital Lab</span></div>
+      </a>
+      <div class="nav__links">
+        <a href="/" class="nav__link">Home</a><a href="/about/" class="nav__link">About</a><a href="/projects/"
+          class="nav__link">Projects</a><a href="/research/" class="nav__link">Research</a><a href="/blog/"
+          class="nav__link active">Blog</a><a href="/ideas/" class="nav__link">Ideas</a><a href="/contact/"
+          class="nav__cta">Contact</a>
+      </div>
+      <button class="nav__toggle" aria-label="Toggle navigation"
+        aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+    <div class="nav__mobile"><a href="/" class="nav__link">Home</a><a href="/about/" class="nav__link">About</a><a
+        href="/projects/" class="nav__link">Projects</a><a href="/research/" class="nav__link">Research</a><a
+        href="/blog/" class="nav__link active">Blog</a><a href="/ideas/" class="nav__link">Ideas</a><a href="/contact/"
+        class="nav__link">Contact</a></div>
+  </nav>
+
+  <div class="page-wrapper">
+    <main class="page-main" id="main-content">
+
+      <div class="page-hero" style="position:relative;overflow:hidden;">
+        <div class="orb orb--teal" style="width:340px;height:340px;top:-100px;right:-60px;" aria-hidden="true"></div>
+        <div class="container" style="position:relative;z-index:1;">
+          <nav aria-label="Breadcrumb" class="breadcrumbs"><a href="/">Home</a><span>›</span><span
+              class="current">Blog</span></nav>
+          <span class="page-hero__label">Technical Writing</span>
+          <h1 class="page-hero__title"><span class="gradient-text">Blog</span></h1>
+          <p class="page-hero__desc">Build logs, tutorials, practical notes, and honest write-ups about the process of
+            making things. Written for other programmers, not for search bots.</p>
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="container">
+
+          <div class="filter-bar" role="group" aria-label="Filter posts">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="web">Web</button>
+            <button class="filter-btn" data-filter="python">Python</button>
+            <button class="filter-btn" data-filter="ai">AI</button>
+            <button class="filter-btn" data-filter="tutorial">Tutorial</button>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:var(--space-5);" id="blog-list">
+
+            <!-- Post 1 -->
+            <a href="/blog/how-i-built-my-portfolio/" class="card card--link"
+              data-tags="web,html,css,javascript,tutorial">
+              <div style="display:flex;gap:var(--space-6);align-items:flex-start;flex-wrap:wrap;">
+                <div style="flex:1;min-width:0;">
+                  <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-3);flex-wrap:wrap;">
+                    <span class="badge badge--teal">Blog Post</span>
+                    <span class="tag-chip">Web</span>
+                    <span class="tag-chip">Tutorial</span>
+                  </div>
+                  <h2
+                    style="font-size:1.3rem;font-weight:700;color:var(--text-primary);margin-bottom:var(--space-3);line-height:1.3;">
+                    How I Built My Portfolio Website</h2>
+                  <p class="text-secondary" style="font-size:0.92rem;line-height:1.75;">A complete walkthrough of
+                    building this personal website — covering SEO strategy from the ground up, design decisions,
+                    performance optimisation, and how the directory structure was planned for long-term scalability.</p>
+                  <div
+                    style="display:flex;gap:var(--space-4);margin-top:var(--space-4);font-size:0.78rem;color:var(--text-muted);flex-wrap:wrap;">
+                    <span>◷ 8 min read</span><span>📅 May 2025</span>
+                  </div>
+                </div>
+                <div style="font-size:1.5rem;opacity:0.4;flex-shrink:0;align-self:center;">→</div>
+              </div>
+            </a>
+
+            <!-- Placeholder 2 -->
+            <div class="card" style="border-style:dashed;opacity:0.5;" data-tags="python,tutorial">
+              <div>
+                <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-3);">
+                  <span class="badge">Coming Soon</span><span class="tag-chip">Python</span><span
+                    class="tag-chip">Tutorial</span>
+                </div>
+                <h2 style="font-size:1.3rem;font-weight:700;margin-bottom:var(--space-3);">Building a Computer Vision
+                  Pipeline from Scratch</h2>
+                <p class="text-secondary" style="font-size:0.92rem;line-height:1.75;">Step-by-step guide to building a
+                  full computer vision pipeline in Python — from camera calibration to object tracking and speed
+                  measurement.</p>
+                <div
+                  style="display:flex;gap:var(--space-4);margin-top:var(--space-4);font-size:0.78rem;color:var(--text-muted);">
+                  <span>◷ Estimated: 14 min</span><span>📅 Coming 2025</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Placeholder 3 -->
+            <div class="card" style="border-style:dashed;opacity:0.5;" data-tags="ai,python">
+              <div>
+                <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-3);">
+                  <span class="badge">Coming Soon</span><span class="tag-chip">AI</span><span
+                    class="tag-chip">Python</span>
+                </div>
+                <h2 style="font-size:1.3rem;font-weight:700;margin-bottom:var(--space-3);">Running Local LLMs — A
+                  Practical Setup Guide</h2>
+                <p class="text-secondary" style="font-size:0.92rem;line-height:1.75;">How to actually set up and run
+                  local language models on modest hardware — including the pitfalls I hit and how I solved them.</p>
+                <div
+                  style="display:flex;gap:var(--space-4);margin-top:var(--space-4);font-size:0.78rem;color:var(--text-muted);">
+                  <span>◷ Estimated: 10 min</span><span>📅 Coming 2025</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--sm" style="background:var(--bg-surface);">
+        <div class="container" style="text-align:center;">
+          <h2 style="font-size:1.3rem;margin-bottom:var(--space-4);">Looking for deeper content?</h2>
+          <p class="text-secondary" style="margin-bottom:var(--space-6);">The research section covers the same topics
+            but in much more depth — full architecture studies, analysis, and findings.</p>
+          <a href="/research/" class="btn btn--primary">Read Research →</a>
+        </div>
+      </section>
+
+    </main>
+    <footer class="footer" id="site-footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__brand"><a href="/" class="nav__logo">
+              <div class="nav__logo-mark">PP</div>
+              <div><span class="nav__logo-text">Prashant Pandey</span></div>
+            </a>
+            <p>Programmer, Researcher, Builder — documenting projects, ideas, and experiments in a public digital lab.
+            </p>
+            <div class="footer__social"><a href="https://github.com/prashantpandey" class="footer__social-link"
+                aria-label="GitHub" target="_blank" rel="noopener">GH</a><a href="https://twitter.com/prashantpandey"
+                class="footer__social-link" aria-label="Twitter" target="_blank" rel="noopener">TW</a><a
+                href="https://linkedin.com/in/prashantpandey" class="footer__social-link" aria-label="LinkedIn"
+                target="_blank" rel="noopener">LI</a></div>
+          </div>
+          <div class="footer__col">
+            <h4>Explore</h4>
+            <div class="footer__links"><a href="/projects/">Projects</a><a href="/research/">Research</a><a
+                href="/blog/">Blog</a><a href="/ideas/">Ideas &amp; Theories</a></div>
+          </div>
+          <div class="footer__col">
+            <h4>Site</h4>
+            <div class="footer__links"><a href="/about/">About</a><a href="/contact/">Contact</a><a
+                href="/tags/">Tags</a><a href="/archive/">Archive</a></div>
+          </div>
+          <div class="footer__col">
+            <h4>Resources</h4>
+            <div class="footer__links"><a href="/updates/">Updates</a><a href="/search/">Search</a><a
+                href="/feed.xml">RSS Feed</a><a href="/sitemap.xml">Sitemap</a></div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <div class="footer__copy">© <span class="js-year">2025</span> Prashant Pandey. All rights reserved.</div>
+          <div class="footer__bottom-links"><a href="/search/">Search</a><a href="/tags/">Tags</a><a
+              href="/archive/">Archive</a></div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+  <script src="../assets/js/main.js" defer></script>
+</body>
+
+</html>

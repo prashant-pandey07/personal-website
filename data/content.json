@@ -1,0 +1,58 @@
+{
+  "content": [
+    {
+      "title": "Football Speed Tracker",
+      "url": "/projects/football-speed-tracker/",
+      "type": "Project",
+      "date": "2025-04-15",
+      "tags": ["python", "computer-vision", "ai", "sports"],
+      "desc": "A real-time football player speed tracking system using computer vision and OpenCV.",
+      "status": "published"
+    },
+    {
+      "title": "Offline AI Brain",
+      "url": "/projects/offline-ai-brain/",
+      "type": "Project",
+      "date": "2025-02-10",
+      "tags": ["python", "ai", "offline", "automation"],
+      "desc": "A fully offline, local AI system with memory, reasoning, and task execution layers.",
+      "status": "published"
+    },
+    {
+      "title": "Offline AI Brain Architecture",
+      "url": "/research/offline-ai-architecture/",
+      "type": "Research",
+      "date": "2025-03-15",
+      "tags": ["ai", "research", "system-design", "theory"],
+      "desc": "In-depth research on building AI systems that run without internet connectivity.",
+      "status": "published"
+    },
+    {
+      "title": "How I Built My Portfolio Website",
+      "url": "/blog/how-i-built-my-portfolio/",
+      "type": "Blog",
+      "date": "2025-05-10",
+      "tags": ["web", "html", "css", "javascript"],
+      "desc": "A complete walkthrough of building a personal website with SEO, performance and design.",
+      "status": "published"
+    },
+    {
+      "title": "Future Agent System",
+      "url": "/ideas/future-agent-system/",
+      "type": "Idea",
+      "date": "2025-04-20",
+      "tags": ["ai", "theory", "automation", "future"],
+      "desc": "A speculative architecture for a multi-agent system that can operate autonomously.",
+      "status": "published"
+    },
+    {
+      "title": "About Prashant Pandey",
+      "url": "/about/",
+      "type": "Page",
+      "date": "2025-05-27",
+      "tags": ["about", "profile", "programmer", "researcher"],
+      "desc": "Learn about Prashant Pandey — programmer, builder, researcher, and experimenter.",
+      "status": "published"
+    }
+  ]
+}
