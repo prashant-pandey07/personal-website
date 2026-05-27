@@ -71,8 +71,8 @@
       <div class="article-header" style="background:var(--bg-surface);padding-block:var(--space-16) var(--space-10);">
         <div class="container">
           <nav aria-label="Breadcrumb" class="breadcrumbs">
-            <a href="/">Home</a><span>›</span><a href="/research/">Research</a><span>›</span><span
-              class="current">Yeti Nepal v1</span>
+            <a href="/">Home</a><span>›</span><a href="/research/">Research</a><span>›</span><span class="current">Yeti
+              Nepal v1</span>
           </nav>
 
           <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-5);flex-wrap:wrap;">
@@ -89,7 +89,8 @@
           </h1>
 
           <p class="lead" style="max-width:640px;margin-bottom:var(--space-6);">
-            An experimental causal language model architecture combining Mamba-2 State Space Models, Grouped-Query Attention (GQA), and a Mixture-of-Experts (MoE) layer—optimized for training on consumer-grade hardware.
+            An experimental causal language model architecture combining Mamba-2 State Space Models, Grouped-Query
+            Attention (GQA), and a Mixture-of-Experts (MoE) layer—optimized for training on consumer-grade hardware.
           </p>
 
           <div class="article-meta-row">
@@ -109,20 +110,30 @@
               <!-- Abstract -->
               <div class="abstract-box">
                 <h4>Abstract</h4>
-                <p>Scaling small language models effectively requires architectures that optimize hardware constraints. Yeti Nepal v1 is a hybrid 483-million parameter model that integrates Mamba-2 SSMs for long-context linear scaling, Grouped-Query Attention (GQA) for optimized memory retrieval, and a 2-Expert Mixture-of-Experts (MoE) routing system. Designed specifically for training on a free-tier Google Colab T4 GPU (16 GB VRAM), this project demonstrates cost-efficient pretraining, instruction tuning, and DPO alignment pipelines.</p>
+                <p>Scaling small language models effectively requires architectures that optimize hardware constraints.
+                  Yeti Nepal v1 is a hybrid 483-million parameter model that integrates Mamba-2 SSMs for long-context
+                  linear scaling, Grouped-Query Attention (GQA) for optimized memory retrieval, and a 2-Expert
+                  Mixture-of-Experts (MoE) routing system. Designed specifically for training on a free-tier Google
+                  Colab T4 GPU (16 GB VRAM), this project demonstrates cost-efficient pretraining, instruction tuning,
+                  and DPO alignment pipelines.</p>
               </div>
 
               <!-- Download Widget -->
-              <div class="card card--link" style="margin-bottom: var(--space-8); padding: var(--space-6); background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1)); border: 1px solid rgba(99, 102, 241, 0.2);">
+              <div class="card card--link"
+                style="margin-bottom: var(--space-8); padding: var(--space-6); background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1)); border: 1px solid rgba(99, 102, 241, 0.2);">
                 <div style="display: flex; flex-direction: column; gap: var(--space-4);">
                   <div>
-                    <h3 style="margin-top: 0; color: var(--text-primary); font-size: 1.25rem;">📦 Download Project Files &amp; Model</h3>
+                    <h3 style="margin-top: 0; color: var(--text-primary); font-size: 1.25rem;">📦 Download Project Files
+                      &amp; Model</h3>
                     <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0;">
-                      Get the complete source code, configurations, training pipelines, and export scripts for Yeti Nepal v1 (approx. 41 KB).
+                      Get the complete source code, configurations, training pipelines, and export scripts for Yeti
+                      Nepal v1 (approx. 41 KB).
                     </p>
                   </div>
                   <div>
-                    <a href="yeti_nepal_v1.zip" class="nav__cta" style="display: inline-flex; align-items: center; gap: var(--space-2); text-decoration: none;" download>
+                    <a href="yeti_nepal_v1.zip" class="nav__cta"
+                      style="color: rgb(66, 255, 3);display: inline-flex; align-items: center; gap: var(--space-2); text-decoration: none;"
+                      download>
                       <span>📥 Download yeti_nepal_v1.zip</span>
                     </a>
                   </div>
@@ -130,7 +141,11 @@
               </div>
 
               <h2 id="architecture">1. Architecture Specification</h2>
-              <p>Yeti Nepal v1 is designed with a hybrid topology that distributes sequence processing between state-space modeling and attention-based blocks. Every 4th layer uses Grouped-Query Attention (GQA) to maintain key-value cache efficiency, while the rest are Mamba-2 State Space Model (SSM) blocks. Additionally, a sparse 2-expert Mixture-of-Experts (MoE) layer replaces standard feed-forward networks, optimizing active parameter capacity at run-time.</p>
+              <p>Yeti Nepal v1 is designed with a hybrid topology that distributes sequence processing between
+                state-space modeling and attention-based blocks. Every 4th layer uses Grouped-Query Attention (GQA) to
+                maintain key-value cache efficiency, while the rest are Mamba-2 State Space Model (SSM) blocks.
+                Additionally, a sparse 2-expert Mixture-of-Experts (MoE) layer replaces standard feed-forward networks,
+                optimizing active parameter capacity at run-time.</p>
 
               <div class="table-wrapper">
                 <table>
@@ -182,7 +197,8 @@
               </div>
 
               <h2 id="project-structure">2. Project Structure</h2>
-              <p>The codebase is highly modular, written in pure PyTorch to avoid external compiled SSM dependencies while maintaining compatibility with hardware accelerators:</p>
+              <p>The codebase is highly modular, written in pure PyTorch to avoid external compiled SSM dependencies
+                while maintaining compatibility with hardware accelerators:</p>
               <pre><code>yeti_nepal_v1/
 ├── config/
 │   ├── model_config.py      # Architecture hyperparams + presets
@@ -205,7 +221,8 @@
 </code></pre>
 
               <h2 id="training-phases">3. Training &amp; Alignment Pipeline</h2>
-              <p>Training Yeti Nepal v1 proceeds through three distinct stages, carefully structured to optimize learning rate schedules, dataset sequences, and loss formulations:</p>
+              <p>Training Yeti Nepal v1 proceeds through three distinct stages, carefully structured to optimize
+                learning rate schedules, dataset sequences, and loss formulations:</p>
 
               <div class="table-wrapper">
                 <table>
@@ -241,22 +258,26 @@
               </div>
 
               <h3 id="checkpoint-resume">Checkpointing and Resuming</h3>
-              <p>Due to the risk of connection drops in free-tier Google Colab environments, checkpoints are serialized periodically. You can resume pretraining seamlessly with:</p>
+              <p>Due to the risk of connection drops in free-tier Google Colab environments, checkpoints are serialized
+                periodically. You can resume pretraining seamlessly with:</p>
               <pre><code class="language-python">RESUME_FROM = "./checkpoints/phase1/ckpt_step500.pt"
 model = run_phase1(model, pretrain_loader, train_cfg.phase1, DEVICE, resume_from=RESUME_FROM)</code></pre>
 
               <h2 id="evaluation">4. Evaluation Metrics &amp; Targets</h2>
-              <p>Evaluation is performed using `evaluate.py`, assessing both perplexity and targeted reasoning capabilities:</p>
+              <p>Evaluation is performed using `evaluate.py`, assessing both perplexity and targeted reasoning
+                capabilities:</p>
               <pre><code class="language-bash">python evaluate.py --checkpoint ./checkpoints/phase2_final_step1000.pt</code></pre>
               <p>Key benchmarks and targets for the 500M parameter model:</p>
               <ul>
                 <li><strong>GSM8K:</strong> ≥ 70% accuracy using chain-of-thought extraction.</li>
-                <li><strong>TruthfulQA:</strong> Marked improvement in factual truthfulness metrics over pretraining baseline.</li>
+                <li><strong>TruthfulQA:</strong> Marked improvement in factual truthfulness metrics over pretraining
+                  baseline.</li>
                 <li><strong>Perplexity:</strong> &lt; 20 on held-out FineWeb validation subsets.</li>
               </ul>
 
               <h2 id="gguf-export">5. Local Inference and GGUF Export</h2>
-              <p>To run the model on standard CPU and mobile devices, it can be exported to GGUF format for use with <code>llama.cpp</code>:</p>
+              <p>To run the model on standard CPU and mobile devices, it can be exported to GGUF format for use with
+                <code>llama.cpp</code>:</p>
               <pre><code class="language-bash">python export_gguf.py \
     --checkpoint ./checkpoints/phase2_final_step1000.pt \
     --output_dir ./gguf_export \
@@ -266,7 +287,8 @@ model = run_phase1(model, pretrain_loader, train_cfg.phase1, DEVICE, resume_from
     -p "&lt;|user|&gt;\nWhat is machine learning?\n&lt;|assistant|&gt;\n"</code></pre>
 
               <h2 id="roadmap">6. Development Roadmap</h2>
-              <p>The project follows a progressive scaling strategy to validate components before launching full training runs:</p>
+              <p>The project follows a progressive scaling strategy to validate components before launching full
+                training runs:</p>
               <ul>
                 <li><strong>June 2026:</strong> 50M parameter debug build validation ✅</li>
                 <li><strong>August 2026:</strong> 120M scale benchmark run</li>
@@ -276,9 +298,12 @@ model = run_phase1(model, pretrain_loader, train_cfg.phase1, DEVICE, resume_from
 
               <h2 id="design-decisions">7. Key Design Decisions</h2>
               <ul>
-                <li><strong>Zero-Dependency SSM:</strong> Built a pure PyTorch State Space Model scanning kernel. It falls back gracefully if the official compiled <code>mamba-ssm</code> package is unavailable.</li>
-                <li><strong>Progressive Scaling Validation:</strong> Always run the pipeline at a 20M parameter "debug" scale first to guarantee mathematical and memory correctness before launching full pretraining.</li>
-                <li><strong>Optional Unsloth Accel:</strong> Designed the model class to integrate with Unsloth if present, enabling faster training without locking out other GPU environments.</li>
+                <li><strong>Zero-Dependency SSM:</strong> Built a pure PyTorch State Space Model scanning kernel. It
+                  falls back gracefully if the official compiled <code>mamba-ssm</code> package is unavailable.</li>
+                <li><strong>Progressive Scaling Validation:</strong> Always run the pipeline at a 20M parameter "debug"
+                  scale first to guarantee mathematical and memory correctness before launching full pretraining.</li>
+                <li><strong>Optional Unsloth Accel:</strong> Designed the model class to integrate with Unsloth if
+                  present, enabling faster training without locking out other GPU environments.</li>
               </ul>
 
             </article>
@@ -316,7 +341,8 @@ model = run_phase1(model, pretrain_loader, train_cfg.phase1, DEVICE, resume_from
                 <div class="content-card">
                   <span class="content-card__type">Research</span>
                   <h3 class="content-card__title">Offline AI Architecture</h3>
-                  <p class="content-card__desc">Deep-dive research into designing local-first, offline-ready AI architectures.</p>
+                  <p class="content-card__desc">Deep-dive research into designing local-first, offline-ready AI
+                    architectures.</p>
                 </div>
               </a>
             </div>
@@ -329,13 +355,14 @@ model = run_phase1(model, pretrain_loader, train_cfg.phase1, DEVICE, resume_from
       <div class="container">
         <div class="footer__grid">
           <div class="footer__brand"><a href="/" class="nav__logo">
-               <div class="nav__logo-mark"><img src="https://prashant-pandey.com.np/assets/icons/ico.png"
-            alt="Prashant Pandey logo" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
+              <div class="nav__logo-mark"><img src="https://prashant-pandey.com.np/assets/icons/ico.png"
+                  alt="Prashant Pandey logo" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
+              </div>
               <div><span class="nav__logo-text">Prashant Pandey</span></div>
             </a>
             <p>Programmer, Researcher, Builder — documenting projects, ideas, and experiments in a public digital lab.
             </p>
-            <div class="footer__social"><a href="https://github.com/prashantpandey" class="footer__social-link"
+            <div class="footer__social"><a href="https://github.com/prashant-pandey07" class="footer__social-link"
                 aria-label="GitHub" target="_blank" rel="noopener">GH</a><a href="https://twitter.com/prashantpandey"
                 class="footer__social-link" aria-label="Twitter" target="_blank" rel="noopener">TW</a><a
                 href="https://linkedin.com/in/prashantpandey" class="footer__social-link" aria-label="LinkedIn"

@@ -2,31 +2,363 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Prashant Pandey | Programmer, Builder &amp; Researcher</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#6366f1" />
+  <meta name="author" content="Prashant Pandey" />
+  <meta name="robots" content="index, follow" />
   <meta name="description"
-    content="Learn about Prashant Pandey — a programmer, builder, and independent researcher working on AI, automation, computer vision, and software engineering projects.">
-  <meta name="author" content="Prashant Pandey">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://prashant-pandey.com.np/about/">
-  <meta name="theme-color" content="#6366f1">
-  <meta property="og:type" content="profile">
-  <meta property="og:title" content="About Prashant Pandey | Programmer, Builder &amp; Researcher">
+    content="About Prashant Pandey — a 17-year-old programmer, self-taught builder, and independent researcher from Nepal exploring AI systems, computer vision, next-generation interfaces, and experimental software." />
+  <link rel="canonical" href="https://prashant-pandey.com.np/about/" />
+
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="About Prashant Pandey | Programmer, Builder & Researcher" />
   <meta property="og:description"
-    content="Learn about Prashant Pandey — a programmer, builder, and independent researcher.">
-  <meta property="og:url" content="https://prashant-pandey.com.np/about/">
-  <meta property="og:image" content="https://prashant-pandey.com.np/assets/og/default.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="About Prashant Pandey">
-  <meta name="twitter:description"
-    content="Programmer, builder, and independent researcher working on AI, automation, and software engineering.">
-  <link rel="stylesheet" href="../assets/css/main.css">
-  <link rel="stylesheet" href="../assets/css/typography.css">
-  <link rel="stylesheet" href="../assets/css/components.css">
-  <link rel="icon" href="/assets/icons/ico.png" type="image/png">
-  <link rel="manifest" href="/manifest.webmanifest">
-  <link rel="alternate" type="application/rss+xml" title="Prashant Pandey | Digital Lab" href="https://prashant-pandey.com.np/feed.xml">
+    content="A self-taught programmer, builder, and independent researcher exploring AI, computer vision, and next-generation interfaces." />
+  <meta property="og:url" content="https://prashant-pandey.com.np/about/" />
+  <meta property="og:image" content="https://prashant-pandey.com.np/assets/og/default.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About Prashant Pandey" />
+  <meta name="twitter:description" content="Self-taught programmer, builder, and independent researcher from Nepal." />
+  <meta name="twitter:image" content="https://prashant-pandey.com.np/assets/og/default.png" />
+
+  <title>About Prashant Pandey | Programmer, Builder & Researcher</title>
+
+  <link rel="icon" href="/assets/icons/ico.png" type="image/png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="alternate" type="application/rss+xml" title="Prashant Pandey | Digital Lab"
+    href="https://prashant-pandey.com.np/feed.xml" />
+
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/typography.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+
+  <style>
+    :root {
+      --page-bg: #0b1020;
+      --page-bg-soft: #11162a;
+      --card-bg: rgba(17, 22, 42, 0.72);
+      --card-border: rgba(148, 163, 184, 0.16);
+      --text-main: #e5e7eb;
+      --text-soft: #cbd5e1;
+      --text-muted: #94a3b8;
+      --accent: #6366f1;
+      --accent-2: #14b8a6;
+      --accent-3: #f59e0b;
+      --radius-xl: 28px;
+      --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top right, rgba(99, 102, 241, 0.16), transparent 28%),
+        radial-gradient(circle at left center, rgba(20, 184, 166, 0.10), transparent 26%),
+        linear-gradient(180deg, var(--page-bg), #070a12 100%);
+      color: var(--text-main);
+    }
+
+    .page-wrapper {
+      min-height: 100vh;
+    }
+
+    .about-hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(4rem, 8vw, 7rem) 0 2.5rem;
+    }
+
+    .about-hero__grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: clamp(1.5rem, 4vw, 3.5rem);
+      align-items: center;
+    }
+
+    .about-hero__title {
+      font-size: clamp(2.3rem, 5vw, 4.8rem);
+      line-height: 1.02;
+      margin: 0.35rem 0 1rem;
+      letter-spacing: -0.04em;
+    }
+
+    .about-hero__desc {
+      max-width: 62ch;
+      font-size: 1.08rem;
+      line-height: 1.8;
+      color: var(--text-soft);
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1.35rem 0 0;
+    }
+
+    .hero-badge {
+      padding: 0.55rem 0.9rem;
+      border: 1px solid var(--card-border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-soft);
+      font-size: 0.9rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .portrait-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      min-height: 340px;
+    }
+
+    .portrait-orb {
+      position: absolute;
+      inset: auto;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      filter: blur(34px);
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.36), rgba(99, 102, 241, 0.06) 60%, transparent 75%);
+      z-index: 0;
+    }
+
+    .portrait {
+      position: relative;
+      width: min(260px, 72vw);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.03), var(--shadow-lg);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+      z-index: 1;
+    }
+
+    .portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .portrait-caption {
+      margin-top: 1rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    .section {
+      padding: 1.5rem 0;
+    }
+
+    .content-shell {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(16px);
+      padding: clamp(1.2rem, 3vw, 2rem);
+    }
+
+    .section h2 {
+      font-size: clamp(1.5rem, 2.2vw, 2rem);
+      margin: 0 0 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section p,
+    .section li {
+      color: var(--text-soft);
+      line-height: 1.85;
+      font-size: 1.02rem;
+    }
+
+    .lead {
+      font-size: 1.12rem;
+      color: var(--text-main);
+    }
+
+    .divider {
+      margin: 1.5rem 0;
+      border: 0;
+      border-top: 1px solid rgba(148, 163, 184, 0.16);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      border-radius: 22px;
+      padding: 1rem 1rem 1.05rem;
+      min-height: 100%;
+    }
+
+    .feature-card h3 {
+      font-size: 1rem;
+      margin: 0 0 0.6rem;
+      color: #fff;
+    }
+
+    .feature-card p {
+      margin: 0;
+      font-size: 0.96rem;
+    }
+
+    .styled-list {
+      padding-left: 1.2rem;
+      margin: 0;
+    }
+
+    .styled-list li {
+      margin: 0.55rem 0;
+    }
+
+    .quote-box {
+      margin: 1rem 0 1.15rem;
+      padding: 1.1rem 1.2rem;
+      border-left: 4px solid var(--accent);
+      background: rgba(99, 102, 241, 0.08);
+      border-radius: 18px;
+      color: var(--text-main);
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .tag-cloud,
+    .skill-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .tag,
+    .skill-pill,
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.62rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      color: var(--text-soft);
+      font-size: 0.92rem;
+      line-height: 1;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex: 0 0 auto;
+    }
+
+    .dot--teal {
+      background: var(--accent-2);
+    }
+
+    .dot--amber {
+      background: var(--accent-3);
+    }
+
+    .dot--violet {
+      background: #8b5cf6;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 1.35rem;
+    }
+
+    .mini-section {
+      padding: 1.15rem 0 0;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 1rem;
+      padding: 1rem;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+    }
+
+    .timeline-year {
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.01em;
+    }
+
+    .timeline-item p {
+      margin: 0;
+    }
+
+    .footer {
+      margin-top: 2.5rem;
+    }
+
+    @media (max-width: 920px) {
+      .about-hero__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .portrait-wrap {
+        order: -1;
+        min-height: 280px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 0.35rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .about-hero {
+        padding-top: 2.8rem;
+      }
+
+      .about-hero__desc,
+      .section p,
+      .section li {
+        font-size: 0.98rem;
+      }
+
+      .content-shell {
+        padding: 1rem;
+      }
+    }
+  </style>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -35,10 +367,29 @@
       "@type": "Person",
       "name": "Prashant Pandey",
       "url": "https://prashant-pandey.com.np",
-      "description": "Programmer, researcher, and builder focused on AI, automation, and software engineering.",
-      "jobTitle": "Programmer & Independent Researcher",
-      "knowsAbout": ["Python","Artificial Intelligence","Computer Vision","Automation","Web Development","System Design"],
-      "sameAs": ["https://github.com/prashantpandey","https://twitter.com/prashantpandey","https://linkedin.com/in/prashantpandey"]
+      "image": "https://prashant-pandey.com.np/assets/icons/ico.png",
+      "description": "A 17-year-old self-taught programmer, builder, and independent researcher from Nepal exploring AI systems, computer vision, and next-generation interfaces.",
+      "jobTitle": "Programmer, Builder & Independent Researcher",
+      "knowsAbout": [
+        "Python",
+        "Java",
+        "C",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Artificial Intelligence",
+        "Computer Vision",
+        "Game Engines",
+        "Automation",
+        "Transformer Models",
+        "Human-like Chess AI",
+        "Next-generation Interfaces"
+      ],
+      "sameAs": [
+        "https://github.com/prashant-pandey07",
+        "https://twitter.com/prashantpandey",
+        "https://linkedin.com/in/prashantpandey"
+      ]
     }
   }
   </script>
@@ -50,13 +401,16 @@
   <nav class="nav" id="main-nav" aria-label="Main navigation">
     <div class="nav__inner">
       <a href="/" class="nav__logo" aria-label="Prashant Pandey — Home">
-        <div class="nav__logo-mark"><img src="https://prashant-pandey.com.np/assets/icons/ico.png" alt="Prashant Pandey logo"
-            style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
+        <div class="nav__logo-mark">
+          <img src="https://prashant-pandey.com.np/assets/icons/ico.png" alt="Prashant Pandey logo"
+            style="width:100%;height:100%;object-fit:cover;border-radius:inherit;" />
+        </div>
         <div>
           <span class="nav__logo-text">Prashant Pandey</span>
           <span class="nav__logo-sub">Digital Lab</span>
         </div>
       </a>
+
       <div class="nav__links">
         <a href="/" class="nav__link">Home</a>
         <a href="/about/" class="nav__link active">About</a>
@@ -66,10 +420,12 @@
         <a href="/ideas/" class="nav__link">Ideas</a>
         <a href="/contact/" class="nav__cta">Contact</a>
       </div>
+
       <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
+
     <div class="nav__mobile">
       <a href="/" class="nav__link">Home</a>
       <a href="/about/" class="nav__link active">About</a>
@@ -82,150 +438,211 @@
   </nav>
 
   <div class="page-wrapper">
-    <main class="page-main" id="main-content">
-
-      <!-- Page Hero -->
-      <div class="page-hero" style="position:relative;overflow:hidden;">
-        <div class="orb orb--indigo" style="width:360px;height:360px;top:-120px;right:-80px;" aria-hidden="true"></div>
-        <div class="container" style="position:relative;z-index:1;">
+    <main id="main-content">
+      <section class="about-hero">
+        <div class="container">
           <nav aria-label="Breadcrumb" class="breadcrumbs">
             <a href="/">Home</a>
             <span aria-hidden="true">›</span>
             <span class="current">About</span>
           </nav>
-          <span class="page-hero__label">The person behind the lab</span>
-          <h1 class="page-hero__title">About <span class="gradient-text">Prashant Pandey</span></h1>
-          <p class="page-hero__desc">Programmer, researcher, builder, experimenter, and writer of technical ideas. This
-            is my story — what I build, how I think, and where I'm headed.</p>
+
+          <div class="about-hero__grid">
+            <div>
+              <span class="page-hero__label">The person behind the lab</span>
+              <h1 class="about-hero__title">About <span class="gradient-text">Prashant Pandey</span></h1>
+              <p class="about-hero__desc">
+                I am a 17-year-old student from Jaleshwor, Mahottari, Madhesh Pradesh, Nepal — a self-taught programmer,
+                builder, and independent researcher. I started coding at 13 after becoming curious about hacking and the
+                hidden systems behind technology. That curiosity turned into a serious habit of exploring, building, and
+                understanding how things really work.
+              </p>
+              <p class="about-hero__desc">
+                Today, I focus on AI systems, computer vision, next-generation interfaces, and experimental software.
+                I learn by building, question the default way of doing things, and document my work as a public digital
+                lab for anyone who wants to learn from the process.
+              </p>
+
+              <div class="hero-badges" aria-label="Highlights">
+                <span class="hero-badge">Self-taught</span>
+                <span class="hero-badge">Python-first builder</span>
+                <span class="hero-badge">AI-focused</span>
+                <span class="hero-badge">Research mindset</span>
+                <span class="hero-badge">Nepal</span>
+              </div>
+            </div>
+
+            <div class="portrait-wrap" aria-label="Profile image">
+              <div class="portrait-orb" aria-hidden="true"></div>
+              <div>
+                <div class="portrait">
+                  <img src="/assets/images/profile.jpg" alt="Portrait of Prashant Pandey" />
+                </div>
+                <div class="portrait-caption">Prashant Pandey</div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <!-- Main About Content -->
       <section class="section">
-        <div class="container container--content">
-
-          <!-- Identity -->
-          <div class="mb-8 animate-fade-up">
-            <h2>Who I Am</h2>
-            <p class="lead">I'm a student and self-taught programmer with a focus on building real, usable software. I
-              research ideas that I find genuinely interesting, and I document everything openly so others can learn
-              from it too.</p>
-            <p>I grew up taking things apart to understand how they work — and I've never stopped. That mindset drives
-              everything I do: from reverse-engineering a problem to designing a system from scratch, I believe deeply
-              in understanding the fundamentals before reaching for abstraction.</p>
-            <p>I'm not a casual hobbyist. I treat every project like a serious engineering exercise, with real
-              requirements, thoughtful architecture, and documented outcomes. I care about building things that actually
-              work.</p>
+        <div class="container content-shell">
+          <div class="mini-section">
+            <h2>My Story</h2>
+            <p class="lead">
+              I did not begin with programming. In the early part of class 8, I did not even know the word itself.
+              One day, while reading articles on a website, I came across the term “hacking” and started searching for
+              it out of pure curiosity. That curiosity opened the door to the wider world of computers, systems, and
+              software.
+            </p>
+            <p>
+              What started as curiosity slowly became commitment. I began with Python as my first language, learning
+              mostly from YouTube and hands-on experimentation. Over time, I expanded into Java, C, HTML, CSS, and
+              JavaScript. I built my first project, a simple e-commerce store, and that experience made one thing clear:
+              I enjoy making ideas real.
+            </p>
+            <p>
+              I am not someone who only likes writing code. I like understanding systems from the inside. I want to
+              know why a system behaves the way it does, what hidden rules shape it, and whether there is a better way
+              to design it. That mindset has shaped how I learn, what I build, and how I think about technology.
+            </p>
           </div>
 
-          <hr class="divider">
+          <hr class="divider" />
 
-          <!-- What I Build -->
-          <div class="mb-8 animate-fade-up animate-delay-1">
+          <div class="mini-section">
             <h2>What I Build</h2>
-            <p>My projects span across multiple domains, but they share a common thread: they solve real problems or
-              explore real ideas. I don't build things to add lines to a résumé — I build them because I want to see how
-              something works or because the problem genuinely matters.</p>
+            <p>
+              My work spans AI, computer vision, game engines, automation, and experimental software systems. I care
+              about projects that are useful, intelligent, and technically interesting — not just projects that look
+              impressive from the outside.
+            </p>
 
-            <div class="grid grid-2" style="margin-top:var(--space-6);">
-              <div class="card">
-                <h3 style="font-size:1rem;margin-bottom:var(--space-3);">🤖 AI &amp; Machine Learning</h3>
-                <p class="text-sm text-secondary">Local AI systems, computer vision pipelines, and offline intelligence
-                  tools that work without cloud dependency.</p>
+            <div class="feature-grid">
+              <div class="feature-card">
+                <h3>AI &amp; Machine Learning</h3>
+                <p>Systems that learn patterns, model behavior, and handle intelligent tasks in practical ways.</p>
               </div>
-              <div class="card">
-                <h3 style="font-size:1rem;margin-bottom:var(--space-3);">⚡ Automation Tools</h3>
-                <p class="text-sm text-secondary">Scripts, bots, and systems that eliminate repetitive manual work
-                  across various domains.</p>
+              <div class="feature-card">
+                <h3>Computer Vision</h3>
+                <p>Image and video understanding tools, visual pipelines, and applied CV experiments.</p>
               </div>
-              <div class="card">
-                <h3 style="font-size:1rem;margin-bottom:var(--space-3);">🌐 Web Projects</h3>
-                <p class="text-sm text-secondary">Clean, fast, and SEO-optimised web applications built with a focus on
-                  performance and usability.</p>
+              <div class="feature-card">
+                <h3>Next-Generation Interfaces</h3>
+                <p>Interface ideas that feel more natural, more direct, and more human to use.</p>
               </div>
-              <div class="card">
-                <h3 style="font-size:1rem;margin-bottom:var(--space-3);">📱 Mobile Apps</h3>
-                <p class="text-sm text-secondary">Cross-platform mobile applications built with Flutter, designed for
-                  real users with real needs.</p>
+              <div class="feature-card">
+                <h3>Game Engines &amp; Systems</h3>
+                <p>Exploration of simulation, mechanics, logic, and how interactive systems are structured.</p>
               </div>
             </div>
           </div>
 
-          <hr class="divider">
+          <hr class="divider" />
 
-          <!-- How I Think -->
-          <div class="mb-8 animate-fade-up animate-delay-2">
+          <div class="mini-section">
             <h2>How I Think About Technology</h2>
-            <p>I believe most technology problems are solvable with careful thinking, not just more code. My approach
-              is:</p>
-            <ul class="styled-list" style="margin-top:var(--space-4);">
-              <li><strong>Understand the problem before writing a line.</strong> Many projects fail because the problem
-                was never properly defined.</li>
-              <li><strong>Prefer simplicity.</strong> Complex solutions are harder to debug, maintain, and explain. The
-                best code is usually the least code.</li>
-              <li><strong>Build offline-first.</strong> Systems that depend entirely on connectivity are fragile. I
-                design for resilience.</li>
-              <li><strong>Document as you go.</strong> If you can't explain what you built clearly, you don't fully
-                understand it yet.</li>
-              <li><strong>Iterate publicly.</strong> Sharing work-in-progress invites better feedback than waiting for
-                perfection.</li>
+            <p>
+              My mindset as a builder is less about simply coding software and more about exploring unknown systems.
+              I do not just enjoy making things work — I enjoy asking why they work, what hidden patterns exist, and
+              whether the current way is the only way possible.
+            </p>
+
+            <ul class="styled-list">
+              <li><strong>Understand the problem first.</strong> Before I write code, I try to understand what is really
+                causing the problem.</li>
+              <li><strong>Prefer meaningful simplicity.</strong> Strong systems should be powerful without becoming
+                unreadable or fragile.</li>
+              <li><strong>Build to learn.</strong> I learn best by making real things, testing them, and improving them
+                through experience.</li>
+              <li><strong>Question defaults.</strong> Standard methods are useful, but they are not always the best or
+                only answer.</li>
+              <li><strong>Share knowledge openly.</strong> I believe ideas should be explored, questioned, and improved
+                publicly.</li>
             </ul>
           </div>
 
-          <hr class="divider">
+          <hr class="divider" />
 
-          <!-- Research Interests -->
-          <div class="mb-8 animate-fade-up animate-delay-3">
-            <h2>Research Interests</h2>
-            <p>My research sits at the intersection of practical engineering and forward-looking ideas. The areas I
-              currently focus on include:</p>
-            <div class="skill-cloud" style="margin-top:var(--space-5);">
-              <span class="badge">Offline AI Systems</span>
-              <span class="badge">Computer Vision</span>
-              <span class="badge badge--teal">Multi-Agent Architecture</span>
-              <span class="badge">Edge Intelligence</span>
-              <span class="badge badge--amber">Knowledge Retrieval</span>
-              <span class="badge">Local-First Design</span>
-              <span class="badge badge--teal">Autonomous Systems</span>
-              <span class="badge">Efficient Inference</span>
+          <div class="mini-section">
+            <h2>Current Focus</h2>
+            <p>
+              My main direction is the intersection of advanced AI systems and next-generation interfaces. I am most
+              interested in tools and models that feel intelligent, responsive, and closer to the way humans actually
+              think and interact.
+            </p>
+            <div class="tag-cloud" aria-label="Current focus topics">
+              <span class="tag">Advanced AI Systems</span>
+              <span class="tag">Next-Generation Interfaces</span>
+              <span class="tag">Computer Vision</span>
+              <span class="tag">Offline AI</span>
+              <span class="tag">Human-like Modeling</span>
+              <span class="tag">Autonomous Systems</span>
+              <span class="tag">Efficient Inference</span>
             </div>
           </div>
 
-          <hr class="divider">
+          <hr class="divider" />
 
-          <!-- Stack -->
-          <div class="mb-8 animate-fade-up">
+          <div class="mini-section">
+            <h2>Featured Research Project</h2>
+            <p>
+              One of my most important projects is a human-like chess AI built with Python, PyTorch, and python-chess.
+              The system is designed to learn from real human games, model openings, tactics, mistakes, and plans, and
+              generate legal and natural moves that feel closer to human gameplay than brute-force engine output.
+            </p>
+            <p>
+              The workflow begins with Lichess human game datasets, then moves through PGN parsing and cleaning, board
+              encoding, a lightweight transformer-based policy model, selective human-style search, and evaluation based
+              on practical thinking instead of raw engine calculation. I first developed it on a small 8 GB Ryzen
+              laptop,
+              then scaled training and testing through Colab when needed.
+            </p>
+            <p>
+              This project matters to me because it represents the kind of research I love most: using careful design to
+              model behavior, not just to maximize numerical performance.
+            </p>
+          </div>
+
+          <hr class="divider" />
+
+          <div class="mini-section">
             <h2>Tools &amp; Technologies</h2>
-            <p>I choose tools based on the problem, not trends. That said, these are what I reach for most often:</p>
+            <p>
+              I choose tools based on the problem, not the trend. These are the languages and technologies I use most
+              often or am actively growing with.
+            </p>
 
-            <div style="margin-top:var(--space-6);display:flex;flex-direction:column;gap:var(--space-5);">
+            <div style="display:grid; gap:1.2rem; margin-top:1rem;">
               <div>
                 <h3
-                  style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:var(--space-3);">
+                  style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:0.7rem;">
                   Languages</h3>
                 <div class="skill-cloud">
                   <span class="skill-pill"><span class="dot"></span> Python</span>
                   <span class="skill-pill"><span class="dot dot--teal"></span> JavaScript</span>
-                  <span class="skill-pill"><span class="dot dot--violet"></span> Dart</span>
-                  <span class="skill-pill"><span class="dot"></span> HTML &amp; CSS</span>
-                  <span class="skill-pill"><span class="dot dot--amber"></span> Bash</span>
+                  <span class="skill-pill"><span class="dot dot--violet"></span> Java</span>
+                  <span class="skill-pill"><span class="dot"></span> C</span>
+                  <span class="skill-pill"><span class="dot dot--amber"></span> HTML &amp; CSS</span>
                 </div>
               </div>
+
               <div>
                 <h3
-                  style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:var(--space-3);">
+                  style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:0.7rem;">
                   Frameworks &amp; Libraries</h3>
                 <div class="skill-cloud">
-                  <span class="skill-pill"><span class="dot dot--violet"></span> Flutter</span>
+                  <span class="skill-pill"><span class="dot dot--violet"></span> PyTorch</span>
                   <span class="skill-pill"><span class="dot dot--teal"></span> OpenCV</span>
                   <span class="skill-pill"><span class="dot"></span> TensorFlow</span>
                   <span class="skill-pill"><span class="dot dot--amber"></span> NumPy</span>
-                  <span class="skill-pill"><span class="dot dot--violet"></span> Node.js</span>
+                  <span class="skill-pill"><span class="dot dot--violet"></span> React</span>
                 </div>
               </div>
+
               <div>
                 <h3
-                  style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:var(--space-3);">
+                  style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:0.7rem;">
                   Tools &amp; Platforms</h3>
                 <div class="skill-cloud">
                   <span class="skill-pill"><span class="dot"></span> Git &amp; GitHub</span>
@@ -238,28 +655,68 @@
             </div>
           </div>
 
-          <hr class="divider">
+          <hr class="divider" />
 
-          <!-- Mission -->
-          <div class="animate-fade-up">
-            <h2>Long-Term Mission</h2>
-            <div class="pull-quote">
-              "I want to build systems that are genuinely useful, share the knowledge behind them openly, and push the
-              boundary of what a single determined programmer can accomplish."
+          <div class="mini-section">
+            <h2>What Drives Me</h2>
+            <p>
+              What keeps me building is the feeling that there are still undiscovered patterns everywhere — a new
+              theory,
+              a better system, a different way to think, a mechanic nobody combined before, or an explanation nobody
+              noticed. That possibility is deeply motivating to me.
+            </p>
+            <div class="quote-box">
+              “I want to build systems that are genuinely useful, share the knowledge behind them openly, and push the
+              boundary of what a single determined programmer can accomplish.”
             </div>
-            <p>This website is the public record of that mission. Every project, research article, and idea published
-              here is a step toward building something that matters — and doing it transparently so others can learn
-              from the process.</p>
-            <p>I'm not building for funding rounds or viral moments. I'm building for long-term value, real utility, and
-              the satisfaction of knowing something I made genuinely works.</p>
+            <p>
+              My long-term goal is to become an independent researcher, AI creator, and experimental system builder.
+              I want to create work that feels thoughtful, useful, and slightly ahead of what people expect from a
+              single
+              self-taught builder.
+            </p>
+          </div>
 
-            <div style="display:flex;gap:var(--space-4);flex-wrap:wrap;margin-top:var(--space-8);">
-              <a href="/projects/" class="btn btn--primary">See My Projects →</a>
-              <a href="/research/" class="btn btn--secondary">Read My Research</a>
-              <a href="/contact/" class="btn btn--ghost">Get in Touch</a>
+          <hr class="divider" />
+
+          <div class="mini-section">
+            <h2>Journey</h2>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-year">Class 8</div>
+                <div>
+                  <p>I first became curious about hacking and started exploring how computers and online systems work.
+                  </p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-year">Age 13</div>
+                <div>
+                  <p>I began coding seriously and started learning Python as my first programming language.</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-year">First Project</div>
+                <div>
+                  <p>I built a simple e-commerce store and realized that I wanted to create real software, not just
+                    study it.</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-year">Now</div>
+                <div>
+                  <p>I continue building AI systems, research experiments, and technical projects from Nepal with a
+                    growing focus on advanced intelligence and interfaces.</p>
+                </div>
+              </div>
             </div>
           </div>
 
+          <div class="cta-row">
+            <a href="/projects/" class="btn btn--primary">See My Projects →</a>
+            <a href="/research/" class="btn btn--secondary">Read My Research</a>
+            <a href="/contact/" class="btn btn--ghost">Get in Touch</a>
+          </div>
         </div>
       </section>
     </main>
@@ -268,15 +725,20 @@
       <div class="container">
         <div class="footer__grid">
           <div class="footer__brand">
-            <a href="/" class="nav__logo">
-               <div class="nav__logo-mark"><img src="https://prashant-pandey.com.np/assets/icons/ico.png"
-            alt="Prashant Pandey logo" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
-              <div><span class="nav__logo-text">Prashant Pandey</span></div>
+            <a href="/" class="nav__logo" aria-label="Prashant Pandey — Home">
+              <div class="nav__logo-mark">
+                <img src="https://prashant-pandey.com.np/assets/icons/ico.png" alt="Prashant Pandey logo"
+                  style="width:100%;height:100%;object-fit:cover;border-radius:inherit;" />
+              </div>
+              <div>
+                <span class="nav__logo-text">Prashant Pandey</span>
+              </div>
             </a>
-            <p>Programmer, Researcher, Builder — documenting projects, ideas, and experiments in a public digital lab.
+            <p>
+              Programmer, researcher, builder — documenting projects, ideas, and experiments in a public digital lab.
             </p>
             <div class="footer__social">
-              <a href="https://github.com/prashantpandey" class="footer__social-link" aria-label="GitHub"
+              <a href="https://github.com/prashant-pandey07" class="footer__social-link" aria-label="GitHub"
                 target="_blank" rel="noopener">GH</a>
               <a href="https://twitter.com/prashantpandey" class="footer__social-link" aria-label="Twitter"
                 target="_blank" rel="noopener">TW</a>
@@ -284,6 +746,7 @@
                 target="_blank" rel="noopener">LI</a>
             </div>
           </div>
+
           <div class="footer__col">
             <h4>Explore</h4>
             <div class="footer__links">
@@ -293,6 +756,7 @@
               <a href="/ideas/">Ideas &amp; Theories</a>
             </div>
           </div>
+
           <div class="footer__col">
             <h4>Site</h4>
             <div class="footer__links">
@@ -302,6 +766,7 @@
               <a href="/archive/">Archive</a>
             </div>
           </div>
+
           <div class="footer__col">
             <h4>Resources</h4>
             <div class="footer__links">
@@ -312,6 +777,7 @@
             </div>
           </div>
         </div>
+
         <div class="footer__bottom">
           <div class="footer__copy">© <span class="js-year">2026</span> Prashant Pandey. All rights reserved.</div>
           <div class="footer__bottom-links">
