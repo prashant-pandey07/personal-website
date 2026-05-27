@@ -1,12 +1,12 @@
 {
   "tags": [
-    { "slug": "ai", "name": "AI", "count": 4, "description": "Artificial intelligence research, projects, and experiments." },
-    { "slug": "python", "name": "Python", "count": 2, "description": "Projects and articles using the Python programming language." },
+    { "slug": "ai", "name": "AI", "count": 5, "description": "Artificial intelligence research, projects, and experiments." },
+    { "slug": "python", "name": "Python", "count": 3, "description": "Projects and articles using the Python programming language." },
     { "slug": "automation", "name": "Automation", "count": 2, "description": "Tools and systems that automate tasks and workflows." },
-    { "slug": "theory", "name": "Theory", "count": 2, "description": "Theoretical concepts, speculation, and experimental ideas." },
+    { "slug": "theory", "name": "Theory", "count": 3, "description": "Theoretical concepts, speculation, and experimental ideas." },
     { "slug": "computer-vision", "name": "Computer Vision", "count": 1, "description": "Image processing, object detection, and visual analysis work." },
     { "slug": "research", "name": "Research", "count": 1, "description": "Deep technical research articles and essays." },
-    { "slug": "system-design", "name": "System Design", "count": 1, "description": "Architecture, design patterns, and system-level thinking." },
+    { "slug": "system-design", "name": "System Design", "count": 2, "description": "Architecture, design patterns, and system-level thinking." },
     { "slug": "web", "name": "Web", "count": 1, "description": "Web development projects and frontend experiments." },
     { "slug": "javascript", "name": "JavaScript", "count": 1, "description": "JavaScript-based projects and tools." },
     { "slug": "flutter", "name": "Flutter", "count": 0, "description": "Cross-platform mobile app development with Flutter." },

@@ -43,6 +43,20 @@
       "status": "published"
     },
     {
+      "title": "Yeti Nepal v1: 500M Parameter Hybrid Model",
+      "url": "/research/yeti-nepal-v1/",
+      "type": "Research",
+      "date": "2026-05-27",
+      "tags": [
+        "ai",
+        "python",
+        "system-design",
+        "theory"
+      ],
+      "desc": "A hybrid Mamba-2, GQA, and Mixture-of-Experts (MoE) causal language model optimized for free-tier Google Colab training.",
+      "status": "published"
+    },
+    {
       "title": "How I Built My Portfolio Website",
       "url": "/blog/how-i-built-my-portfolio/",
       "type": "Blog",

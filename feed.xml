@@ -9,6 +9,14 @@
     <atom:link href="https://prashant-pandey.com.np/feed.xml" rel="self" type="application/rss+xml" />
 
     <item>
+      <title>Yeti Nepal v1: 500M Parameter Hybrid Model</title>
+      <link>https://prashant-pandey.com.np/research/yeti-nepal-v1/</link>
+      <guid>https://prashant-pandey.com.np/research/yeti-nepal-v1/</guid>
+      <pubDate>Wed, 27 May 2026 00:00:00 GMT</pubDate>
+      <description>An experimental hybrid language model combining Mamba-2 SSMs, Grouped-Query Attention (GQA), and a Mixture-of-Experts (MoE) routing layer, designed for free-tier Google Colab GPU training.</description>
+    </item>
+
+    <item>
       <title>How I Built My Portfolio Website</title>
       <link>https://prashant-pandey.com.np/blog/how-i-built-my-portfolio/</link>
       <guid>https://prashant-pandey.com.np/blog/how-i-built-my-portfolio/</guid>

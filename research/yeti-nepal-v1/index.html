@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yeti Nepal v1: 500M Parameter Hybrid Model | Prashant Pandey</title>
+  <meta name="description"
+    content="A hybrid 480–510M parameter causal language model combining Mamba-2 SSM, Grouped-Query Attention (GQA), and a 2-Expert Mixture-of-Experts (MoE) optimized for free-tier Google Colab.">
+  <meta name="author" content="Prashant Pandey">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://prashant-pandey.com.np/research/yeti-nepal-v1/">
+  <meta name="theme-color" content="#6366f1">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Yeti Nepal v1: 500M Parameter Hybrid Model | Prashant Pandey">
+  <meta property="og:description"
+    content="Deep-dive research into training a hybrid Mamba-2, GQA, and MoE language model on free-tier consumer GPUs.">
+  <meta property="og:url" content="https://prashant-pandey.com.np/research/yeti-nepal-v1/">
+  <meta property="og:image" content="https://prashant-pandey.com.np/assets/og/default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Yeti Nepal v1: 500M Parameter Hybrid Model | Prashant Pandey">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  <link rel="stylesheet" href="../../assets/css/typography.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="icon" href="/assets/icons/ico.png" type="image/png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Prashant Pandey | Digital Lab"
+    href="https://prashant-pandey.com.np/feed.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Yeti Nepal v1: Designing and Training a 500M Parameter Hybrid Model",
+    "description": "Research project on building a hybrid Mamba-2, GQA, and MoE architecture causal language model.",
+    "author": { "@type": "Person", "name": "Prashant Pandey", "url": "https://prashant-pandey.com.np" },
+    "datePublished": "2026-05-27",
+    "url": "https://prashant-pandey.com.np/research/yeti-nepal-v1/"
+  }
+  </script>
+</head>
+
+<body>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <nav class="nav" id="main-nav" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">
+        <div class="nav__logo-mark"><img src="https://prashant-pandey.com.np/assets/icons/ico.png"
+            alt="Prashant Pandey logo" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
+        </div>
+        <div><span class="nav__logo-text">Prashant Pandey</span><span class="nav__logo-sub">Digital Lab</span></div>
+      </a>
+      <div class="nav__links">
+        <a href="/" class="nav__link">Home</a><a href="/about/" class="nav__link">About</a><a href="/projects/"
+          class="nav__link">Projects</a><a href="/research/" class="nav__link active">Research</a><a href="/blog/"
+          class="nav__link">Blog</a><a href="/ideas/" class="nav__link">Ideas</a><a href="/contact/"
+          class="nav__cta">Contact</a>
+      </div>
+      <button class="nav__toggle" aria-label="Toggle navigation"
+        aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+    <div class="nav__mobile"><a href="/" class="nav__link">Home</a><a href="/about/" class="nav__link">About</a><a
+        href="/projects/" class="nav__link">Projects</a><a href="/research/" class="nav__link active">Research</a><a
+        href="/blog/" class="nav__link">Blog</a><a href="/ideas/" class="nav__link">Ideas</a><a href="/contact/"
+        class="nav__link">Contact</a></div>
+  </nav>
+
+  <div class="page-wrapper">
+    <main class="page-main" id="main-content">
+
+      <!-- Article Header -->
+      <div class="article-header" style="background:var(--bg-surface);padding-block:var(--space-16) var(--space-10);">
+        <div class="container">
+          <nav aria-label="Breadcrumb" class="breadcrumbs">
+            <a href="/">Home</a><span>›</span><a href="/research/">Research</a><span>›</span><span
+              class="current">Yeti Nepal v1</span>
+          </nav>
+
+          <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-5);flex-wrap:wrap;">
+            <span class="badge">Research Project</span>
+            <a href="/search/?q=ai" class="tag-chip">AI</a>
+            <a href="/search/?q=python" class="tag-chip">Python</a>
+            <a href="/search/?q=system-design" class="tag-chip">System Design</a>
+            <a href="/search/?q=theory" class="tag-chip">Theory</a>
+          </div>
+
+          <h1
+            style="font-family:var(--font-display);font-size:clamp(2rem,5vw,3.2rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:var(--space-5);line-height:1.1;">
+            Yeti Nepal v1: 500M Parameter Hybrid Model
+          </h1>
+
+          <p class="lead" style="max-width:640px;margin-bottom:var(--space-6);">
+            An experimental causal language model architecture combining Mamba-2 State Space Models, Grouped-Query Attention (GQA), and a Mixture-of-Experts (MoE) layer—optimized for training on consumer-grade hardware.
+          </p>
+
+          <div class="article-meta-row">
+            <span>📅 May 2026</span>
+            <span>◷ 8 min read</span>
+            <span>✍ Prashant Pandey</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article Body -->
+      <section class="section section--sm">
+        <div class="container">
+          <div class="article-layout">
+            <article class="article-content">
+
+              <!-- Abstract -->
+              <div class="abstract-box">
+                <h4>Abstract</h4>
+                <p>Scaling small language models effectively requires architectures that optimize hardware constraints. Yeti Nepal v1 is a hybrid 483-million parameter model that integrates Mamba-2 SSMs for long-context linear scaling, Grouped-Query Attention (GQA) for optimized memory retrieval, and a 2-Expert Mixture-of-Experts (MoE) routing system. Designed specifically for training on a free-tier Google Colab T4 GPU (16 GB VRAM), this project demonstrates cost-efficient pretraining, instruction tuning, and DPO alignment pipelines.</p>
+              </div>
+
+              <!-- Download Widget -->
+              <div class="card card--link" style="margin-bottom: var(--space-8); padding: var(--space-6); background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1)); border: 1px solid rgba(99, 102, 241, 0.2);">
+                <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+                  <div>
+                    <h3 style="margin-top: 0; color: var(--text-primary); font-size: 1.25rem;">📦 Download Project Files &amp; Model</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0;">
+                      Get the complete source code, configurations, training pipelines, and export scripts for Yeti Nepal v1 (approx. 41 KB).
+                    </p>
+                  </div>
+                  <div>
+                    <a href="yeti_nepal_v1.zip" class="nav__cta" style="display: inline-flex; align-items: center; gap: var(--space-2); text-decoration: none;" download>
+                      <span>📥 Download yeti_nepal_v1.zip</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <h2 id="architecture">1. Architecture Specification</h2>
+              <p>Yeti Nepal v1 is designed with a hybrid topology that distributes sequence processing between state-space modeling and attention-based blocks. Every 4th layer uses Grouped-Query Attention (GQA) to maintain key-value cache efficiency, while the rest are Mamba-2 State Space Model (SSM) blocks. Additionally, a sparse 2-expert Mixture-of-Experts (MoE) layer replaces standard feed-forward networks, optimizing active parameter capacity at run-time.</p>
+
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Component / Metric</th>
+                      <th>Specification Details</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Total Layers</strong></td>
+                      <td>24 (18 Mamba-2 SSM + 6 GQA, every 4th layer)</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Hidden Size</strong></td>
+                      <td>1024</td>
+                    </tr>
+                    <tr>
+                      <td><strong>SSM State Dimension</strong></td>
+                      <td>64</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Attention Heads</strong></td>
+                      <td>8 Query (Q) / 2 Key-Value (KV) — GQA 4:1 ratio</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Mixture-of-Experts (MoE)</strong></td>
+                      <td>2 SwiGLU Experts (Top-1 inference / Top-2 training)</td>
+                    </tr>
+                    <tr>
+                      <td><strong>FFN Width</strong></td>
+                      <td>2048</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Vocabulary Size</strong></td>
+                      <td>32,000 (LLaMA-compatible Byte Pair Encoding)</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Max Sequence Length</strong></td>
+                      <td>4096 tokens</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Total Parameters</strong></td>
+                      <td>~483 Million</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h2 id="project-structure">2. Project Structure</h2>
+              <p>The codebase is highly modular, written in pure PyTorch to avoid external compiled SSM dependencies while maintaining compatibility with hardware accelerators:</p>
+              <pre><code>yeti_nepal_v1/
+├── config/
+│   ├── model_config.py      # Architecture hyperparams + presets
+│   └── train_config.py      # Phase 1/2/3 training hyperparams
+├── model/
+│   ├── mamba_block.py       # Mamba-2 SSM layer (pure PyTorch)
+│   ├── attention_block.py   # GQA + RoPE (FlashAttn via SDPA)
+│   ├── moe_layer.py         # 2-expert MoE + Top-1/Top-2 router
+│   └── yeti_core.py         # Full model + causal LM head
+├── data/
+│   ├── processor.py         # Text cleaning, tokenisation, CoT formatting
+│   └── loader.py            # Streaming DataLoaders for all 3 phases
+├── train/
+│   ├── loss_functions.py    # CE + MoE load-balance + router z-loss
+│   └── trainer.py           # Phase 1/2/3 training loops + DPO
+├── evaluate.py              # Perplexity, accuracy, generation eval
+├── export_gguf.py           # Export → safetensors → GGUF (llama.cpp)
+├── run_colab.py             # Main entry: paste each cell into Colab
+└── requirements.txt         # Dependency manifest
+</code></pre>
+
+              <h2 id="training-phases">3. Training &amp; Alignment Pipeline</h2>
+              <p>Training Yeti Nepal v1 proceeds through three distinct stages, carefully structured to optimize learning rate schedules, dataset sequences, and loss formulations:</p>
+
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Phase</th>
+                      <th>Dataset Source</th>
+                      <th>Tokens / Pairs</th>
+                      <th>Primary Objective</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>1 — Pretraining</strong></td>
+                      <td>FineWeb-Edu</td>
+                      <td>20 Billion Tokens</td>
+                      <td>Acquire base factual knowledge &amp; grammar</td>
+                    </tr>
+                    <tr>
+                      <td><strong>2 — Supervised Fine-Tuning</strong></td>
+                      <td>OpenHermes-2.5 + Dolphin CoT</td>
+                      <td>5 Billion Tokens</td>
+                      <td>Instruction following &amp; multi-step reasoning</td>
+                    </tr>
+                    <tr>
+                      <td><strong>3 — Direct Preference Optimization</strong></td>
+                      <td>UltraFeedback</td>
+                      <td>20K Preference Pairs</td>
+                      <td>Safety alignment &amp; human preference matching</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h3 id="checkpoint-resume">Checkpointing and Resuming</h3>
+              <p>Due to the risk of connection drops in free-tier Google Colab environments, checkpoints are serialized periodically. You can resume pretraining seamlessly with:</p>
+              <pre><code class="language-python">RESUME_FROM = "./checkpoints/phase1/ckpt_step500.pt"
+model = run_phase1(model, pretrain_loader, train_cfg.phase1, DEVICE, resume_from=RESUME_FROM)</code></pre>
+
+              <h2 id="evaluation">4. Evaluation Metrics &amp; Targets</h2>
+              <p>Evaluation is performed using `evaluate.py`, assessing both perplexity and targeted reasoning capabilities:</p>
+              <pre><code class="language-bash">python evaluate.py --checkpoint ./checkpoints/phase2_final_step1000.pt</code></pre>
+              <p>Key benchmarks and targets for the 500M parameter model:</p>
+              <ul>
+                <li><strong>GSM8K:</strong> ≥ 70% accuracy using chain-of-thought extraction.</li>
+                <li><strong>TruthfulQA:</strong> Marked improvement in factual truthfulness metrics over pretraining baseline.</li>
+                <li><strong>Perplexity:</strong> &lt; 20 on held-out FineWeb validation subsets.</li>
+              </ul>
+
+              <h2 id="gguf-export">5. Local Inference and GGUF Export</h2>
+              <p>To run the model on standard CPU and mobile devices, it can be exported to GGUF format for use with <code>llama.cpp</code>:</p>
+              <pre><code class="language-bash">python export_gguf.py \
+    --checkpoint ./checkpoints/phase2_final_step1000.pt \
+    --output_dir ./gguf_export \
+    --quant Q4_K_M</code></pre>
+              <p>Once exported, inference is executed locally using the following CLI call:</p>
+              <pre><code class="language-bash">./llama-cli -m ./gguf_export/yeti-Q4_K_M.gguf -n 256 \
+    -p "&lt;|user|&gt;\nWhat is machine learning?\n&lt;|assistant|&gt;\n"</code></pre>
+
+              <h2 id="roadmap">6. Development Roadmap</h2>
+              <p>The project follows a progressive scaling strategy to validate components before launching full training runs:</p>
+              <ul>
+                <li><strong>June 2026:</strong> 50M parameter debug build validation ✅</li>
+                <li><strong>August 2026:</strong> 120M scale benchmark run</li>
+                <li><strong>October 2026:</strong> 300M scale pretraining stage</li>
+                <li><strong>December 2026:</strong> 500M full model launch</li>
+              </ul>
+
+              <h2 id="design-decisions">7. Key Design Decisions</h2>
+              <ul>
+                <li><strong>Zero-Dependency SSM:</strong> Built a pure PyTorch State Space Model scanning kernel. It falls back gracefully if the official compiled <code>mamba-ssm</code> package is unavailable.</li>
+                <li><strong>Progressive Scaling Validation:</strong> Always run the pipeline at a 20M parameter "debug" scale first to guarantee mathematical and memory correctness before launching full pretraining.</li>
+                <li><strong>Optional Unsloth Accel:</strong> Designed the model class to integrate with Unsloth if present, enabling faster training without locking out other GPU environments.</li>
+              </ul>
+
+            </article>
+
+            <!-- TOC Sidebar -->
+            <aside>
+              <div class="toc-sidebar">
+                <h3>On This Page</h3>
+                <nav class="toc-list" aria-label="Table of contents"></nav>
+              </div>
+            </aside>
+          </div>
+
+          <!-- Related Content -->
+          <div class="related-section">
+            <div class="section-label">Related</div>
+            <h2 style="font-size:1.2rem;margin-bottom:var(--space-2);">More From the Lab</h2>
+            <div class="related-grid">
+              <a href="/projects/offline-ai-brain/" class="card card--link">
+                <div class="content-card">
+                  <span class="content-card__type">Project</span>
+                  <h3 class="content-card__title">Offline AI Brain</h3>
+                  <p class="content-card__desc">A working, local AI system with a memory layer and task executor built
+                    based on this architecture.</p>
+                </div>
+              </a>
+              <a href="/ideas/future-agent-system/" class="card card--link">
+                <div class="content-card">
+                  <span class="content-card__type">Idea</span>
+                  <h3 class="content-card__title">Future Agent System</h3>
+                  <p class="content-card__desc">Speculative multi-agent self-coordination framework design.</p>
+                </div>
+              </a>
+              <a href="/research/offline-ai-architecture/" class="card card--link">
+                <div class="content-card">
+                  <span class="content-card__type">Research</span>
+                  <h3 class="content-card__title">Offline AI Architecture</h3>
+                  <p class="content-card__desc">Deep-dive research into designing local-first, offline-ready AI architectures.</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="site-footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__brand"><a href="/" class="nav__logo">
+               <div class="nav__logo-mark"><img src="https://prashant-pandey.com.np/assets/icons/ico.png"
+            alt="Prashant Pandey logo" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
+              <div><span class="nav__logo-text">Prashant Pandey</span></div>
+            </a>
+            <p>Programmer, Researcher, Builder — documenting projects, ideas, and experiments in a public digital lab.
+            </p>
+            <div class="footer__social"><a href="https://github.com/prashantpandey" class="footer__social-link"
+                aria-label="GitHub" target="_blank" rel="noopener">GH</a><a href="https://twitter.com/prashantpandey"
+                class="footer__social-link" aria-label="Twitter" target="_blank" rel="noopener">TW</a><a
+                href="https://linkedin.com/in/prashantpandey" class="footer__social-link" aria-label="LinkedIn"
+                target="_blank" rel="noopener">LI</a></div>
+          </div>
+          <div class="footer__col">
+            <h4>Explore</h4>
+            <div class="footer__links"><a href="/projects/">Projects</a><a href="/research/">Research</a><a
+                href="/blog/">Blog</a><a href="/ideas/">Ideas &amp; Theories</a></div>
+          </div>
+          <div class="footer__col">
+            <h4>Site</h4>
+            <div class="footer__links"><a href="/about/">About</a><a href="/contact/">Contact</a><a
+                href="/tags/">Tags</a><a href="/archive/">Archive</a></div>
+          </div>
+          <div class="footer__col">
+            <h4>Resources</h4>
+            <div class="footer__links"><a href="/updates/">Updates</a><a href="/search/">Search</a><a
+                href="/feed.xml">RSS Feed</a><a href="/sitemap.xml">Sitemap</a></div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <div class="footer__copy">© <span class="js-year">2026</span> Prashant Pandey. All rights reserved.</div>
+          <div class="footer__bottom-links"><a href="/search/">Search</a><a href="/tags/">Tags</a><a
+              href="/archive/">Archive</a></div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+  <script src="../../assets/js/main.js" defer></script>
+  <script src="../../assets/js/toc.js" defer></script>
+</body>
+
+</html>
