@@ -123,7 +123,7 @@
       if (activeFilter !== 'all') url.searchParams.set('section', activeFilter); else url.searchParams.delete('section');
       history.replaceState(null, '', url.pathname + url.search + url.hash);
     };
-    fetch('/search-index.json').then(response => response.ok ? response.json() : Promise.reject()).then(data => { documents = Array.isArray(data) ? data : []; draw(); }).catch(() => { status.textContent = 'Search data could not load. Browse the sections below instead.'; });
+    fetch('../search-index.json').then(response => response.ok ? response.json() : Promise.reject()).then(data => { documents = Array.isArray(data) ? data : []; draw(); }).catch(() => { status.textContent = 'Search data could not load. Browse the sections below instead.'; });
     input.addEventListener('input', draw);
     filters.forEach(button => button.addEventListener('click', () => {
       activeFilter = button.dataset.filter || 'all';
