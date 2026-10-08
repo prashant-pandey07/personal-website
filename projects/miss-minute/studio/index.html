@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Miss Minutes — Animation Studio</title>
+  <meta name="description"
+    content="Miss Minutes Animation Studio — Create TVA-style animations with a powerful, modern scripting language featuring variables, loops, if/else, and sequences.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="mobile.css" media="(max-width: 900px)">
+</head>
+
+<body>
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="top">
+    <div class="brand"><a href="/projects/miss-minute/" class="btn-overview" style="display:inline-flex;align-items:center;padding:4px 8px;margin-right:12px;font-size:11px;color:#ff9d2e;border:1px solid rgba(255,157,46,.3);border-radius:4px;text-decoration:none;background:rgba(255,157,46,.08);" title="Back to Project Overview">← Overview</a>
+      <span class="logo">TVA</span>
+      <div class="brand-text">
+        <span class="brand-name">MISS MINUTES</span>
+        <span class="brand-sub">// ANIMATION STUDIO v2</span>
+      </div>
+    </div>
+    <div class="top-mid">
+      <div class="seg" title="Output aspect ratio">
+        <button data-ratio="16:9" class="on">16:9 ▭</button>
+        <button data-ratio="9:16">9:16 ▯</button>
+      </div>
+    </div>
+    <div class="tools">
+      <button id="preview" title="Preview without countdown">▶ Preview</button>
+      <button id="play" class="primary" title="Full-screen with 5-4-3-2-1 countdown (Ctrl+Enter)">⚡ Play</button>
+      <button id="stop" title="Stop (Esc)">■ Stop</button>
+    </div>
+  </header>
+
+  <!-- ═══ STUDIO LAYOUT ═══ -->
+  <main class="studio">
+
+    <!-- ─── LEFT: Tabbed Sidebar ─── -->
+    <aside class="side studio-ui">
+      <nav class="tab-bar" role="tablist">
+        <button class="tab-btn active" data-tab="media" role="tab" title="Media Library">
+          <span class="tab-icon">📁</span><span class="tab-label">Media</span>
+        </button>
+        <button class="tab-btn" data-tab="insert" role="tab" title="Insert Commands">
+          <span class="tab-icon">✚</span><span class="tab-label">Insert</span>
+        </button>
+        <button class="tab-btn" data-tab="ref" role="tab" title="Quick Reference">
+          <span class="tab-icon">📖</span><span class="tab-label">Docs</span>
+        </button>
+      </nav>
+
+      <!-- MEDIA TAB -->
+      <div class="tab-pane active" id="tab-media" role="tabpanel">
+        <div class="panel" id="drop">
+          <h3>Media <small>(this session only)</small></h3>
+          <ul class="media" id="media"></ul>
+          <div class="upload-area">
+            <label class="btn btn-upload" for="up">⬆ Upload Audio / Video</label>
+            <input type="file" id="up" accept="audio/*,video/*" multiple hidden>
+            <p class="drop-hint">or drag &amp; drop files here</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- INSERT TAB -->
+      <div class="tab-pane" id="tab-insert" role="tabpanel">
+        <div class="panel">
+          <h3>Insert <small>(click to add to script)</small></h3>
+          <div id="palette"></div>
+        </div>
+      </div>
+
+      <!-- DOCS TAB -->
+      <div class="tab-pane" id="tab-ref" role="tabpanel">
+        <div class="panel ref-panel">
+          <h3>Quick Reference</h3>
+
+          <div class="ref-block">
+            <h4>⏱ Timing</h4>
+            <pre>5          → at 5 seconds
+2.5        → at 2.5 sec
+1:05       → 1 min 5 sec
++2         → 2s after prev line
+at 3.5 {}  → block at 3.5s</pre>
+          </div>
+
+          <div class="ref-block">
+            <h4>📦 Variables</h4>
+            <pre>var x = 5
+var msg = "Hello!"
+var active = true
+set x = $x + 1
+say $msg for 2</pre>
+          </div>
+
+          <div class="ref-block">
+            <h4>🔁 Loops</h4>
+            <pre>repeat 3 {
+  move bounce
+  wait 1
+}
+
+var i = 0
+while $i &lt; 5 {
+  fx sparkle
+  set i = $i + 1
+  wait 0.5
+}
+
+# break out of a loop
+repeat 100 {
+  fx sparkle
+  wait 0.5
+  if $done { break }
+}</pre>
+          </div>
+
+          <div class="ref-block">
+            <h4>🔀 If / Elif / Else</h4>
+            <pre>if $x > 3 {
+  expression excited
+} elif $x > 1 {
+  expression happy
+} else {
+  expression neutral
+}</pre>
+          </div>
+
+          <div class="ref-block">
+            <h4>🎯 Sequences</h4>
+            <pre>sequence myGreet {
+  expression happy
+  move wave
+  say "Hi there!" for 2
+}
+
+# Call it anywhere:
+at 3 { call myGreet }</pre>
+          </div>
+
+          <div class="ref-block">
+            <h4>⚡ Together (parallel)</h4>
+            <pre>together {
+  move dance
+  say "Watch me!" for 3
+}</pre>
+          </div>
+
+          <div class="ref-block">
+            <h4>🎵 Audio Control</h4>
+            <pre>0   audio "voice.mp3" vol 0.8
+5   audio.pause
+7   audio.resume
+10  audio.stop
+12  audio.volume 0.5
+15  audio.seek 30</pre>
+          </div>
+
+          <div class="ref-block">
+            <h4>📋 All Commands</h4>
+            <pre class="small">expression NAME [for N]
+move NAME [for N]
+look DIRECTION [for N]
+say "text" [for N]
+talk [for N]
+fx NAME [count]
+walkTo X [for N]
+walk DX [for N]
+enter/exit/peek left|right
+background NAME [for N]
+background video "file"
+  [from N] [to N] [loop]
+  [rate N] [sound] [for N]
+audio "file" [from N]
+  [to N] [vol N] [for N]
+stopaudio
+blink
+lean DEGREES [for N]
+find "query" [for N]
+wait N
+break / continue / end</pre>
+          </div>
+
+          <div class="ref-actions">
+            <a href="/writing/miss-minute-guide/" target="_blank" class="btn btn-guide">📚 Open Full Guide</a>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ─── CENTER: Editor ─── -->
+    <section class="editor-col studio-ui">
+
+      <!-- Script Editor Panel -->
+      <div class="panel editor-panel">
+        <div class="editor-header">
+          <h3>Script</h3>
+          <div class="editor-toolbar">
+            <button id="btn-undo" class="tool-btn" title="Undo (Ctrl+Z)">↩ Undo</button>
+            <button id="btn-redo" class="tool-btn" title="Redo (Ctrl+Y)">↪ Redo</button>
+            <span class="toolbar-sep"></span>
+            <button id="btn-format" class="tool-btn" title="Auto-format script">✦ Format</button>
+            <button id="btn-clear" class="tool-btn danger" title="Clear script">🗑 Clear</button>
+            <span class="toolbar-sep"></span>
+            <span class="editor-kbd">Ctrl+Enter to play · Tab=indent · { auto-closes</span>
+          </div>
+        </div>
+
+        <div class="ed-outer">
+          <div id="gut" class="gutter" aria-hidden="true"></div>
+          <div class="ed-inner">
+            <pre id="ed-highlights" class="ed-highlights" aria-hidden="true"></pre>
+            <textarea id="ed" class="ed-textarea" spellcheck="false" wrap="off" autocapitalize="off" autocomplete="off"
+              autocorrect="off" aria-label="Animation script editor"
+              placeholder="# Start writing your script..."></textarea>
+          </div>
+        </div>
+
+        <div class="editor-footer">
+          <div class="status" id="status">Ready</div>
+          <div class="cursor-info" id="cursor-pos">Ln 1, Col 1</div>
+        </div>
+      </div>
+
+      <!-- Problems Panel -->
+      <div class="panel" id="problems">
+        <h3>Problems <small>(click to jump to line)</small></h3>
+        <ul class="probs" id="probs"></ul>
+      </div>
+
+      <!-- Engine Log Panel -->
+      <div class="panel">
+        <details>
+          <summary class="h">Engine Log</summary>
+          <div class="log-bar">
+            <button id="btn-clear-log" class="tool-btn small">Clear</button>
+          </div>
+          <pre id="log"></pre>
+        </details>
+      </div>
+
+    </section>
+
+    <!-- ─── RIGHT: Stage ─── -->
+    <section class="stage-wrap">
+      <div class="stage" id="stage">
+        <div class="bgwrap" id="bgwrap">
+          <canvas id="bgc"></canvas>
+          <video id="bgv" muted loop playsinline hidden></video>
+        </div>
+        <div class="halo"></div>
+
+        <!-- Procedural SVG Character Rig -->
+        <div class="char" id="char">
+          <svg id="layer-body" viewBox="0 0 600 800" aria-hidden="true">
+            <defs>
+              <radialGradient id="face" cx="40%" cy="35%" r="75%">
+                <stop offset="0" stop-color="#ffc45e" />
+                <stop offset="1" stop-color="#e88a22" />
+              </radialGradient>
+              <pattern id="str" width="6" height="6" patternUnits="userSpaceOnUse">
+                <rect width="6" height="3" fill="#fff" opacity=".08" />
+                <rect y="3" width="6" height="3" fill="#7a3a00" opacity=".07" />
+              </pattern>
+              <clipPath id="clipL">
+                <ellipse cx="225" cy="285" rx="50" ry="56" />
+              </clipPath>
+              <clipPath id="clipR">
+                <ellipse cx="375" cy="270" rx="50" ry="56" />
+              </clipPath>
+              <path id="spr" d="M0 0C-12 80 12 150 0 255" fill="none" stroke-linecap="round" />
+              <path id="arm" d="M0 0Q20 85 150 75" fill="none" stroke-linecap="round" />
+              <g id="shoe">
+                <ellipse cx="-4" cy="14" rx="54" ry="27" fill="#d98a27" stroke="#5a2e12" stroke-width="4" />
+                <ellipse cx="-4" cy="6" rx="38" ry="14" fill="#f4ac45" />
+                <path d="M-40 18H32M-44 10H28" stroke="#b46d18" stroke-width="3" />
+              </g>
+              <g id="glove">
+                <path d="M-32 -4C-36 -28 -8 -36 8 -24C28 -30 38 -8 32 12C26 32 -14 32 -28 18Z" fill="#fff" stroke="#222"
+                  stroke-width="4" stroke-linejoin="round" />
+                <path d="M-12 -10Q0 -2 12 -10M-14 5Q0 13 16 5" stroke="#222" stroke-width="3" fill="none" />
+              </g>
+            </defs>
+            <ellipse id="shadow" rx="150" ry="16" fill="#000" opacity=".35" />
+            <g id="legL">
+              <use href="#spr" stroke="#3a2616" stroke-width="14" />
+              <use href="#spr" stroke="#b07a3a" stroke-width="14" stroke-dasharray="3 7" />
+              <use href="#shoe" y="255" />
+            </g>
+            <g id="legR">
+              <use href="#spr" stroke="#3a2616" stroke-width="14" />
+              <use href="#spr" stroke="#b07a3a" stroke-width="14" stroke-dasharray="3 7" />
+              <use href="#shoe" y="255" />
+            </g>
+            <g id="head">
+              <ellipse cx="320" cy="308" rx="190" ry="188" fill="#c06a18" stroke="#5a2e12" stroke-width="5" />
+              <circle cx="300" cy="300" r="190" fill="url(#face)" stroke="#5a2e12" stroke-width="5" />
+              <circle cx="300" cy="300" r="188" fill="url(#str)" />
+              <g id="ticks" stroke="#6b3516" stroke-linecap="round"></g>
+              <g id="layer-face">
+                <g id="eyes">
+                  <ellipse cx="225" cy="285" rx="50" ry="56" fill="#fff" />
+                  <ellipse cx="375" cy="270" rx="50" ry="56" fill="#fff" />
+                </g>
+                <g id="pupils">
+                  <g clip-path="url(#clipL)">
+                    <g id="pupilL">
+                      <circle r="30" fill="#7b2e22" />
+                      <circle cx="-9" cy="-10" r="8" fill="#fff" />
+                    </g>
+                  </g>
+                  <g clip-path="url(#clipR)">
+                    <g id="pupilR">
+                      <circle r="30" fill="#7b2e22" />
+                      <circle cx="-9" cy="-10" r="8" fill="#fff" />
+                    </g>
+                  </g>
+                </g>
+                <g id="lids">
+                  <g clip-path="url(#clipL)">
+                    <g id="lidL">
+                      <rect x="170" width="110" height="112" fill="#f3a137" />
+                      <rect x="170" width="110" height="112" fill="url(#str)" />
+                      <path d="M170 112H280" stroke="#5a2e12" stroke-width="5" />
+                    </g>
+                  </g>
+                  <g clip-path="url(#clipR)">
+                    <g id="lidR">
+                      <rect x="320" width="110" height="112" fill="#f3a137" />
+                      <rect x="320" width="110" height="112" fill="url(#str)" />
+                      <path d="M320 112H430" stroke="#5a2e12" stroke-width="5" />
+                    </g>
+                  </g>
+                </g>
+                <g fill="none" stroke="#5a2e12" stroke-width="5" stroke-linecap="round">
+                  <ellipse cx="225" cy="285" rx="50" ry="56" />
+                  <ellipse cx="375" cy="270" rx="50" ry="56" />
+                  <path d="M185 243l-14-10M200 234l-9-16M217 230l-3-18M335 228l-14-10M350 219l-9-16M367 215l-3-18"
+                    stroke-width="6" />
+                </g>
+                <g id="brows" stroke="#5a2e12" stroke-width="8" stroke-linecap="round" fill="none">
+                  <g id="browL">
+                    <path d="M-48 0Q0-14 48 0" />
+                  </g>
+                  <g id="browR">
+                    <path d="M-48 0Q0-14 48 0" />
+                  </g>
+                </g>
+                <circle cx="300" cy="302" r="7" fill="#7a2f22" />
+                <g id="mouthG" transform="translate(300 375)">
+                  <path id="mouth" fill="#6b1f16" stroke="#5a1e14" stroke-width="5" stroke-linejoin="round"
+                    stroke-linecap="round" />
+                  <path id="teeth" fill="#fff4de" />
+                  <ellipse id="tongue" fill="#e0707a" />
+                </g>
+              </g>
+              <g id="layer-hands">
+                <g id="armL">
+                  <use href="#arm" stroke="#3a2616" stroke-width="16" />
+                  <use href="#arm" stroke="#b07a3a" stroke-width="16" stroke-dasharray="3 9" />
+                  <g id="handL">
+                    <use href="#glove" />
+                  </g>
+                </g>
+                <g id="armR">
+                  <g transform="scale(-1 1)">
+                    <use href="#arm" stroke="#3a2616" stroke-width="16" />
+                    <use href="#arm" stroke="#b07a3a" stroke-width="16" stroke-dasharray="3 9" />
+                    <g id="handR">
+                      <use href="#glove" />
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+            <g id="layer-effects"></g>
+          </svg>
+        </div>
+
+        <div class="tl" id="tl">
+          <div class="tl-head"><span>BEGINNING</span><b id="tlQ"></b><span>END</span></div>
+          <div class="tl-track" id="tlTrack"><i class="tl-cur" id="tlCur"></i></div>
+        </div>
+        <div class="fx" id="fx"></div>
+        <div class="caption" id="caption"></div>
+        <div class="hud" id="hud"></div>
+      </div>
+
+      <div class="under">
+        <div class="progress-row">
+          <div class="bar"><i id="fill"></i></div>
+        </div>
+        <div class="meta">
+          <span id="clock">0:00.00</span>
+          <span id="time"></span>
+        </div>
+        <input type="range" id="seek" hidden>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Countdown overlay -->
+  <div id="cd"></div>
+  <!-- Toast notification -->
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+  <script src="studio.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+/* ═══════════════════════════════════════════════
+   MISS MINUTES STUDIO — Mobile Overrides
+   Applies when screen ≤ 900px
+   ═══════════════════════════════════════════════ */
+
+/* ── Base mobile tweaks ── */
+html, body { font-size: 12px; }
+
+/* ── Sticky header stacks on small screens ── */
+.top {
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px 12px;
+  gap: 8px;
+}
+.top-mid, .tools { width: 100%; justify-content: flex-start; }
+.tools { flex-wrap: wrap; gap: 6px; }
+
+/* ── Studio layout → single column ── */
+.studio {
+  grid-template-columns: 1fr !important;
+  padding: 10px;
+  gap: 10px;
+}
+
+/* ── Stage comes first on mobile ── */
+.stage-wrap {
+  order: -1;
+  position: static !important;
+  width: 100%;
+}
+.stage {
+  width: 100% !important;
+  max-width: 100%;
+  border-radius: 12px;
+}
+
+/* ── Side: tabs become horizontal strip ── */
+.side { order: 1; }
+.tab-bar {
+  flex-direction: row;
+  padding: 3px;
+  border-radius: 8px;
+}
+.tab-btn { flex-direction: row; gap: 5px; padding: 7px 10px; font-size: 10px; }
+.tab-icon { font-size: 13px; }
+
+/* ── Editor column ── */
+.editor-col { order: 2; }
+
+.editor-header { flex-direction: column; align-items: flex-start; gap: 6px; padding: 10px 12px 8px; }
+.editor-toolbar { flex-wrap: wrap; gap: 3px; }
+.editor-kbd { display: none; }   /* hide keyboard hint on mobile */
+
+.ed-outer { height: max(200px, 38vh); }
+
+/* Slightly larger gutter tap target */
+.gutter { width: 40px; }
+.gutter div { padding-right: 7px; }
+
+/* Editor font slightly smaller on small screens */
+:root {
+  --ed-fs: 12.5px;
+  --ed-ln: 21px;
+}
+
+/* ── Caption bigger touch target ── */
+.caption { font-size: 13px; padding: 8px 12px; }
+
+/* ── Progress bar taller for touch ── */
+.bar { height: 6px; }
+#seek { height: 20px; }
+
+/* ── Panels full width ── */
+.panel { border-radius: 10px; padding: 12px 13px; }
+
+/* ── Ref panel: remove max-height restriction ── */
+.ref-panel { max-height: none; }
+
+/* ── Problems panel: touch-friendly tap targets ── */
+.probs li { padding: 10px 10px 10px 12px; margin-bottom: 6px; }
+
+/* ── Media list bigger tap targets ── */
+.media li { padding: 8px 2px; }
+.media button { padding: 5px 10px; font-size: 11px; }
+
+/* ── Upload area compact ── */
+.upload-area { padding: 12px; }
+
+/* ── Palette chips bigger on mobile ── */
+.chips button { padding: 5px 11px; font-size: 11.5px; }
+
+/* ── Log panel compact ── */
+#log { height: 90px; font-size: 11px; }
+
+/* ── Countdown stays full screen ── */
+body.live #cd { font-size: min(30vh, 40vw); }
+
+/* ── Toast at top on mobile so it doesn't overlap stage controls ── */
+#toast { bottom: auto; top: 72px; }
+
+/* ── Under-stage meta ── */
+.meta { font-size: 10.5px; }
+#clock { font-size: 11px; }
+
+/* ── HUD on stage: smaller ── */
+.hud { font-size: 9px; padding: 4px 8px; }
+
+/* ── Landscape phone: use side-by-side ── */
+@media (max-width: 900px) and (orientation: landscape) {
+  .studio { grid-template-columns: 1fr 1fr !important; }
+  .stage-wrap { order: 0; }
+  .side, .editor-col { order: 1; }
+  .stage { width: 100% !important; }
+  .ed-outer { height: max(160px, 55vh); }
+}
+
+/* ── Very small phones ── */
+@media (max-width: 380px) {
+  .brand-name { font-size: 11px; letter-spacing: .14em; }
+  .logo { font-size: 10px; padding: 2px 7px; }
+  button, .btn { padding: 6px 10px; font-size: 11px; }
+  :root { --ed-fs: 11.5px; --ed-ln: 20px; }
+}

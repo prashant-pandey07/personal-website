@@ -1,0 +1,1154 @@
+<!doctype html>
+<html lang="en" data-theme-toggle="disabled">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0f13">
+  <meta name="author" content="Prashant Pandey">
+  <script>try{if(document.documentElement.dataset.themeToggle==='enabled'&&localStorage.getItem('site-theme')==='light')document.documentElement.dataset.theme='light'}catch{}</script>
+  <title>Miss Minute To The End — Scripting Guide · Prashant Pandey</title>
+  <meta name="description" content="Complete reference documentation for the Miss Minutes animation scripting language, covering commands, variables, loops, expressions, audio sync, and best practices.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  
+  <link rel="canonical" href="https://prashant-pandey.com.np/writing/miss-minute-guide/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Prashant Pandey">
+  <meta property="og:title" content="Miss Minute To The End — Scripting Guide">
+  <meta property="og:description" content="Complete reference documentation for the Miss Minutes animation scripting language, covering commands, variables, loops, expressions, audio sync, and best practices.">
+  <meta property="og:url" content="https://prashant-pandey.com.np/writing/miss-minute-guide/">
+  <meta property="og:image" content="https://prashant-pandey.com.np/assets/og-card.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Prashant Pandey, Grade 11 student from Janakpur, Nepal">
+  <meta property="og:locale" content="en_US">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Miss Minute To The End — Scripting Guide">
+  <meta name="twitter:description" content="Complete reference documentation for the Miss Minutes animation scripting language, covering commands, variables, loops, expressions, audio sync, and best practices.">
+  <meta name="twitter:image" content="https://prashant-pandey.com.np/assets/og-card.png">
+  <meta name="twitter:image:alt" content="Prashant Pandey, Grade 11 student from Janakpur, Nepal">
+  <link rel="icon" href="../../assets/site-mark.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/icons/icon-192.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Prashant Pandey — Writing" href="../../feed.xml">
+  <link rel="stylesheet" href="../../assets/site.css">
+  <link rel="stylesheet" href="../../assets/animations.css">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://prashant-pandey.com.np/#person", "name": "Prashant Pandey", "url": "https://prashant-pandey.com.np/about/", "description": "Prashant Pandey is a Grade 11 student in Janakpur, Nepal, exploring ideas and making AI-assisted projects. Read about FlowWrite, experiments, and free writing.", "image": {"@type": "ImageObject", "url": "https://prashant-pandey.com.np/assets/profile-v2.jpg"}, "knowsAbout": ["AI-assisted coding", "Programming projects", "Web development", "Artificial intelligence", "Computer vision", "Operating systems", "Computer architecture", "Low-level programming", "Mathematics", "Physics", "Creative technology", "Vibe coding", "blender", "Independent learning"], "sameAs": ["https://github.com/prashantpandey", "https://linkedin.com/in/prashantpandey", "https://x.com/prashantpandey", "https://youtube.com/@prashantpandey"], "homeLocation": {"@type": "Place", "name": "Janakpur, Dhanusha, Nepal", "address": {"@type": "PostalAddress", "addressLocality": "Janakpur", "addressRegion": "Dhanusha", "addressCountry": "Nepal"}}, "email": "prashantpandey72065@gmail.com", "contactPoint": {"@type": "ContactPoint", "contactType": "general inquiries", "email": "prashantpandey72065@gmail.com", "availableLanguage": ["English"]}}, {"@type": "WebSite", "@id": "https://prashant-pandey.com.np/#website", "url": "https://prashant-pandey.com.np/", "name": "Prashant Pandey", "description": "Prashant Pandey is a Grade 11 student in Janakpur, Nepal, exploring ideas and making AI-assisted projects. Read about FlowWrite, experiments, and free writing.", "publisher": {"@id": "https://prashant-pandey.com.np/#person"}, "potentialAction": {"@type": "SearchAction", "target": {"@type": "EntryPoint", "urlTemplate": "https://prashant-pandey.com.np/search/?q={search_term_string}"}, "query-input": "required name=search_term_string"}}, {"@type": "WebPage", "@id": "https://prashant-pandey.com.np/writing/miss-minute-guide/#webpage", "url": "https://prashant-pandey.com.np/writing/miss-minute-guide/", "name": "Miss Minute To The End — Scripting Guide", "description": "Complete reference documentation for the Miss Minutes animation scripting language, covering commands, variables, loops, expressions, audio sync, and best practices.", "isPartOf": {"@id": "https://prashant-pandey.com.np/#website"}, "about": {"@id": "https://prashant-pandey.com.np/#person"}, "mainEntity": {"@id": "https://prashant-pandey.com.np/writing/miss-minute-guide/#article"}}, {"@type": "BlogPosting", "@id": "https://prashant-pandey.com.np/writing/miss-minute-guide/#article", "url": "https://prashant-pandey.com.np/writing/miss-minute-guide/", "headline": "Miss Minute To The End — Scripting Guide", "description": "Complete reference documentation for the Miss Minutes animation scripting language, covering commands, variables, loops, expressions, audio sync, and best practices.", "author": {"@id": "https://prashant-pandey.com.np/#person"}, "publisher": {"@id": "https://prashant-pandey.com.np/#person"}, "inLanguage": "en", "mainEntityOfPage": {"@id": "https://prashant-pandey.com.np/writing/miss-minute-guide/#webpage"}, "datePublished": "2026-10-08", "dateModified": "2026-10-08", "keywords": ["Miss Minutes", "Scripting", "Animation", "Documentation", "Guide"]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://prashant-pandey.com.np/"}, {"@type": "ListItem", "position": 2, "name": "Writing & free writing", "item": "https://prashant-pandey.com.np/writing/"}, {"@type": "ListItem", "position": 3, "name": "Miss Minute To The End — Scripting Guide", "item": "https://prashant-pandey.com.np/writing/miss-minute-guide/"}]}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><a class="brand" href="../../" aria-label="Prashant Pandey home"><span class="brand-mark">p.</span><span>Prashant Pandey</span></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Main navigation"><a href="../../">Home</a><a href="../../projects/">Projects</a><a href="../../writing/">Writing</a><a href="../../ideas/">Ideas</a><a href="../../experiments/">Experiments</a><a href="../../about/">About</a><a href="../../contact/">Contact</a><a class="nav-search" href="../../search/" aria-label="Search the site">Search <span>↗</span></a></nav>
+  </header>
+  <main id="main"><article class="prose document-page"><a class="back-link" href="../../writing/">← Writing &amp; free writing</a>
+              <header class="document-heading"><p class="eyebrow">Writing</p><h1>Miss Minute To The End — Scripting Guide</h1>
+              <p class="document-summary">Complete reference documentation for the Miss Minutes animation scripting language, covering commands, variables, loops, expressions, audio sync, and best practices.</p><div class="byline"><span>By Prashant Pandey</span><time datetime="2026-10-08">2026-10-08</time></div></header>
+              <style class="imported-page-styles">.imported-content {
+      --bg: #080603;
+      --surface: rgba(18, 12, 5, .9);
+      --border: rgba(255, 157, 46, .2);
+      --border2: rgba(255, 157, 46, .1);
+      --acc: #ff9d2e;
+      --acc2: #ffb347;
+      --txt: #f0dfc0;
+      --txt2: #c4a87a;
+      --dim: #7a6040;
+      --bad: #ff6b5a;
+      --good: #6dca8a;
+      --warn: #ffc844;
+      --mono: "JetBrains Mono", Menlo, Consolas, monospace;
+      --ui: "Inter", system-ui, sans-serif;
+    }
+.imported-content *, .imported-content *::before, .imported-content *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+.imported-content {
+      scroll-behavior: smooth;
+      font-size: 15px;
+    }
+.imported-content {
+      font-family: var(--ui);
+      background: var(--bg);
+      color: var(--txt);
+      line-height: 1.65;
+      background-image:
+        radial-gradient(ellipse at 20% 10%, rgba(55, 28, 6, .6), transparent 50%),
+        radial-gradient(ellipse at 80% 90%, rgba(38, 18, 4, .5), transparent 50%);
+      min-height: 100vh;
+    }
+.imported-content::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background: repeating-linear-gradient(0, rgba(0, 0, 0, .04) 0 1px, transparent 1px 3px);
+    }
+.imported-content .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      position: relative;
+      z-index: 1;
+    }
+.imported-content nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 5, 3, .95);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+.imported-content .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+.imported-content .nav-logo {
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: .18em;
+      color: var(--acc);
+      border: 1.5px solid var(--acc);
+      border-radius: 4px;
+      padding: 2px 8px;
+      text-shadow: 0 0 8px rgba(255, 157, 46, .4);
+    }
+.imported-content .nav-title {
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: .12em;
+      color: var(--txt2);
+    }
+.imported-content .nav-back {
+      font-size: 12px;
+      color: var(--dim);
+      text-decoration: none;
+      transition: .15s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+.imported-content .nav-back:hover {
+      color: var(--acc);
+    }
+.imported-content .toc {
+      background: var(--surface);
+      border: 1px solid var(--border2);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+.imported-content .toc h2 {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 14px;
+    }
+.imported-content .toc ol {
+      padding-left: 18px;
+      color: var(--txt2);
+      font-size: 13px;
+      line-height: 2;
+    }
+.imported-content .toc a {
+      color: var(--txt2);
+      text-decoration: none;
+      transition: .12s;
+    }
+.imported-content .toc a:hover {
+      color: var(--acc);
+    }
+.imported-content h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -.02em;
+      margin: 32px 0 12px;
+    }
+.imported-content h1 span {
+      color: var(--acc);
+    }
+.imported-content .subtitle {
+      font-size: 1.05rem;
+      color: var(--txt2);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+.imported-content h2 {
+      font-family: var(--mono);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin: 48px 0 18px;
+      padding-top: 8px;
+      border-top: 1px solid var(--border2);
+    }
+.imported-content h2:first-of-type {
+      border-top: 0;
+      margin-top: 0;
+    }
+.imported-content h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--txt);
+      margin: 28px 0 10px;
+    }
+.imported-content h4 {
+      font-family: var(--mono);
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      color: var(--txt2);
+      text-transform: uppercase;
+      margin: 20px 0 8px;
+    }
+.imported-content pre, .imported-content code {
+      font-family: var(--mono);
+    }
+.imported-content pre {
+      background: rgba(0, 0, 0, .4);
+      border: 1px solid var(--border2);
+      border-radius: 10px;
+      padding: 18px 20px;
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.75;
+      margin: 14px 0;
+      tab-size: 2;
+    }
+.imported-content code {
+      background: rgba(255, 157, 46, .1);
+      border: 1px solid rgba(255, 157, 46, .18);
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-size: .88em;
+      color: var(--acc2);
+    }
+.imported-content pre code {
+      background: none;
+      border: 0;
+      padding: 0;
+      color: inherit;
+      font-size: inherit;
+    }
+.imported-content .kw {
+      color: #ff9d2e;
+      font-weight: 600;
+    }
+.imported-content .cmd {
+      color: #7ec8f5;
+    }
+.imported-content .str {
+      color: #a0d9a0;
+    }
+.imported-content .num {
+      color: #f0c060;
+    }
+.imported-content .var {
+      color: #d4a7fb;
+      font-weight: 500;
+    }
+.imported-content .val {
+      color: #ffab85;
+    }
+.imported-content .op {
+      color: #7fd4ff;
+    }
+.imported-content .cmt {
+      color: #5a4a30;
+      font-style: italic;
+    }
+.imported-content .brace {
+      color: #ffa04e;
+      font-weight: 600;
+    }
+.imported-content p {
+      color: var(--txt2);
+      margin-bottom: 14px;
+      font-size: 15px;
+    }
+.imported-content p strong {
+      color: var(--txt);
+      font-weight: 600;
+    }
+.imported-content ul, .imported-content ol {
+      color: var(--txt2);
+      padding-left: 22px;
+      margin-bottom: 14px;
+    }
+.imported-content li {
+      margin-bottom: 5px;
+    }
+.imported-content .box {
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin: 16px 0;
+      border-left: 4px solid;
+      font-size: 14px;
+    }
+.imported-content .box.tip {
+      background: rgba(109, 202, 138, .08);
+      border-color: var(--good);
+      color: var(--txt2);
+    }
+.imported-content .box.warn {
+      background: rgba(255, 200, 68, .08);
+      border-color: var(--warn);
+      color: var(--txt2);
+    }
+.imported-content .box.info {
+      background: rgba(126, 200, 245, .08);
+      border-color: #7ec8f5;
+      color: var(--txt2);
+    }
+.imported-content .box.danger {
+      background: rgba(255, 107, 90, .08);
+      border-color: var(--bad);
+      color: var(--txt2);
+    }
+.imported-content .box strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 11.5px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+.imported-content .box.tip strong {
+      color: var(--good);
+    }
+.imported-content .box.warn strong {
+      color: var(--warn);
+    }
+.imported-content .box.info strong {
+      color: #7ec8f5;
+    }
+.imported-content .box.danger strong {
+      color: var(--bad);
+    }
+.imported-content table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin: 14px 0;
+    }
+.imported-content th {
+      background: rgba(255, 157, 46, .1);
+      color: var(--acc);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+.imported-content td {
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border2);
+      color: var(--txt2);
+      vertical-align: top;
+    }
+.imported-content td:first-child {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--acc2);
+      white-space: nowrap;
+    }
+.imported-content tr:last-child td {
+      border-bottom: 0;
+    }
+.imported-content tr:hover td {
+      background: rgba(255, 157, 46, .04);
+    }
+.imported-content .ct td:nth-child(2) {
+      color: var(--txt);
+    }
+.imported-content .ct td:nth-child(3) {
+      font-size: 12px;
+    }
+.imported-content [id] {
+      scroll-margin-top: 70px;
+    }
+.imported-content footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border2);
+      text-align: center;
+      color: var(--dim);
+      font-size: 12px;
+    }
+.imported-content footer a {
+      color: var(--acc);
+      text-decoration: none;
+    }
+.imported-content::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+.imported-content::-webkit-scrollbar-track {
+      background: transparent;
+    }
+.imported-content::-webkit-scrollbar-thumb {
+      background: rgba(255, 157, 46, .2);
+      border-radius: 3px;
+    }</style><div class="article-body imported-content"><div class="source-main">
+
+  <nav>
+    <div class="nav-brand">
+      <span class="nav-logo">TVA</span>
+      <span class="nav-title">SCRIPTING GUIDE</span>
+    </div>
+    <a href="../../projects/miss-minute/studio/" class="nav-back">⚡ Launch Studio</a>
+  </nav>
+
+  <div class="wrap">
+
+    
+    <p class="subtitle">
+      A complete guide to the Miss Minutes Studio v2 scripting language —<br>
+      featuring variables, loops, if/else, sequences, audio control, and more.
+    </p>
+
+    
+    <div class="toc">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#quick">Quick Start</a></li>
+        <li><a href="#timing">Timing Syntax</a></li>
+        <li><a href="#variables">Variables &amp; Expressions</a></li>
+        <li><a href="#control">Control Flow — if / elif / else</a></li>
+        <li><a href="#loops">Loops — repeat &amp; while</a></li>
+        <li><a href="#sequences">Sequences (Reusable Blocks)</a></li>
+        <li><a href="#together">Together (Parallel Execution)</a></li>
+        <li><a href="#wait">Wait</a></li>
+        <li><a href="#break">Break, Continue &amp; End</a></li>
+        <li><a href="#commands">All Commands Reference</a></li>
+        <li><a href="#audio">Audio Commands</a></li>
+        <li><a href="#expressions">Expressions List</a></li>
+        <li><a href="#moves">Moves List</a></li>
+        <li><a href="#fx">Effects (fx) List</a></li>
+        <li><a href="#examples">Full Script Examples</a></li>
+        <li><a href="#errors">Understanding Errors</a></li>
+      </ol>
+    </div>
+
+    
+    <h2 id="quick">1 · Quick Start</h2>
+
+    <p>Open the studio, clear the editor, and paste this — then press <strong>⚡ Play</strong>:</p>
+
+    <pre><span class="cmt"># My first animation</span>
+<span class="num">0</span>    <span class="cmd">background</span> <span class="val">tva</span>
+<span class="num">1</span>    <span class="cmd">enter</span> <span class="val">left</span>
+<span class="num">2</span>    <span class="cmd">expression</span> <span class="val">happy</span>
+<span class="num">2</span>    <span class="cmd">say</span> <span class="str">&quot;Hello! I&#x27;m Miss Minutes!&quot;</span> <span class="kw">for</span> <span class="num">3</span>
+<span class="num">6</span>    <span class="cmd">move</span> <span class="val">wave</span>
+<span class="num">8</span>    <span class="cmd">exit</span> <span class="val">right</span></pre>
+
+    <div class="box tip"><strong>Tip</strong> Each line that starts with a number is a <em>timed event</em> — the number
+      is the time in seconds when that command runs.</div>
+
+    <div class="box info"><strong>Keyboard shortcuts</strong>
+      <ul style="margin-top:6px;">
+        <li><code>Ctrl+Enter</code> — Start playback with countdown</li>
+        <li><code>Escape</code> — Stop playback immediately</li>
+        <li><code>Tab</code> — Indent selected lines (2 spaces)</li>
+        <li><code>Shift+Tab</code> — Un-indent selected lines</li>
+        <li><code>{</code> + Enter — Auto-closes the block with <code>}</code></li>
+      </ul>
+    </div>
+
+    
+    <h2 id="timing">2 · Timing Syntax</h2>
+
+    <p>Every top-level event needs a <strong>time</strong> before the command. Time is always in
+      <strong>seconds</strong>.</p>
+
+    <table>
+      <tr>
+        <th>Syntax</th>
+        <th>Meaning</th>
+        <th>Example</th>
+      </tr>
+      <tr>
+        <td>N</td>
+        <td>Absolute time (seconds)</td>
+        <td><code>5</code> → at exactly 5 s</td>
+      </tr>
+      <tr>
+        <td>N.N</td>
+        <td>Fractional seconds</td>
+        <td><code>2.5</code> → at 2.5 s</td>
+      </tr>
+      <tr>
+        <td>M:SS</td>
+        <td>Minutes:Seconds</td>
+        <td><code>1:30</code> → at 90 s</td>
+      </tr>
+      <tr>
+        <td>+N</td>
+        <td>Relative — N seconds <em>after previous line&#x27;s time</em></td>
+        <td><code>+2</code> → 2 s later</td>
+      </tr>
+      <tr>
+        <td>+N.N</td>
+        <td>Relative fractional</td>
+        <td><code>+0.5</code> → 0.5 s later</td>
+      </tr>
+    </table>
+
+    <pre><span class="num">0</span>      <span class="cmd">background</span> <span class="val">tva</span>
+<span class="num">2.5</span>    <span class="cmd">enter</span> <span class="val">left</span>
+<span class="num">1:00</span>   <span class="cmd">say</span> <span class="str">&quot;One minute in!&quot;</span> <span class="kw">for</span> <span class="num">3</span>
+<span class="num">+5</span>     <span class="cmd">expression</span> <span class="val">excited</span>    <span class="cmt"># 5 s after previous = 1:05</span>
+<span class="num">+2</span>     <span class="cmd">exit</span> <span class="val">right</span>              <span class="cmt"># 5+2 = 1:07</span></pre>
+
+    <h3>Block syntax (multiple commands at one time)</h3>
+    <p>Use <code>at TIME { … }</code> or <code>TIME { … }</code> to run several commands at the same moment:</p>
+
+    <pre><span class="kw">at</span> <span class="num">5</span> <span class="brace">{</span>
+  <span class="cmd">expression</span> <span class="val">excited</span>
+  <span class="cmd">move</span> <span class="val">bounce</span>
+  <span class="cmd">say</span> <span class="str">&quot;Three things at 5s!&quot;</span> <span class="kw">for</span> <span class="num">2</span>
+<span class="brace">}</span></pre>
+
+    <div class="box warn"><strong>Order within a block</strong> Commands inside <code>{ }</code> run
+      <em>sequentially</em> by default (each waits for the previous to finish). Use <code>together { }</code> to run
+      them in parallel.</div>
+
+    
+    <h2 id="variables">3 · Variables &amp; Expressions</h2>
+
+    <p>Variables let you store values and use them anywhere in the script.</p>
+
+    <h3>Declaring variables</h3>
+    <pre><span class="kw">var</span> count = <span class="num">5</span>
+<span class="kw">var</span> name  = <span class="str">&quot;Miss Minutes&quot;</span>
+<span class="kw">var</span> fast  = <span class="kw">true</span></pre>
+
+    <div class="box info"><strong>Where to declare</strong> <code>var</code> at the top level (before any timed event)
+      is a <em>global</em> variable. <code>var</code> inside a block only lasts for that block.</div>
+
+    <h3>Reading a variable</h3>
+    <p>Prefix the name with <code>$</code>:</p>
+    <pre><span class="cmd">say</span> <span class="var">$name</span> <span class="kw">for</span> <span class="num">3</span>
+<span class="cmd">repeat</span> <span class="var">$count</span> <span class="brace">{</span>
+  <span class="cmd">fx</span> <span class="val">sparkle</span> <span class="num">4</span>
+  <span class="kw">wait</span> <span class="num">0.5</span>
+<span class="brace">}</span></pre>
+
+    <h3>Updating a variable — <code>set</code></h3>
+    <pre><span class="kw">set</span> count = <span class="var">$count</span> + <span class="num">1</span>
+<span class="kw">set</span> name  = <span class="str">&quot;Hello &quot;</span> + <span class="var">$name</span></pre>
+
+    <h3>Operators</h3>
+    <table>
+      <tr>
+        <th>Operator</th>
+        <th>Meaning</th>
+        <th>Example</th>
+      </tr>
+      <tr>
+        <td>+</td>
+        <td>Add / concatenate strings</td>
+        <td><code>$x + 2</code> · <code>&quot;Hi &quot; + $name</code></td>
+      </tr>
+      <tr>
+        <td>-</td>
+        <td>Subtract</td>
+        <td><code>$x - 1</code></td>
+      </tr>
+      <tr>
+        <td>*</td>
+        <td>Multiply</td>
+        <td><code>$x * 3</code></td>
+      </tr>
+      <tr>
+        <td>/</td>
+        <td>Divide</td>
+        <td><code>$x / 2</code></td>
+      </tr>
+      <tr>
+        <td>%</td>
+        <td>Modulo (remainder)</td>
+        <td><code>$x % 3</code></td>
+      </tr>
+      <tr>
+        <td>==</td>
+        <td>Equal</td>
+        <td><code>$x == 5</code></td>
+      </tr>
+      <tr>
+        <td>!=</td>
+        <td>Not equal</td>
+        <td><code>$x != 0</code></td>
+      </tr>
+      <tr>
+        <td>&lt; &gt; &lt;= &gt;=</td>
+        <td>Comparisons</td>
+        <td><code>$x &gt; 3</code></td>
+      </tr>
+      <tr>
+        <td>&amp;&amp;</td>
+        <td>Logical AND</td>
+        <td><code>$x &gt; 0 &amp;&amp; $x &lt; 10</code></td>
+      </tr>
+      <tr>
+        <td>||</td>
+        <td>Logical OR</td>
+        <td><code>$x == 0 || $x == 5</code></td>
+      </tr>
+      <tr>
+        <td>!</td>
+        <td>Logical NOT</td>
+        <td><code>!$active</code></td>
+      </tr>
+      <tr>
+        <td>( )</td>
+        <td>Grouping</td>
+        <td><code>($x + 2) * 3</code></td>
+      </tr>
+    </table>
+
+    <h3>Variable interpolation in strings</h3>
+    <pre><span class="kw">var</span> n = <span class="num">7</span>
+<span class="cmd">say</span> <span class="str">&quot;I found </span><span class="var">$n</span><span class="str"> variants!&quot;</span> <span class="kw">for</span> <span class="num">3</span></pre>
+
+    
+    <h2 id="control">4 · Control Flow — if / elif / else</h2>
+
+    <pre><span class="kw">if</span> <span class="var">$count</span> <span class="op">&gt;</span> <span class="num">5</span> <span class="brace">{</span>
+  <span class="cmd">expression</span> <span class="val">excited</span>
+  <span class="cmd">say</span> <span class="str">&quot;Lots of them!&quot;</span> <span class="kw">for</span> <span class="num">2</span>
+<span class="brace">}</span> <span class="kw">elif</span> <span class="var">$count</span> <span class="op">==</span> <span class="num">5</span> <span class="brace">{</span>
+  <span class="cmd">expression</span> <span class="val">neutral</span>
+  <span class="cmd">say</span> <span class="str">&quot;Just five&quot;</span> <span class="kw">for</span> <span class="num">2</span>
+<span class="brace">}</span> <span class="kw">else</span> <span class="brace">{</span>
+  <span class="cmd">expression</span> <span class="val">sad</span>
+  <span class="cmd">say</span> <span class="str">&quot;Not many...&quot;</span> <span class="kw">for</span> <span class="num">2</span>
+<span class="brace">}</span></pre>
+
+    <ul>
+      <li>You can have as many <code>elif</code> branches as you like.</li>
+      <li><code>else</code> is optional.</li>
+      <li>Conditions support any boolean expression (see operators above).</li>
+    </ul>
+
+    <div class="box tip"><strong>Tip</strong> Use <code>not</code> as an alternative to <code>!</code>:
+      <code>if not $done { … }</code></div>
+
+    
+    <h2 id="loops">5 · Loops — repeat &amp; while</h2>
+
+    <h3><code>repeat N { … }</code></h3>
+    <p>Runs the block exactly N times. N can be a variable.</p>
+    <pre><span class="cmd">repeat</span> <span class="num">4</span> <span class="brace">{</span>
+  <span class="cmd">fx</span> <span class="val">sparkle</span> <span class="num">3</span>
+  <span class="kw">wait</span> <span class="num">0.6</span>
+<span class="brace">}</span>
+
+<span class="cmt"># Use $__i for the current iteration index (0-based)</span>
+<span class="cmd">repeat</span> <span class="num">5</span> <span class="brace">{</span>
+  <span class="cmd">say</span> <span class="str">&quot;Loop </span><span class="var">$__i</span><span class="str">&quot;</span> <span class="kw">for</span> <span class="num">1</span>
+<span class="brace">}</span></pre>
+
+    <h3><code>while CONDITION { … }</code></h3>
+    <p>Keeps looping until the condition becomes false. Always make sure the condition will eventually be false, or use
+      <code>break</code>.</p>
+    <pre><span class="kw">var</span> i = <span class="num">0</span>
+<span class="kw">while</span> <span class="var">$i</span> <span class="op">&lt;</span> <span class="num">5</span> <span class="brace">{</span>
+  <span class="cmd">expression</span> <span class="val">excited</span>
+  <span class="kw">set</span> i = <span class="var">$i</span> + <span class="num">1</span>
+  <span class="kw">wait</span> <span class="num">0.8</span>
+<span class="brace">}</span></pre>
+
+    <div class="box danger"><strong>Safety limit</strong> The engine stops any <code>while</code> loop after 10 000
+      iterations automatically to prevent freezing.</div>
+
+    
+    <h2 id="sequences">6 · Sequences (Reusable Blocks)</h2>
+
+    <p>A <code>sequence</code> is a named block you can <code>call</code> from anywhere — like a function.</p>
+
+    <pre><span class="kmt">sequence</span> <span class="val">greet</span> <span class="brace">{</span>
+  <span class="cmd">expression</span> <span class="val">happy</span>
+  <span class="cmd">move</span> <span class="val">wave</span>
+  <span class="cmd">say</span> <span class="str">&quot;Hi there!&quot;</span> <span class="kw">for</span> <span class="num">2</span>
+  <span class="cmd">fx</span> <span class="val">sparkle</span> <span class="num">4</span>
+<span class="brace">}</span>
+
+<span class="cmt"># Now call it at any time:</span>
+<span class="kw">at</span> <span class="num">2</span> <span class="brace">{</span> <span class="kw">call</span> <span class="val">greet</span> <span class="brace">}</span>
+<span class="kw">at</span> <span class="num">8</span> <span class="brace">{</span> <span class="kw">call</span> <span class="val">greet</span> <span class="brace">}</span>
+<span class="kw">at</span> <span class="num">14</span> <span class="brace">{</span> <span class="kw">call</span> <span class="val">greet</span> <span class="brace">}</span></pre>
+
+    <ul>
+      <li>Declare sequences <strong>before</strong> any timed events (at the top of the script).</li>
+      <li>Sequences can call other sequences.</li>
+      <li>Sequences can use global variables.</li>
+    </ul>
+
+    
+    <h2 id="together">7 · Together (Parallel Execution)</h2>
+
+    <p>By default commands in a block run one after another. <code>together { }</code> makes them all start at the same
+      time:</p>
+
+    <pre><span class="kw">together</span> <span class="brace">{</span>
+  <span class="cmd">move</span> <span class="val">dance</span>
+  <span class="cmd">say</span> <span class="str">&quot;Watch me dance!&quot;</span> <span class="kw">for</span> <span class="num">3</span>
+  <span class="cmd">fx</span> <span class="val">sparkle</span> <span class="num">8</span>
+<span class="brace">}</span></pre>
+
+    <div class="box tip"><strong>Tip</strong> Use <code>together</code> for things that should happen simultaneously —
+      like playing music while talking, or doing an effect while moving.</div>
+
+    
+    <h2 id="wait">8 · Wait</h2>
+
+    <p>Pauses execution of the current block for N seconds. Essential inside loops and sequences:</p>
+
+    <pre><span class="cmd">repeat</span> <span class="num">5</span> <span class="brace">{</span>
+  <span class="cmd">expression</span> <span class="val">happy</span>
+  <span class="kw">wait</span> <span class="num">0.5</span>
+  <span class="cmd">expression</span> <span class="val">surprised</span>
+  <span class="kw">wait</span> <span class="num">0.5</span>
+<span class="brace">}</span></pre>
+
+    <pre><span class="kw">wait</span> <span class="num">2</span>       <span class="cmt"># wait 2 seconds</span>
+<span class="kw">wait</span> <span class="num">0.25</span>    <span class="cmt"># wait 250ms</span>
+<span class="kw">wait</span> <span class="var">$dur</span>    <span class="cmt"># wait from a variable</span></pre>
+
+    
+    <h2 id="break">9 · Break, Continue &amp; End</h2>
+
+    <table>
+      <tr>
+        <th>Keyword</th>
+        <th>Effect</th>
+      </tr>
+      <tr>
+        <td><code>break</code></td>
+        <td>Exit the current loop immediately</td>
+      </tr>
+      <tr>
+        <td><code>continue</code></td>
+        <td>Skip the rest of this iteration and go to the next</td>
+      </tr>
+      <tr>
+        <td><code>end</code></td>
+        <td>Stop the entire animation immediately</td>
+      </tr>
+    </table>
+
+    <pre><span class="cmt"># Play sparkles but stop at 3</span>
+<span class="kw">var</span> n = <span class="num">0</span>
+<span class="cmd">repeat</span> <span class="num">100</span> <span class="brace">{</span>
+  <span class="cmd">fx</span> <span class="val">sparkle</span> <span class="num">3</span>
+  <span class="kw">set</span> n = <span class="var">$n</span> + <span class="num">1</span>
+  <span class="kw">wait</span> <span class="num">0.5</span>
+  <span class="kw">if</span> <span class="var">$n</span> <span class="op">==</span> <span class="num">3</span> <span class="brace">{</span> <span class="kw">break</span> <span class="brace">}</span>
+<span class="brace">}</span>
+
+<span class="cmt"># Skip even iterations</span>
+<span class="cmd">repeat</span> <span class="num">6</span> <span class="brace">{</span>
+  <span class="kw">if</span> <span class="var">$__i</span> % <span class="num">2</span> <span class="op">==</span> <span class="num">0</span> <span class="brace">{</span> <span class="kw">continue</span> <span class="brace">}</span>
+  <span class="cmd">fx</span> <span class="val">heart</span> <span class="num">3</span>
+  <span class="kw">wait</span> <span class="num">0.5</span>
+<span class="brace">}</span></pre>
+
+    
+    <h2 id="commands">10 · All Commands Reference</h2>
+
+    <p>The <code>for N</code> option on most commands means &quot;do this and automatically undo it N seconds later&quot;.</p>
+
+    <table class="ct">
+      <tr>
+        <th>Command</th>
+        <th>Description</th>
+        <th>Options</th>
+      </tr>
+      <tr>
+        <td>expression NAME</td>
+        <td>Set a facial expression. Use <code>for N</code> to return to neutral after N seconds.</td>
+        <td><code>for N</code></td>
+      </tr>
+      <tr>
+        <td>move NAME</td>
+        <td>Perform a body movement animation.</td>
+        <td><code>for N</code></td>
+      </tr>
+      <tr>
+        <td>look DIRECTION</td>
+        <td>Point eyes in a direction. Use <code>for N</code> to return to center.</td>
+        <td><code>for N</code></td>
+      </tr>
+      <tr>
+        <td>say &quot;TEXT&quot;</td>
+        <td>Show caption + lip-sync. Duration auto-calculated from text length.</td>
+        <td><code>for N</code></td>
+      </tr>
+      <tr>
+        <td>talk</td>
+        <td>Lip-sync without caption text.</td>
+        <td><code>for N</code></td>
+      </tr>
+      <tr>
+        <td>fx NAME [count]</td>
+        <td>Particle effect. Optional count (default 5).</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>enter SIDE</td>
+        <td>Character slides in from left or right.</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>exit SIDE</td>
+        <td>Character slides out. Use <code>for N</code> for duration.</td>
+        <td><code>for N</code></td>
+      </tr>
+      <tr>
+        <td>peek SIDE</td>
+        <td>Character peeks in and then retreats.</td>
+        <td><code>for N</code></td>
+      </tr>
+      <tr>
+        <td>walk DELTA</td>
+        <td>Move character by DELTA (−1 to +1) over time.</td>
+        <td><code>for N</code></td>
+      </tr>
+      <tr>
+        <td>walkTo X</td>
+        <td>Move character to absolute X position (−1 to +1).</td>
+        <td><code>for N</code></td>
+      </tr>
+      <tr>
+        <td>blink</td>
+        <td>Force one blink cycle.</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>lean DEGREES</td>
+        <td>Tilt body. Use <code>for N</code> to return to upright.</td>
+        <td><code>for N</code></td>
+      </tr>
+      <tr>
+        <td>find &quot;QUERY&quot;</td>
+        <td>TVA timeline finder animation.</td>
+        <td><code>for N</code></td>
+      </tr>
+      <tr>
+        <td>background NAME</td>
+        <td>Change background scene. Use <code>for N</code> to revert.</td>
+        <td><code>for N</code></td>
+      </tr>
+      <tr>
+        <td>background video &quot;file&quot;</td>
+        <td>Play a video as background.</td>
+        <td><code>from N</code> <code>to N</code> <code>loop</code> <code>rate N</code> <code>sound</code>
+          <code>for N</code></td>
+      </tr>
+      <tr>
+        <td>wait N</td>
+        <td>Pause block execution for N seconds.</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <h3>Directions for <code>look</code></h3>
+    <p><code>left</code> · <code>right</code> · <code>up</code> · <code>down</code> · <code>center</code> ·
+      <code>upleft</code> · <code>upright</code> · <code>downleft</code> · <code>downright</code> · <code>farleft</code>
+      · <code>farright</code> · <code>offleft</code> · <code>offright</code></p>
+
+    
+    <h2 id="audio">11 · Audio Commands</h2>
+
+    <p>Audio files must be <strong>uploaded via the Media panel</strong> first (drag &amp; drop or use the upload
+      button).</p>
+
+    <table>
+      <tr>
+        <th>Command</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td><code>audio &quot;file.mp3&quot;</code></td>
+        <td>Load and play an audio file</td>
+      </tr>
+      <tr>
+        <td><code>audio &quot;file.mp3&quot; vol 0.8</code></td>
+        <td>Set volume (0.0 to 1.0) when starting</td>
+      </tr>
+      <tr>
+        <td><code>audio &quot;file.mp3&quot; from 30</code></td>
+        <td>Start playback at 30 seconds into the file</td>
+      </tr>
+      <tr>
+        <td><code>audio &quot;file.mp3&quot; for 10</code></td>
+        <td>Play for 10 seconds, then pause</td>
+      </tr>
+      <tr>
+        <td><code>audio.pause</code></td>
+        <td>Pause playback</td>
+      </tr>
+      <tr>
+        <td><code>audio.resume</code></td>
+        <td>Resume after pause</td>
+      </tr>
+      <tr>
+        <td><code>audio.stop</code></td>
+        <td>Stop and reset to beginning</td>
+      </tr>
+      <tr>
+        <td><code>stopaudio</code></td>
+        <td>Alias for <code>audio.stop</code></td>
+      </tr>
+      <tr>
+        <td><code>audio.volume 0.5</code></td>
+        <td>Set volume immediately (0.0 – 1.0)</td>
+      </tr>
+      <tr>
+        <td><code>audio.seek 30</code></td>
+        <td>Jump to 30 seconds in the file</td>
+      </tr>
+      <tr>
+        <td><code>audio.rate 1.5</code></td>
+        <td>Set playback speed (0.1 – 4.0, default 1.0)</td>
+      </tr>
+      <tr>
+        <td><code>audio.loop</code></td>
+        <td>Enable looping</td>
+      </tr>
+      <tr>
+        <td><code>audio.fade 0 2</code></td>
+        <td>Fade volume to 0 over 2 seconds</td>
+      </tr>
+    </table>
+
+    <pre><span class="cmt"># Full audio example</span>
+<span class="kw">at</span> <span class="num">0</span> <span class="brace">{</span>
+  <span class="cmd">audio</span> <span class="str">&quot;background.mp3&quot;</span> <span class="kw">vol</span> <span class="num">0.6</span>
+<span class="brace">}</span>
+
+<span class="kw">at</span> <span class="num">30</span> <span class="brace">{</span>
+  <span class="cmd">audio.fade</span> <span class="num">0</span> <span class="num">3</span>   <span class="cmt"># fade out over 3 seconds</span>
+  <span class="kw">wait</span> <span class="num">3</span>
+  <span class="cmd">audio.stop</span>
+<span class="brace">}</span></pre>
+
+    
+    <h2 id="expressions">12 · Expressions List</h2>
+
+    <p>Use with: <code>expression NAME</code> or <code>expression NAME for N</code></p>
+
+    <pre><span class="val">neutral</span>     <span class="cmt"># Default resting face</span>
+<span class="val">happy</span>       <span class="val">sad</span>         <span class="val">angry</span>       <span class="val">surprised</span>
+<span class="val">confused</span>    <span class="val">excited</span>     <span class="val">serious</span>     <span class="val">mischievous</span>
+<span class="val">curious</span>     <span class="val">shy</span>         <span class="val">proud</span>       <span class="val">worried</span>
+<span class="val">sleepy</span>      <span class="val">determined</span>  <span class="val">smug</span>        <span class="val">horrified</span>
+<span class="val">apologetic</span>  <span class="val">loving</span>      <span class="val">thinking</span>    <span class="val">disappointed</span></pre>
+
+    
+    <h2 id="moves">13 · Moves List</h2>
+
+    <p>Use with: <code>move NAME</code></p>
+
+    <pre><span class="val">bounce</span>   <span class="val">wave</span>      <span class="val">dance</span>     <span class="val">spin</span>      <span class="val">shake</span>
+<span class="val">nod</span>      <span class="val">bow</span>       <span class="val">jump</span>      <span class="val">stomp</span>     <span class="val">wiggle</span>
+<span class="val">float</span>    <span class="val">pulse</span>     <span class="val">wag</span>       <span class="val">shiver</span>    <span class="val">strut</span>
+<span class="val">snap</span>     <span class="val">curtsy</span>    <span class="val">salute</span>    <span class="val">flip</span>      <span class="val">slide</span></pre>
+
+    
+    <h2 id="fx">14 · Effects (fx) List</h2>
+
+    <p>Use with: <code>fx NAME</code> or <code>fx NAME COUNT</code></p>
+
+    <pre><span class="val">sparkle</span>   <span class="val">heart</span>     <span class="val">star</span>      <span class="val">confetti</span>  <span class="val">explosion</span>
+<span class="val">snow</span>      <span class="val">rain</span>      <span class="val">fire</span>      <span class="val">lightning</span> <span class="val">bubble</span>
+<span class="val">music</span>     <span class="val">clock</span>     <span class="val">question</span>  <span class="val">exclaim</span>   <span class="val">arrow</span>
+<span class="val">diamond</span>   <span class="val">flower</span>    <span class="val">leaf</span>      <span class="val">skull</span>     <span class="val">trophy</span></pre>
+
+    
+    <h2 id="examples">15 · Full Script Examples</h2>
+
+    <h3>Example 1: Simple greeting</h3>
+    <pre><span class="num">0</span>    <span class="cmd">background</span> <span class="val">tva</span>
+<span class="num">1</span>    <span class="cmd">enter</span> <span class="val">left</span>
+<span class="num">2</span>    <span class="cmd">expression</span> <span class="val">happy</span>
+<span class="num">2</span>    <span class="cmd">say</span> <span class="str">&quot;Hello! Great to see you!&quot;</span> <span class="kw">for</span> <span class="num">3</span>
+<span class="num">6</span>    <span class="cmd">move</span> <span class="val">wave</span>
+<span class="num">8</span>    <span class="cmd">exit</span> <span class="val">right</span></pre>
+
+    <h3>Example 2: Countdown with loop</h3>
+    <pre><span class="kw">var</span> count = <span class="num">5</span>
+
+<span class="kw">at</span> <span class="num">2</span> <span class="brace">{</span>
+  <span class="cmd">expression</span> <span class="val">excited</span>
+  <span class="kw">while</span> <span class="var">$count</span> <span class="op">&gt;</span> <span class="num">0</span> <span class="brace">{</span>
+    <span class="cmd">say</span> <span class="var">$count</span> <span class="kw">for</span> <span class="num">0.8</span>
+    <span class="cmd">fx</span> <span class="val">sparkle</span> <span class="num">3</span>
+    <span class="kw">set</span> count = <span class="var">$count</span> - <span class="num">1</span>
+    <span class="kw">wait</span> <span class="num">0.9</span>
+  <span class="brace">}</span>
+  <span class="cmd">say</span> <span class="str">&quot;Blast off!&quot;</span> <span class="kw">for</span> <span class="num">2</span>
+  <span class="cmd">fx</span> <span class="val">explosion</span> <span class="num">10</span>
+<span class="brace">}</span></pre>
+
+    <h3>Example 3: Mood switcher with sequences</h3>
+    <pre><span class="kw">var</span> mood = <span class="str">&quot;happy&quot;</span>
+<span class="kw">var</span> rounds = <span class="num">3</span>
+
+<span class="kw">sequence</span> showMood <span class="brace">{</span>
+  <span class="kw">if</span> <span class="var">$mood</span> == <span class="str">&quot;happy&quot;</span> <span class="brace">{</span>
+    <span class="cmd">expression</span> <span class="val">happy</span>
+    <span class="cmd">fx</span> <span class="val">heart</span> <span class="num">5</span>
+  <span class="brace">}</span> <span class="kw">elif</span> <span class="var">$mood</span> == <span class="str">&quot;excited&quot;</span> <span class="brace">{</span>
+    <span class="cmd">expression</span> <span class="val">excited</span>
+    <span class="cmd">fx</span> <span class="val">sparkle</span> <span class="num">8</span>
+  <span class="brace">}</span> <span class="kw">else</span> <span class="brace">{</span>
+    <span class="cmd">expression</span> <span class="val">neutral</span>
+  <span class="brace">}</span>
+  <span class="cmd">say</span> <span class="str">&quot;Feeling </span><span class="var">$mood</span><span class="str">!&quot;</span> <span class="kw">for</span> <span class="num">2</span>
+  <span class="kw">wait</span> <span class="num">2.5</span>
+<span class="brace">}</span>
+
+<span class="num">0</span> <span class="cmd">enter</span> <span class="val">left</span>
+
+<span class="kw">at</span> <span class="num">1</span> <span class="brace">{</span>
+  <span class="cmd">repeat</span> <span class="var">$rounds</span> <span class="brace">{</span>
+    <span class="kw">call</span> showMood
+    <span class="kw">if</span> <span class="var">$mood</span> == <span class="str">&quot;happy&quot;</span>    <span class="brace">{</span> <span class="kw">set</span> mood = <span class="str">&quot;excited&quot;</span> <span class="brace">}</span>
+    <span class="kw">elif</span> <span class="var">$mood</span> == <span class="str">&quot;excited&quot;</span> <span class="brace">{</span> <span class="kw">set</span> mood = <span class="str">&quot;happy&quot;</span>   <span class="brace">}</span>
+  <span class="brace">}</span>
+  <span class="cmd">move</span> <span class="val">bow</span>
+<span class="brace">}</span></pre>
+
+    <h3>Example 4: Audio + animation sync</h3>
+    <pre><span class="kw">at</span> <span class="num">0</span> <span class="brace">{</span>
+  <span class="cmd">background</span> <span class="val">nexus</span>
+  <span class="cmd">audio</span> <span class="str">&quot;intro.mp3&quot;</span> <span class="kw">vol</span> <span class="num">0.7</span>
+  <span class="cmd">enter</span> <span class="val">left</span>
+<span class="brace">}</span>
+
+<span class="kw">at</span> <span class="num">2</span> <span class="brace">{</span>
+  <span class="kw">together</span> <span class="brace">{</span>
+    <span class="cmd">expression</span> <span class="val">excited</span>
+    <span class="cmd">move</span> <span class="val">dance</span>
+    <span class="cmd">say</span> <span class="str">&quot;Welcome to the TVA!&quot;</span> <span class="kw">for</span> <span class="num">4</span>
+  <span class="brace">}</span>
+<span class="brace">}</span>
+
+<span class="kw">at</span> <span class="num">10</span> <span class="brace">{</span>
+  <span class="cmd">audio.fade</span> <span class="num">0</span> <span class="num">3</span>
+  <span class="kw">wait</span> <span class="num">3</span>
+  <span class="cmd">audio.stop</span>
+  <span class="cmd">exit</span> <span class="val">right</span>
+<span class="brace">}</span></pre>
+
+    
+    <h2 id="errors">16 · Understanding Errors</h2>
+
+    <p>Errors appear in the <strong>Problems panel</strong> below the editor. Click any error to jump to that line.</p>
+
+    <table>
+      <tr>
+        <th>Error message</th>
+        <th>What it means</th>
+        <th>Fix</th>
+      </tr>
+      <tr>
+        <td>Lines must start with a time…</td>
+        <td>A top-level line doesn&#x27;t begin with a number</td>
+        <td>Add a time: <code>5 expression happy</code></td>
+      </tr>
+      <tr>
+        <td>Expected variable name after &quot;var&quot;</td>
+        <td>You wrote <code>var = 5</code> without a name</td>
+        <td><code>var x = 5</code></td>
+      </tr>
+      <tr>
+        <td>Missing closing &quot;}&quot;</td>
+        <td>You opened a block <code>{</code> but never closed it</td>
+        <td>Add <code>}</code> at the end of the block</td>
+      </tr>
+      <tr>
+        <td>Expected &quot;{&quot;</td>
+        <td>An <code>if</code>/<code>while</code>/<code>repeat</code> has no block</td>
+        <td>Add <code>{</code> after the condition</td>
+      </tr>
+      <tr>
+        <td>Unknown command &quot;xyz&quot;</td>
+        <td>The command name is misspelled or unsupported</td>
+        <td>Check the commands table above</td>
+      </tr>
+      <tr>
+        <td>Expected sequence name after &quot;call&quot;</td>
+        <td><code>call</code> without a name</td>
+        <td><code>call mySeq</code></td>
+      </tr>
+    </table>
+
+    <div class="box tip"><strong>Live feedback</strong> The editor shows errors <em>as you type</em> — red gutter marks
+      on error lines, yellow for warnings. No need to run the animation to find mistakes.</div>
+
+    <footer style="margin-top:64px;border-top:1px solid var(--border2);padding:32px 0 0;">
+
+      
+      <div style="background:rgba(255,157,46,.05);border:1px solid var(--border2);border-radius:12px;padding:22px 24px;margin-bottom:28px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+        <div style="font-size:36px;line-height:1;">👨‍💻</div>
+        <div style="flex:1;min-width:200px;">
+          <div style="font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:4px;">
+            Created By</div>
+          <div style="font-size:1.05rem;font-weight:700;color:var(--txt);margin-bottom:4px;">Prashant Pandey</div>
+          <div style="font-size:13px;color:var(--txt2);margin-bottom:10px;">Web developer &amp; creator of Miss Minute
+            To The End — a TVA animation studio inspired by Loki Season 1.</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <a href="https://prashant-pandey.com.np" style="font-size:12.5px;color:var(--acc);text-decoration:none;border:1px solid rgba(255,157,46,.3);border-radius:6px;padding:5px 12px;background:rgba(255,157,46,.08);font-family:var(--mono);transition:.15s;">
+              🌐 prashant-pandey.com.np
+            </a>
+            <a href="https://prashant-pandey.com.np/projects/" style="font-size:12.5px;color:var(--txt2);text-decoration:none;border:1px solid var(--border2);border-radius:6px;padding:5px 12px;background:transparent;font-family:var(--mono);transition:.15s;">
+              📂 More Projects
+            </a>
+          </div>
+        </div>
+      </div>
+
+      
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:18px;border-top:1px solid var(--border2);">
+        <nav style="display:flex;gap:16px;flex-wrap:wrap;">
+          <a href="../../projects/miss-minute/" style="font-size:12px;color:var(--dim);text-decoration:none;">← Project Home</a>
+          <a href="../../projects/miss-minute/studio/" style="font-size:12px;color:var(--dim);text-decoration:none;">⚡ Launch Studio</a>
+          <a href="#quick" style="font-size:12px;color:var(--dim);text-decoration:none;">↑ Back to Top</a>
+        </nav>
+        <p style="font-size:11.5px;color:var(--dim);font-family:var(--mono);">
+          <span style="color:rgba(255,157,46,.35);">TVA</span>
+           Miss Minute To The End  · 
+          Guide v2  · 
+          by <a href="https://prashant-pandey.com.np" style="color:var(--acc);text-decoration:none;">Prashant Pandey</a>
+        </p>
+      </div>
+
+    </footer>
+
+  </div>
+</div></div><div class="tag-list document-tags"><a class="tag" href="../../tags/miss-minutes/">Miss Minutes</a><a class="tag" href="../../tags/scripting/">Scripting</a><a class="tag" href="../../tags/animation/">Animation</a><a class="tag" href="../../tags/documentation/">Documentation</a><a class="tag" href="../../tags/guide/">Guide</a></div></article></main>
+  <footer class="site-footer"><div><a class="footer-name" href="../../">Prashant Pandey</a><p>Grade 11 student · AI-assisted creator · learner</p><p class="footer-location">Janakpur, Dhanusha, Nepal</p></div><div class="footer-links"><a href="../../about/">About</a><a href="../../projects/">Projects</a><a href="../../writing/">Writing</a><a href="../../ideas/">Ideas</a><a href="../../tags/">Topics</a><a href="../../contact/">Contact</a><a href="../../feed.xml">RSS</a><a href="../../sitemap.xml">Sitemap</a></div><p class="footer-socials"><a href="https://github.com/prashantpandey" rel="me noopener noreferrer">GitHub ↗</a><a href="https://linkedin.com/in/prashantpandey" rel="me noopener noreferrer">LinkedIn ↗</a><a href="https://x.com/prashantpandey" rel="me noopener noreferrer">X / Twitter ↗</a><a href="https://youtube.com/@prashantpandey" rel="me noopener noreferrer">YouTube ↗</a></p><p class="copyright">© 2026 · A personal website, always in progress.</p></footer>
+  <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" title="Switch to light theme" hidden><span class="theme-icon" aria-hidden="true">☼</span><span class="theme-label">Light</span></button>
+  <script src="../../assets/site.js" defer></script>
+</body>
+</html>
