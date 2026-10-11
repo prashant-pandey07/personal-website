@@ -122,8 +122,11 @@ function mimeBoundary(contentType) {
 
 function splitMimeParts(value, boundary) {
   const parts = [];
+  const escapedBoundary = boundary.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const delimiterPattern = new RegExp(`\\s*--${escapedBoundary}(--)?(?=\\s*(?:Content-Type\\s*:|$))`, "gi");
+  const normalized = safeString(value).replace(delimiterPattern, (_match, closing = "") => `\n--${boundary}${closing}\n`);
   let current = null;
-  for (const line of safeString(value).replace(/\r\n/g, "\n").replace(/\r/g, "\n").split("\n")) {
+  for (const line of normalized.replace(/\r\n/g, "\n").replace(/\r/g, "\n").split("\n")) {
     const marker = line.trim();
     if (marker === `--${boundary}`) {
       if (current !== null) parts.push(current.join("\n"));
@@ -146,8 +149,17 @@ function parseMimeEntity(value, depth = 0) {
   if (!source) return { text: "", html: "" };
 
   const separator = source.indexOf("\n\n");
-  const headerText = separator < 0 ? "" : source.slice(0, separator);
-  const body = separator < 0 ? source : source.slice(separator + 2);
+  let headerText = separator < 0 ? "" : source.slice(0, separator);
+  let body = separator < 0 ? source : source.slice(separator + 2);
+  if (separator < 0) {
+    // Some stored messages have MIME headers flattened onto the same line as
+    // the content. Split common text-part headers from their body safely.
+    const flattened = source.match(/^\s*(Content-Type:\s*text\/(?:plain|html)(?:\s*;\s*[A-Za-z0-9!#$&^_.+-]+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s;]+))*)(?:\s+Content-Transfer-Encoding:\s*(base64|quoted-printable|7bit|8bit|binary))?\s+([\s\S]*)$/i);
+    if (flattened) {
+      headerText = flattened[1] + (flattened[2] ? `\nContent-Transfer-Encoding: ${flattened[2]}` : "");
+      body = flattened[3];
+    }
+  }
   const headers = parseMimeHeaders(headerText);
   const contentType = headers.get("content-type") || "";
   const disposition = headers.get("content-disposition") || "";
@@ -204,7 +216,9 @@ function parseMimeBody(value, depth = 0) {
     return parsed.text || parsed.html ? parsed : null;
   }
 
-  const boundary = source.match(/^--([^\s]+)\s*$/m)?.[1] || "";
+  const boundary = source.match(/^--([^\s]+)\s*$/m)?.[1]
+    || source.match(/--([^\s]+)[ \t]*(?=Content-Type\s*:)/i)?.[1]
+    || "";
   return boundary ? parseMimeParts(source, boundary, depth + 1) : null;
 }
 
