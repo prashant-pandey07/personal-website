@@ -2,6 +2,15 @@
 const WORKER_URL =
   "https://temp-inbox.prashantexperimentiqw.workers.dev";
 
+const ALLOWED_RECIPIENTS = new Set([
+  "public@prashant-pandey.com.np",
+  "temp@prashant-pandey.com.np",
+  "use@prashant-pandey.com.np",
+  "test@prashant-pandey.com.np",
+  "free@prashant-pandey.com.np",
+  "prash@prashant-pandey.com.np",
+]);
+
 export default async function handler(request) {
   const headers = {
     "Content-Type": "application/json; charset=utf-8",
@@ -10,12 +19,9 @@ export default async function handler(request) {
   };
 
   if (request.method !== "GET") {
-    return new Response(
-      JSON.stringify({ error: "Method not allowed" }),
-      {
-        status: 405,
-        headers: { ...headers, Allow: "GET" },
-      }
+    return Response.json(
+      { error: "Method not allowed" },
+      { status: 405, headers: { ...headers, Allow: "GET" } }
     );
   }
 
@@ -28,21 +34,38 @@ export default async function handler(request) {
     );
   }
 
-  try {
-    const response = await fetch(
-      `${WORKER_URL}/api/messages?limit=20`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: "application/json",
-        },
-        signal: AbortSignal.timeout(10000),
-      }
+  const url = new URL(request.url);
+  const hasRecipient = url.searchParams.has("recipient");
+  const recipient = (url.searchParams.get("recipient") || "")
+    .trim()
+    .toLowerCase();
+
+  if (hasRecipient && !ALLOWED_RECIPIENTS.has(recipient)) {
+    return Response.json(
+      { error: "Unknown recipient address" },
+      { status: 400, headers }
     );
+  }
+
+  const workerUrl = new URL(`${WORKER_URL}/api/messages`);
+  workerUrl.searchParams.set("limit", "50");
+
+  if (recipient) {
+    workerUrl.searchParams.set("recipient", recipient);
+  }
+
+  try {
+    const response = await fetch(workerUrl, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/json",
+      },
+      signal: AbortSignal.timeout(10000),
+    });
 
     if (!response.ok) {
-      console.error("Inbox Worker returned status:", response.status);
+      console.error("Worker status:", response.status);
+
       return Response.json(
         { error: "Inbox service unavailable" },
         { status: 502, headers }
@@ -51,9 +74,7 @@ export default async function handler(request) {
 
     const data = await response.json();
 
-    // Return only the fields needed by the public page.
-    // This deliberately excludes the full email body.
-    const messages = (data.messages || []).map((message) => ({
+    const result = (data.messages || []).map((message) => ({
       id: message.id,
       sender: message.sender,
       recipient: message.recipient,
@@ -62,9 +83,10 @@ export default async function handler(request) {
       received_at: message.received_at,
     }));
 
-    return Response.json({ messages }, { headers });
+    return Response.json({ messages: result }, { headers });
   } catch (error) {
-    console.error("Inbox proxy failed:", error.message);
+    console.error("Inbox proxy error:", error.message);
+
     return Response.json(
       { error: "Could not load inbox" },
       { status: 502, headers }
