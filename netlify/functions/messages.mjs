@@ -99,6 +99,115 @@ function decodeMimeData(value, encoding = "base64") {
   }
 }
 
+function parseMimeHeaders(value) {
+  const headers = new Map();
+  let previous = "";
+  for (const line of safeString(value).replace(/\r\n/g, "\n").replace(/\r/g, "\n").split("\n")) {
+    if (/^\s/.test(line) && previous) {
+      headers.set(previous, `${headers.get(previous) || ""} ${line.trim()}`.trim());
+      continue;
+    }
+    const separator = line.indexOf(":");
+    if (separator <= 0) continue;
+    previous = line.slice(0, separator).trim().toLowerCase();
+    headers.set(previous, line.slice(separator + 1).trim());
+  }
+  return headers;
+}
+
+function mimeBoundary(contentType) {
+  const match = safeString(contentType).match(/\bboundary\s*=\s*(?:"([^"]+)"|'([^']+)'|([^;\s]+))/i);
+  return match?.[1] || match?.[2] || match?.[3] || "";
+}
+
+function splitMimeParts(value, boundary) {
+  const parts = [];
+  let current = null;
+  for (const line of safeString(value).replace(/\r\n/g, "\n").replace(/\r/g, "\n").split("\n")) {
+    const marker = line.trim();
+    if (marker === `--${boundary}`) {
+      if (current !== null) parts.push(current.join("\n"));
+      current = [];
+    } else if (marker === `--${boundary}--`) {
+      if (current !== null) parts.push(current.join("\n"));
+      current = null;
+      break;
+    } else if (current !== null) {
+      current.push(line);
+    }
+  }
+  if (current !== null) parts.push(current.join("\n"));
+  return parts;
+}
+
+function parseMimeEntity(value, depth = 0) {
+  if (depth > 8) return { text: "", html: "" };
+  const source = safeString(value).replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+  if (!source) return { text: "", html: "" };
+
+  const separator = source.indexOf("\n\n");
+  const headerText = separator < 0 ? "" : source.slice(0, separator);
+  const body = separator < 0 ? source : source.slice(separator + 2);
+  const headers = parseMimeHeaders(headerText);
+  const contentType = headers.get("content-type") || "";
+  const disposition = headers.get("content-disposition") || "";
+  if (/\battachment\b/i.test(disposition)) return { text: "", html: "" };
+
+  if (/^\s*multipart\//i.test(contentType)) {
+    const nested = parseMimeParts(body, mimeBoundary(contentType), depth + 1);
+    if (nested) return nested;
+  }
+
+  if (/^\s*text\/plain\b/i.test(contentType)) {
+    return { text: decodeMimeData(body, headers.get("content-transfer-encoding") || "").trim(), html: "" };
+  }
+  if (/^\s*text\/html\b/i.test(contentType)) {
+    return { text: "", html: decodeMimeData(body, headers.get("content-transfer-encoding") || "").trim() };
+  }
+
+  return parseMimeBody(source, depth + 1) || { text: "", html: "" };
+}
+
+function parseMimeParts(value, boundary, depth = 0) {
+  if (depth > 8) return null;
+  const source = safeString(value).replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+  const resolvedBoundary = boundary || source.match(/^--([^\s]+)\s*$/m)?.[1] || "";
+  if (!resolvedBoundary) return null;
+  const sections = splitMimeParts(source, resolvedBoundary);
+  if (!sections.length) return null;
+
+  let text = "";
+  let html = "";
+  for (const section of sections) {
+    const parsed = parseMimeEntity(section, depth + 1);
+    if (!text && parsed.text) text = parsed.text;
+    if (!html && parsed.html) html = parsed.html;
+  }
+  return text || html ? { text, html } : null;
+}
+
+function parseMimeBody(value, depth = 0) {
+  if (depth > 8) return null;
+  const source = safeString(value).replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+  if (!source) return null;
+
+  const headerEnd = source.indexOf("\n\n");
+  const headerText = headerEnd < 0 ? "" : source.slice(0, headerEnd);
+  const headers = parseMimeHeaders(headerText);
+  const contentType = headers.get("content-type") || "";
+  const body = headerEnd < 0 ? source : source.slice(headerEnd + 2);
+  if (/^\s*multipart\//i.test(contentType)) {
+    return parseMimeParts(body, mimeBoundary(contentType), depth + 1);
+  }
+  if (/^\s*text\/(?:plain|html)\b/i.test(contentType)) {
+    const parsed = parseMimeEntity(source, depth + 1);
+    return parsed.text || parsed.html ? parsed : null;
+  }
+
+  const boundary = source.match(/^--([^\s]+)\s*$/m)?.[1] || "";
+  return boundary ? parseMimeParts(source, boundary, depth + 1) : null;
+}
+
 function parseStructuredValue(value) {
   if (value && typeof value === "object") return value;
   if (typeof value !== "string" || !/^[\[{]/.test(value.trim())) return value;
@@ -152,6 +261,15 @@ function getBodyParts(message) {
     }
   };
   for (const source of [rawPayload, rawBody, rawContent, rawEmail, rawMessage]) visitMimeParts(source);
+
+  // Some mailbox backends store the original multipart MIME envelope in a
+  // text/body column instead of splitting its plain and HTML alternatives.
+  // Extract those alternatives before detection or returning the full message.
+  const mimeBody = parseMimeBody(html) || parseMimeBody(text) || parseMimeBody(generic);
+  if (mimeBody) {
+    if (mimeBody.text) text = mimeBody.text;
+    if (mimeBody.html) html = mimeBody.html;
+  }
 
   const plainText = text || (html ? htmlToText(html) : "");
   return { html, text: plainText };
