@@ -1,0 +1,388 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Temporary Email Inbox</title>
+</head>
+<body>
+  <main>
+    <h1>Temporary Email Inbox</h1>
+
+    <p>
+      Public inbox service. Messages and verification codes may
+      be visible to anyone who can access this page.
+    </p>
+
+    <label for="mailbox">Choose an inbox:</label>
+    <select id="mailbox">
+      <option value="all">All inboxes</option>
+      <option value="public@prashant-pandey.com.np">public@prashant-pandey.com.np</option>
+      <option value="temp@prashant-pandey.com.np">temp@prashant-pandey.com.np</option>
+      <option value="use@prashant-pandey.com.np">use@prashant-pandey.com.np</option>
+      <option value="test@prashant-pandey.com.np">test@prashant-pandey.com.np</option>
+      <option value="free@prashant-pandey.com.np">free@prashant-pandey.com.np</option>
+      <option value="prash@prashant-pandey.com.np">prash@prashant-pandey.com.np</option>
+    </select>
+
+    <p id="mailboxCounts"></p>
+
+    <button id="refresh" type="button">Refresh now</button>
+
+    <label>
+      <input type="checkbox" id="autoRefresh" checked>
+      Automatically refresh every 15 seconds
+    </label>
+
+    <p id="status" role="status" aria-live="polite">
+      Loading inboxes...
+    </p>
+
+    <p id="updated">Last updated: never</p>
+
+    <hr>
+
+    <label for="search">Search messages:</label>
+    <input
+      type="search"
+      id="search"
+      placeholder="Sender, subject, address, or code"
+    >
+
+    <label for="filter">Show:</label>
+    <select id="filter">
+      <option value="all">All messages</option>
+      <option value="codes">Messages with codes</option>
+      <option value="no-codes">Messages without detected codes</option>
+    </select>
+
+    <p id="count">0 messages</p>
+    <section id="messages" aria-label="Email messages"></section>
+  </main>
+
+  <script>
+    "use strict";
+
+    const API_URL = "/.netlify/functions/messages";
+    const REFRESH_MS = 15000;
+    const REQUEST_TIMEOUT_MS = 10000;
+
+    const ADDRESSES = [
+      "public@prashant-pandey.com.np",
+      "temp@prashant-pandey.com.np",
+      "use@prashant-pandey.com.np",
+      "test@prashant-pandey.com.np",
+      "free@prashant-pandey.com.np",
+      "prash@prashant-pandey.com.np"
+    ];
+
+    const $ = (id) => document.getElementById(id);
+
+    const mailbox = $("mailbox");
+    const refreshButton = $("refresh");
+    const autoRefresh = $("autoRefresh");
+    const statusElement = $("status");
+    const updatedElement = $("updated");
+    const countsElement = $("mailboxCounts");
+    const searchInput = $("search");
+    const filterSelect = $("filter");
+    const countElement = $("count");
+    const messagesElement = $("messages");
+
+    // Cache the last successful result for each address separately.
+    const messagesByInbox = new Map(
+      ADDRESSES.map(address => [address, []])
+    );
+
+    let isLoading = false;
+    let refreshTimer = null;
+
+    function safeText(value, fallback = "") {
+      return value == null ? fallback : String(value);
+    }
+
+    function element(tag, text) {
+      const node = document.createElement(tag);
+      node.textContent = safeText(text);
+      return node;
+    }
+
+    function formatDate(value) {
+      if (!value) return "Unknown date";
+
+      const date = new Date(value);
+
+      return Number.isNaN(date.getTime())
+        ? "Unknown date"
+        : date.toLocaleString();
+    }
+
+    function getSelectedAddresses() {
+      return mailbox.value === "all"
+        ? ADDRESSES
+        : [mailbox.value];
+    }
+
+    function getCurrentMessages() {
+      const selected = getSelectedAddresses();
+      const unique = new Map();
+
+      for (const address of selected) {
+        const items = messagesByInbox.get(address) || [];
+
+        for (const message of items) {
+          // Message IDs are unique in the shared database.
+          const key = String(message.id);
+          unique.set(key, message);
+        }
+      }
+
+      return Array.from(unique.values()).sort((a, b) => {
+        const timeA = Date.parse(a.received_at || "") || 0;
+        const timeB = Date.parse(b.received_at || "") || 0;
+        return timeB - timeA;
+      });
+    }
+
+    function renderMailboxCounts() {
+      countsElement.replaceChildren();
+
+      for (const address of ADDRESSES) {
+        const number = (messagesByInbox.get(address) || []).length;
+        const line = element("div", `${address}: ${number} loaded`);
+        countsElement.appendChild(line);
+      }
+    }
+
+    function copyCode(code, button) {
+      if (!code) return;
+
+      if (!navigator.clipboard) {
+        button.textContent = "Clipboard unavailable";
+        return;
+      }
+
+      navigator.clipboard.writeText(String(code))
+        .then(() => {
+          button.textContent = "Copied!";
+        })
+        .catch(() => {
+          button.textContent = "Copy failed";
+        })
+        .finally(() => {
+          window.setTimeout(() => {
+            button.textContent = "Copy code";
+          }, 1800);
+        });
+    }
+
+    function renderMessages() {
+      const query = searchInput.value.trim().toLowerCase();
+      const filter = filterSelect.value;
+
+      let visible = getCurrentMessages();
+
+      visible = visible.filter(message => {
+        const code = safeText(message.verification_code);
+
+        if (filter === "codes" && !code) return false;
+        if (filter === "no-codes" && code) return false;
+
+        if (!query) return true;
+
+        const searchable = [
+          message.sender,
+          message.recipient,
+          message.subject,
+          code,
+          message.received_at
+        ].map(value => safeText(value).toLowerCase()).join(" ");
+
+        return searchable.includes(query);
+      });
+
+      countElement.textContent =
+        `${visible.length} shown / ${getCurrentMessages().length} loaded`;
+
+      const fragment = document.createDocumentFragment();
+
+      if (visible.length === 0) {
+        fragment.appendChild(
+          element("p", "No messages found in this inbox.")
+        );
+        messagesElement.replaceChildren(fragment);
+        return;
+      }
+
+      for (const message of visible) {
+        const card = document.createElement("article");
+
+        card.appendChild(element("h2", message.subject || "(No subject)"));
+        card.appendChild(element("p", `From: ${safeText(message.sender, "Unknown")}`));
+        card.appendChild(element("p", `To: ${safeText(message.recipient, "Unknown")}`));
+        card.appendChild(element("p", `Received: ${formatDate(message.received_at)}`));
+
+        const code = safeText(message.verification_code);
+        card.appendChild(element(
+          "p",
+          code ? `Verification code: ${code}` : "Verification code: Not detected"
+        ));
+
+        if (code) {
+          const copyButton = element("button", "Copy code");
+          copyButton.type = "button";
+          copyButton.addEventListener("click", () => {
+            copyCode(code, copyButton);
+          });
+          card.appendChild(copyButton);
+        }
+
+        card.appendChild(document.createElement("hr"));
+        fragment.appendChild(card);
+      }
+
+      messagesElement.replaceChildren(fragment);
+    }
+
+    async function fetchInbox(address) {
+      const url = new URL(API_URL, window.location.origin);
+      url.searchParams.set("recipient", address);
+
+      const controller = new AbortController();
+      const timeout = window.setTimeout(
+        () => controller.abort(),
+        REQUEST_TIMEOUT_MS
+      );
+
+      try {
+        const response = await fetch(url, {
+          method: "GET",
+          headers: { "Accept": "application/json" },
+          cache: "no-store",
+          signal: controller.signal
+        });
+
+        if (!response.ok) {
+          throw new Error(`${address}: HTTP ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (!data || !Array.isArray(data.messages)) {
+          throw new Error(`${address}: Invalid server response`);
+        }
+
+        return data.messages.filter(message =>
+          message && typeof message === "object"
+        );
+      } finally {
+        window.clearTimeout(timeout);
+      }
+    }
+
+    async function loadInboxes() {
+      if (isLoading) return;
+
+      isLoading = true;
+      refreshButton.disabled = true;
+      statusElement.textContent = "Refreshing selected inboxes...";
+
+      try {
+        const addresses = getSelectedAddresses();
+
+        // Each address is queried separately, not mixed into one
+        // global batch of the latest 20 messages.
+        const results = await Promise.allSettled(
+          addresses.map(async address => ({
+            address,
+            messages: await fetchInbox(address)
+          }))
+        );
+
+        let successes = 0;
+        const failed = [];
+
+        for (let i = 0; i < results.length; i++) {
+          const result = results[i];
+          const address = addresses[i];
+
+          if (result.status === "fulfilled") {
+            messagesByInbox.set(
+              result.value.address,
+              result.value.messages
+            );
+            successes++;
+          } else {
+            // Keep that mailbox's previous cached results on error.
+            failed.push(address);
+          }
+        }
+
+        if (successes === 0) {
+          throw new Error(
+            "Could not load any selected inbox. Check deployment and function logs."
+          );
+        }
+
+        renderMailboxCounts();
+        renderMessages();
+
+        updatedElement.textContent =
+          `Last updated: ${new Date().toLocaleTimeString()}`;
+
+        statusElement.textContent = failed.length
+          ? `Updated ${successes} inbox(es). Could not refresh: ${failed.join(", ")}`
+          : `Successfully refreshed ${successes} inbox(es).`;
+
+      } catch (error) {
+        statusElement.textContent =
+          error.message || "Could not refresh inbox.";
+
+        // Keep messages already loaded in memory.
+        renderMessages();
+      } finally {
+        isLoading = false;
+        refreshButton.disabled = false;
+      }
+    }
+
+    function stopAutoRefresh() {
+      if (refreshTimer !== null) {
+        window.clearInterval(refreshTimer);
+        refreshTimer = null;
+      }
+    }
+
+    function startAutoRefresh() {
+      stopAutoRefresh();
+
+      if (autoRefresh.checked) {
+        refreshTimer = window.setInterval(() => {
+          if (!document.hidden) loadInboxes();
+        }, REFRESH_MS);
+      }
+    }
+
+    mailbox.addEventListener("change", () => {
+      renderMessages();
+      loadInboxes();
+    });
+
+    refreshButton.addEventListener("click", loadInboxes);
+    autoRefresh.addEventListener("change", startAutoRefresh);
+    searchInput.addEventListener("input", renderMessages);
+    filterSelect.addEventListener("change", renderMessages);
+
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden && autoRefresh.checked) {
+        loadInboxes();
+      }
+    });
+
+    renderMailboxCounts();
+    loadInboxes();
+    startAutoRefresh();
+  </script>
+</body>
+</html>
